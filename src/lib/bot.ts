@@ -10,7 +10,7 @@ client.on('ready', () => {
   console.log('Bot ready');
 });
 
-const allowed_channels = ['871067756794097724'];
+const allowed_channels = ['871067756794097724', '871059702027542571'];
 const trigger_emoji = '🦆';
 
 client.on('messageReactionAdd', (reaction) => {
