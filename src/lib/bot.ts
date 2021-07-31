@@ -13,10 +13,10 @@ client.on('ready', () => {
 
 const allowed_channels = ['871067756794097724', '871059702027542571'];
 const operators = ['121777389012385796'];
+let deleteOriginalMessage = true;
 
 let trigger_emoji = '🦆';
-let delayed_react = '🕒';
-
+let delayed_react = '⌚';
 client.on('message', (message) => {
   // Only run in allowed channels
   if (!allowed_channels.includes(message.channel.id)) return;
@@ -27,24 +27,26 @@ client.on('message', (message) => {
   const args = message.content.split(' ');
   if (args[0] === '++settrigger' && args[1]) {
     trigger_emoji = args[1];
-    message.reply(`Set new trigger to ${trigger_emoji}`);
+    return message.reply(`Set new trigger to ${trigger_emoji}`);
+  }
+  if (args[0] === '++deleteoriginal') {
+    deleteOriginalMessage = !deleteOriginalMessage;
+    return deleteOriginalMessage
+      ? message.reply(`<@${client.user.id}> will now delete messages.`)
+      : message.reply(`<@${client.user.id}> will not delete messages.`);
   }
 });
 
 client.on('messageReactionAdd', async (reaction) => {
   const { emoji } = reaction;
-
   // Only run in allowed channels
   if (!allowed_channels.includes(reaction.message.channel.id)) return;
   if (emoji.name === trigger_emoji) {
-    const filter = (reaction) => reaction.emoji.name === trigger_emoji;
-
-    // This piece of code is here just for my testing purposes and does not do anything right now
-    reaction.message
-      .awaitReactions(filter, { time: 30 })
-      .then((collected) => console.log(`Collected ${collected.size} reactions`))
-      .catch(console.error);
-
+    // Get time between reaction and message posted
+    const timeInSeconds =
+      (Date.now() - reaction.message.createdTimestamp) / 1000;
+    console.log(timeInSeconds);
+    if (timeInSeconds > 30) return reaction.message.react(delayed_react);
     const content = reaction.message.content;
 
     // Look for the language mapping to use
@@ -62,14 +64,10 @@ client.on('messageReactionAdd', async (reaction) => {
     try {
       const formatted = languageMappings[languageKey].format(code);
       const withBackticksAndLanguageCode = reformat(formatted, languageKey);
-      const pasteCordURL = await UploadToPastecord(code);
-      reaction.message.delete();
+      const pasteCordURL = await UploadToPastecord(code, languageKey);
+      if (deleteOriginalMessage) reaction.message.delete();
       reaction.message.channel.send(
-        `Formatted ${languageNameMappings[languageKey]} code for <@${
-          reaction.message.author.id
-        }>, original: ${
-          pasteCordURL + languageKey ? `.${languageKey}` : ''
-        } ${withBackticksAndLanguageCode}`
+        `Formatted ${languageNameMappings[languageKey]} code for <@${reaction.message.author.id}>, original: ${pasteCordURL} ${withBackticksAndLanguageCode}`
       );
     } catch (err: unknown) {
       console.log(err);

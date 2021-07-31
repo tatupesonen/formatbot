@@ -5,7 +5,8 @@ interface PastecordResponse {
 }
 
 export const UploadToPastecord = async (
-  code: string
+  code: string,
+  languageKey?: string
 ): Promise<string | void> => {
   const URL = 'https://pastecord.com/documents';
 
@@ -13,6 +14,6 @@ export const UploadToPastecord = async (
     URL,
     code
   );
-
-  return `https://pastecord.com/${data.key}`;
+  const urlEnd = languageKey ? `.${languageKey}` : '';
+  return `https://pastecord.com/${data.key}${urlEnd}`;
 };
