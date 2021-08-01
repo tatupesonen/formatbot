@@ -20,6 +20,7 @@ export const languageMappings: Record<string, IFormatter> = {
   css: formatters.get('css'),
   html: formatters.get('html'),
   python: formatters.get('python'),
+  py: formatters.get('python'),
 };
 
 export const languageNameMappings: Record<string, string> = {
@@ -32,4 +33,5 @@ export const languageNameMappings: Record<string, string> = {
   css: 'CSS',
   html: 'HTML',
   python: 'Python',
+  py: 'Python',
 };
