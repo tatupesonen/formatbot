@@ -1,6 +1,6 @@
-import discord, { Message } from 'discord.js';
-require('discord-reply');
+import discord from 'discord.js';
 const client = new discord.Client();
+
 import {
   languageMappings,
   languageNameMappings,
@@ -16,7 +16,7 @@ const operators = ['121777389012385796'];
 let deleteOriginalMessage = true;
 
 let trigger_emoji = '🦆';
-let delayed_react = '⌚';
+const delayed_react = '⌚';
 client.on('message', (message) => {
   // Only run in allowed channels
   if (!allowed_channels.includes(message.channel.id)) return;
@@ -62,7 +62,7 @@ client.on('messageReactionAdd', async (reaction) => {
       .join('');
 
     try {
-      const formatted = languageMappings[languageKey].format(code);
+      const formatted = await languageMappings[languageKey].format(code);
       const withBackticksAndLanguageCode = reformat(formatted, languageKey);
       const pasteCordURL = await UploadToPastecord(code, languageKey);
       if (deleteOriginalMessage) reaction.message.delete();

@@ -44,10 +44,12 @@
   "dependencies": {
     "@bitauth/libauth": "^1.17.1",
     "@types/node": "^16.4.8",
+    "@unibeautify/beautifier-black": "^0.1.2",
     "axios": "^0.21.1",
     "discord-reply": "^0.1.2",
     "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "unibeautify": "^0.17.1"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
@@ -61,7 +63,6 @@
     "eslint": "^7.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-functional": "^3.0.2",
     "eslint-plugin-import": "^2.22.0",
     "gh-pages": "^3.1.0",
     "npm-run-all": "^4.1.5",
