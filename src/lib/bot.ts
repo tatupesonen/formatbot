@@ -1,3 +1,4 @@
+import { combineOperations } from '@bitauth/libauth';
 import discord from 'discord.js';
 const client = new discord.Client();
 
@@ -6,6 +7,8 @@ import {
   languageNameMappings,
 } from './formatters/FormatterMappings';
 import { UploadToPastecord } from './infra/pastecordintegration';
+import { getMessageBlocks } from './util/messageparser';
+import { reformat } from './util/reformatter';
 
 client.on('ready', () => {
   console.log('Bot ready');
@@ -17,6 +20,7 @@ let deleteOriginalMessage = true;
 
 let trigger_emoji = '🦆';
 const delayed_react = '⌚';
+
 client.on('message', (message) => {
   // Only run in allowed channels
   if (!allowed_channels.includes(message.channel.id)) return;
@@ -62,12 +66,31 @@ client.on('messageReactionAdd', async (reaction) => {
       .join('');
 
     try {
-      const formatted = await languageMappings[languageKey].format(code);
-      const withBackticksAndLanguageCode = reformat(formatted, languageKey);
+      const withOriginalFormatting = getMessageBlocks(content);
+      const mapped = await Promise.all(
+        withOriginalFormatting.map(async (block) => {
+          if (block.ext) {
+            return {
+              ...block,
+              content: reformat(
+                await languageMappings[block.ext].format(
+                  block.content.join('\n')
+                ),
+                block.ext
+              ),
+            };
+          } else return { ...block, content: block.content.join('\n') };
+        })
+      );
+
+      const combined = mapped.reduce((acc, cur) => {
+        return acc + cur.content;
+      }, '');
+
       const pasteCordURL = await UploadToPastecord(code, languageKey);
       if (deleteOriginalMessage) reaction.message.delete();
       reaction.message.channel.send(
-        `Formatted ${languageNameMappings[languageKey]} code for <@${reaction.message.author.id}>, original: ${pasteCordURL} ${withBackticksAndLanguageCode}`
+        `Formatted ${languageNameMappings[languageKey]} code for <@${reaction.message.author.id}>, original: ${pasteCordURL} ${combined}`
       );
     } catch (err: unknown) {
       console.log(err);
@@ -75,9 +98,5 @@ client.on('messageReactionAdd', async (reaction) => {
     }
   }
 });
-
-const reformat = (code: string, languageKey): string => {
-  return `\`\`\`${languageKey}\n${code}\n\`\`\``;
-};
 
 export { client };
