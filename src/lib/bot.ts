@@ -1,7 +1,9 @@
 import { combineOperations } from '@bitauth/libauth';
-import discord from 'discord.js';
-//? The required intents for "messageCreate" and "messageReactionAdd". Events currently listened to 
-const client = new discord.Client({"intents": ["GUILDS", "GUILD_MESSAGES", 'GUILD_MESSAGE_REACTIONS']});
+import { Client } from 'discord.js';
+//? The required intents for "messageCreate" and "messageReactionAdd". Events currently listened to
+const client = new Client({
+  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS'],
+});
 
 import {
   languageMappings,
@@ -85,7 +87,7 @@ client.on('messageCreate', (message) => {
     deleteOriginalMessage
       ? message.reply(`<@${client.user.id}> will now delete messages.`)
       : message.reply(`<@${client.user.id}> will not delete messages.`);
-      return;
+    return;
   }
 });
 
