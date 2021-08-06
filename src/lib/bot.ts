@@ -1,6 +1,7 @@
 import { combineOperations } from '@bitauth/libauth';
 import discord from 'discord.js';
-const client = new discord.Client();
+//? The required intents for "messageCreate" and "messageReactionAdd". Events currently listened to 
+const client = new discord.Client({"intents": ["GUILDS", "GUILD_MESSAGES", 'GUILD_MESSAGE_REACTIONS']});
 
 import {
   languageMappings,
@@ -66,7 +67,7 @@ let deleteOriginalMessage = true;
 let trigger_emoji = '🦆';
 const delayed_react = '⌚';
 
-client.on('message', (message) => {
+client.on('messageCreate', (message) => {
   // Only run in allowed channels
   if (!allowed_channels.includes(message.channel.id)) return;
   if (!operators.includes(message.author.id)) return;
@@ -76,13 +77,15 @@ client.on('message', (message) => {
   const args = message.content.split(' ');
   if (args[0] === '++settrigger' && args[1]) {
     trigger_emoji = args[1];
-    return message.reply(`Set new trigger to ${trigger_emoji}`);
+    message.reply(`Set new trigger to ${trigger_emoji}`);
+    return;
   }
   if (args[0] === '++deleteoriginal') {
     deleteOriginalMessage = !deleteOriginalMessage;
-    return deleteOriginalMessage
+    deleteOriginalMessage
       ? message.reply(`<@${client.user.id}> will now delete messages.`)
       : message.reply(`<@${client.user.id}> will not delete messages.`);
+      return;
   }
 });
 
@@ -95,7 +98,10 @@ client.on('messageReactionAdd', async (reaction) => {
     const timeInSeconds =
       (Date.now() - reaction.message.createdTimestamp) / 1000;
     console.log(timeInSeconds);
-    if (timeInSeconds > 30) return reaction.message.react(delayed_react);
+    if (timeInSeconds > 30) {
+      reaction.message.react(delayed_react);
+      return;
+    }
     const content = reaction.message.content;
 
     try {
