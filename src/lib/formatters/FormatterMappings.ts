@@ -1,11 +1,13 @@
 import { IFormatter } from './BaseFormatter';
 import { PrettierFormatter } from './prettier/PrettierFormatter';
+import { PythonFormatter } from './prettier/PythonFormatter';
 
 const formatters: Map<string, IFormatter> = new Map([
   ['prettier', new PrettierFormatter({ semi: true, parser: 'babel' })],
   ['prettier_ts', new PrettierFormatter({ semi: true, parser: 'babel-ts' })],
   ['css', new PrettierFormatter({ semi: true, parser: 'css' })],
   ['html', new PrettierFormatter({ semi: true, parser: 'html' })],
+  ['python', new PythonFormatter()],
 ]);
 
 export const languageMappings: Record<string, IFormatter> = {
@@ -17,6 +19,8 @@ export const languageMappings: Record<string, IFormatter> = {
   ts: formatters.get('prettier_ts'),
   css: formatters.get('css'),
   html: formatters.get('html'),
+  python: formatters.get('python'),
+  py: formatters.get('python'),
 };
 
 export const languageNameMappings: Record<string, string> = {
@@ -28,4 +32,6 @@ export const languageNameMappings: Record<string, string> = {
   ts: 'TypeScript',
   css: 'CSS',
   html: 'HTML',
+  python: 'Python',
+  py: 'Python',
 };
