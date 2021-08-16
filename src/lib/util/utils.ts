@@ -19,28 +19,29 @@ export async function asyncStringReplacer(
   }, stringToReplace);
   return result;
 }
+
 /**
  *
  * @param str The single line string that'll be added comments to
  * @param language The language identifier for the specific style of comments
  * @returns The line as a comment, if the language key isn't provided or isn't supported it just returns the original string
  */
-export function commentify(str: string, language?: string): string {
+ export function commentify(str: string, language?: string): string {
   switch (language) {
     case 'js':
     case 'javascript':
     case 'typescript':
     case 'ts':
-      return '//' + str;
+      return '// ' + str;
     case 'jsx':
     case 'tsx':
     case 'css':
-      return '/*' + str + '*/';
+      return '/* ' + str + ' */';
     case 'html':
-      return '<!--' + str + '-->';
+      return '<!-- ' + str + ' -->';
     case 'python':
     case 'py':
-      return '#' + str;
+      return '# ' + str;
     default:
       return str;
   }
