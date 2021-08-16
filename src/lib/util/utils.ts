@@ -27,11 +27,14 @@ export async function asyncStringReplacer(
   const matched = stringToReplace.match(regex);
   //If stringToReplace doesn't have a code block, return null
   if (!matched) return null;
+  // If it's a global regex
   if (regex.global) {
     const matches = matched.map((val) => {
+      // Create a non-global regex from the provided regex  
       const singleMatched = val.match(new RegExp(regex.source));
       // Not possible since it only loops through the matches but for typesript
       if (!singleMatched) return val;
+      // The first element is the matched substring, the others are the capture groups 
       const [match, ...capturedGroup] = singleMatched;
       return callback(
         match,
@@ -41,15 +44,17 @@ export async function asyncStringReplacer(
         ...capturedGroup
       );
     });
+    // Use the callback to get an array of results for each matches
     const formatted = await Promise.all(matches);
 
     const result = matched.reduce((prev, curr, ind) => {
-      //The string with the matched values replaced with it's corresponding "formatted string"
+      // The string with the matched values replaced with it's corresponding "formatted string"
       return prev.replace(curr, formatted[ind]);
     }, stringToReplace);
     return result;
   } else {
     const [match, ...capturedGroup] = matched;
+    // Format the string according to the callback
     const replacedValue = await callback(
       match,
       matched.index,
