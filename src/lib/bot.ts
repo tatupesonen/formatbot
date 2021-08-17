@@ -1,10 +1,6 @@
 import { combineOperations } from '@bitauth/libauth';
 import { Client } from 'discord.js';
-//? The required intents for "messageCreate" and "messageReactionAdd". Events currently listened to
-const client = new Client({
-  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS'],
-});
-
+import { reformat } from './util/reformatter';
 import {
   languageMappings,
   languageNameMappings,
@@ -12,6 +8,10 @@ import {
 import { UploadToPastecord } from './infra/pastecordintegration';
 import { asyncStringReplacer, commentify } from './util/utils';
 
+//? The required intents for "messageCreate" and "messageReactionAdd". Events currently listened to
+const client = new Client({
+  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS'],
+});
 client.on('ready', () => {
   console.log('Bot ready');
 });
@@ -69,53 +69,83 @@ client.on('messageReactionAdd', async (reaction) => {
       let pastecordCode = content;
       // Should the content be too large to upload, the formatted code will be sent through pastecord and this will be the content
       let prettiedPastecordCode = content;
+      // The amount of code blocks in the content
+      let codeBlockCounter = 0;
+      // The amount of code blocks that weren't formattable
+      let unformattableCodeBlockCounter = 0;
+
       const prettifiedCode = await asyncStringReplacer(
         content,
         /```([^`\n]*)((?:(?:(?!```).)|\n)*)```/g,
-        async (str) => {
-          /**
-           * * 0 The entire matched string
-           * * 1 Group 1, The language, example: "js"
-           * * 2 The code
-           */
-          const matches = str.match(/```([^`\n]*)((?:(?:(?!```).)|\n)*)```/);
-          // return the original string should there not be matches, this shouldn't happen considering it's iterating through the matched array
-          if (!matches) return str;
-          // For empty code blocks
-          if (!matches[2]) {
-            contentWithoutCode = contentWithoutCode.replace(
-              matches[0],
-              '\n' + matches[0] + '\n'
-            );
-            return str;
+        async (
+          match,
+          _offset,
+          _completeString,
+          _groups,
+          language,
+          codeContent
+        ) => {
+          codeBlockCounter++;
+          // For empty code blocks or one liner code blocks
+          if (!codeContent.trim()) {
+            // For one liners
+            if (language.trim() && !languageMappings[language]) {
+              unformattableCodeBlockCounter++;
+              return match;
+            }
+            // For empty codeblocks, remove the content
+            unformattableCodeBlockCounter++;
+            return '';
           }
-          const language = matches[1];
-          // If firstLanguage is undefined, it sets the value
-          if (!firstLanguageKey && language) firstLanguageKey = language;
-          const theCode = matches[2].trim();
+          // If firstLanguage is undefined and language is a valid languagekey, it sets the value
+          if (!firstLanguageKey && languageNameMappings[language])
+            firstLanguageKey = language.trim();
+          const theCode = codeContent.trim();
           // Remove the entire code block
-          contentWithoutCode = contentWithoutCode.replace(matches[0], '\n');
+          contentWithoutCode = contentWithoutCode.replace(match, '\n');
           // Remove the code block formatting and adds it's content
           pastecordCode = pastecordCode.replace(
-            matches[0],
-            '\n' + matches[2] + '\n'
+            match,
+            '\n' + codeContent + '\n'
           );
           const languageFormatter = languageMappings[language];
           // If "language" is undefined or unsupported for formatting, return the original code block with it's content
-          if (!languageFormatter) return str;
-          const formattedCode = await languageFormatter.format(theCode);
+          if (!languageFormatter) {
+            unformattableCodeBlockCounter++;
+            return match;
+          }
+          // Format the code, if it's unformattable, return null
+          const formattedCode = await languageFormatter
+            .format(theCode)
+            .then((code) => code.trim())
+            .catch(() => null);
           prettiedPastecordCode = prettiedPastecordCode.replace(
-            matches[0],
-            '\n' + formattedCode + '\n'
+            match,
+            '\n' +
+              (formattedCode ??
+                commentify('Could not format this snippet\n', language) +
+                  codeContent) +
+              '\n'
           );
-
-          //Replace the string's code with the formatted code
-          return str.replace(theCode, formattedCode);
+          if (!formattedCode) {
+            unformattableCodeBlockCounter++;
+            return reformat(
+              commentify('Could not format this snippet', language) +
+                codeContent,
+              language
+            );
+          }
+          //Replace the string's code with the formatted code inside a code block
+          return match.replace(theCode, formattedCode);
         }
       );
       if (!prettifiedCode) {
         throw new Error("This doesn't have any code blocks");
       }
+      // If all the codeblocks were unformattable, cancel
+      if (unformattableCodeBlockCounter === codeBlockCounter)
+        throw new Error('No Formattable code block');
+
       pastecordCode = contentWithoutCode.split('\n').reduce((prev, curr) => {
         // Return the previous value should the element be "" instead of adding empty comments
         if (curr === '') return prev;
