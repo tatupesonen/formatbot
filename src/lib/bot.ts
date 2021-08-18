@@ -1,4 +1,3 @@
-import { combineOperations } from '@bitauth/libauth';
 import { Client } from 'discord.js';
 import { reformat } from './util/reformatter';
 import {
@@ -7,6 +6,17 @@ import {
 } from './formatters/FormatterMappings';
 import { UploadToPastecord } from './infra/pastecordintegration';
 import { asyncStringReplacer, commentify } from './util/utils';
+import { readdirSync } from 'fs';
+import { ICommand } from './common/BaseCommand';
+
+const COMMANDS = new Map();
+
+// Let's load all the commands.
+const commandFiles = readdirSync('./src/lib/commands');
+commandFiles.forEach((item) => {
+  const command: ICommand = require(`./commands/${item}`);
+  COMMANDS.set(command.name, command);
+});
 
 //? The required intents for "messageCreate" and "messageReactionAdd". Events currently listened to
 const client = new Client({
