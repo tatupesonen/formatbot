@@ -7,14 +7,14 @@ import {
 import { UploadToPastecord } from './infra/pastecordintegration';
 import { asyncStringReplacer, commentify } from './util/utils';
 import { readdirSync } from 'fs';
-import { ICommand } from './common/BaseCommand';
+import { ICommand } from './common/ICommand';
 
 const COMMANDS = new Map();
 
 // Let's load all the commands.
 const commandFiles = readdirSync('./src/lib/commands');
-commandFiles.forEach((item) => {
-  const command: ICommand = require(`./commands/${item}`);
+commandFiles.forEach(async (item) => {
+  const command: ICommand<any> = require(`./commands/${item}`);
   COMMANDS.set(command.name, command);
 });
 
@@ -52,6 +52,13 @@ client.on('messageCreate', (message) => {
       ? message.reply(`<@${client.user.id}> will now delete messages.`)
       : message.reply(`<@${client.user.id}> will not delete messages.`);
     return;
+  }
+});
+
+client.on('interactionCreate', async (interaction) => {
+  if (!interaction.isCommand()) return;
+  if (interaction.commandName === 'status') {
+    await interaction.reply({ content: 'Pong', ephemeral: true });
   }
 });
 
