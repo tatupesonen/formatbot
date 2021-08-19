@@ -1,12 +1,9 @@
-import { Interaction, Message } from 'discord.js';
-import { BaseCommand, ICommand } from '../common/BaseCommand';
+import { ICommand, COMMAND_TYPE } from '../common/ICommand';
 
-export class StatusCommand implements BaseCommand, ICommand {
-  name: 'status';
-  async execute(interaction: Interaction | Message) {
-    // We only care about Messages now now
-    if (interaction instanceof Message) {
-      interaction.reply('test');
-    }
-  }
-}
+export const StatusCommand: ICommand<COMMAND_TYPE.MESSAGE> = {
+  name: 'status',
+  type: COMMAND_TYPE.MESSAGE,
+  execute(interaction) {
+    // properly typed as Message automatically
+  },
+};
