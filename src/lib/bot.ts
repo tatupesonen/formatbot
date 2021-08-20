@@ -7,14 +7,15 @@ import {
 import { UploadToPastecord } from './infra/pastecordintegration';
 import { asyncStringReplacer, commentify } from './util/utils';
 import { readdirSync } from 'fs';
-import { ICommand } from './common/ICommand';
+import { COMMAND_TYPE, ICommand } from './common/ICommand';
+import { StatusCommand } from './commands/status';
 
-const COMMANDS = new Map();
+const COMMANDS: Map<string, ICommand<COMMAND_TYPE>> = new Map();
 
 // Let's load all the commands.
 const commandFiles = readdirSync('./src/lib/commands');
 commandFiles.forEach(async (item) => {
-  const command: ICommand<any> = require(`./commands/${item}`);
+  const command: ICommand<COMMAND_TYPE> = await import(`./commands/${item}`);
   COMMANDS.set(command.name, command);
 });
 
@@ -55,10 +56,9 @@ client.on('messageCreate', (message) => {
   }
 });
 
-client.on('interactionCreate', async (interaction) => {
-  if (!interaction.isCommand()) return;
-  if (interaction.commandName === 'status') {
-    await interaction.reply({ content: 'Pong', ephemeral: true });
+client.on('message', async (interaction) => {
+  if (interaction.content.startsWith('format!status')) {
+    StatusCommand.execute(interaction);
   }
 });
 
