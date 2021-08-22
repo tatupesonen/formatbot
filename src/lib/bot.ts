@@ -28,16 +28,25 @@ client.on('ready', () => {
 });
 
 const allowed_channels = ['871067756794097724', '871059702027542571'];
-const operators = ['121777389012385796'];
 let deleteOriginalMessage = true;
 
 let trigger_emoji = '🦆';
 const delayed_react = '⌚';
 
 client.on('messageCreate', (message) => {
-  // Only run in allowed channels
-  if (!allowed_channels.includes(message.channel.id)) return;
-  if (!operators.includes(message.author.id)) return;
+  if (!allowed_channels.includes(message.channel.id) || message.author.bot)
+    return;
+
+  // Special case for bot mentions
+  if (
+    message.mentions.has(client.user, {
+      ignoreEveryone: true,
+      ignoreRoles: true,
+    }) &&
+    message.content.trim().length === client.user.id.length + 4
+  ) {
+    StatusCommand.execute(message);
+  }
 
   // User is bot operator
   // Get message args
@@ -53,12 +62,6 @@ client.on('messageCreate', (message) => {
       ? message.reply(`<@${client.user.id}> will now delete messages.`)
       : message.reply(`<@${client.user.id}> will not delete messages.`);
     return;
-  }
-});
-
-client.on('message', async (interaction) => {
-  if (interaction.content.startsWith('format!status')) {
-    StatusCommand.execute(interaction);
   }
 });
 
