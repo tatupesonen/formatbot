@@ -42,8 +42,6 @@
     "node": ">=16.6.0"
   },
   "dependencies": {
-    "@bitauth/libauth": "^1.18.1",
-    "@types/node": "^16.4.13",
     "@unibeautify/beautifier-black": "^0.1.2",
     "axios": "^0.21.1",
     "discord.js": "^13.0.0",
@@ -53,6 +51,7 @@
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/node": "^16.7.1",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
     "ava": "^3.15.0",
