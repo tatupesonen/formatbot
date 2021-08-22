@@ -1,4 +1,5 @@
 import { MessageEmbed } from 'discord.js';
+import { client } from '../bot';
 import { ICommand, COMMAND_TYPE } from '../common/ICommand';
 
 export const StatusCommand: ICommand<COMMAND_TYPE.MESSAGE> = {
@@ -21,15 +22,28 @@ export const StatusCommand: ICommand<COMMAND_TYPE.MESSAGE> = {
     }
 
     const embed: Partial<MessageEmbed> = {
+      url: pjson.repository,
+      author: {
+        name: 'FormatBot',
+        iconURL: client.user.displayAvatarURL(),
+        url: pjson.repository,
+      },
       title: 'FormatBot',
-      description: `Git branch revision: ${revision ?? 'unavailable'}`,
+      color: 0xfc9003,
+      description: `FormatBot is a utility bot designed for formatting code blocks on Discord.`,
       fields: [
         {
-          name: 'Versions',
-          value: versions.reduce((acc, [key, value]) => {
+          name: 'Info',
+          value: `Git branch revision: ${revision ?? 'unavailable'}
+      Repository: ${pjson.repository ?? 'unavailable'}`,
+          inline: false,
+        },
+        {
+          name: 'Library versions',
+          value: `\`\`\`${versions.reduce((acc, [key, value]) => {
             acc += `${key}: ${value}\n`;
             return acc;
-          }, ''),
+          }, '')}\`\`\``,
           inline: false,
         },
       ],
