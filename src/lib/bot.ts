@@ -1,4 +1,4 @@
-import { Client } from 'discord.js';
+import { Client, Util } from 'discord.js';
 import { reformat } from './util/reformatter';
 import {
   languageMappings,
@@ -8,20 +8,22 @@ import { UploadToPastecord } from './infra/pastecordintegration';
 import { asyncStringReplacer, commentify } from './util/utils';
 import { readdirSync } from 'fs';
 import { COMMAND_TYPE, ICommand } from './common/ICommand';
-import { StatusCommand } from './commands/status';
+import StatusCommand from './commands/status';
 
 const COMMANDS: Map<string, ICommand<COMMAND_TYPE>> = new Map();
 
 // Let's load all the commands.
 const commandFiles = readdirSync('./src/lib/commands');
 commandFiles.forEach(async (item) => {
-  const command: ICommand<COMMAND_TYPE> = await import(`./commands/${item}`);
-  COMMANDS.set(command.name, command);
+  const command = await import(`./commands/${item}`);
+  COMMANDS.set(command.default.name, command.default);
+  console.log('Imported command ' + command.default.name);
 });
 
 //? The required intents for "messageCreate" and "messageReactionAdd". Events currently listened to
 const client = new Client({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS'],
+  allowedMentions: { repliedUser: true },
 });
 client.on('ready', () => {
   console.log('Bot ready');
@@ -31,6 +33,7 @@ const allowed_channels = ['871067756794097724', '871059702027542571'];
 let deleteOriginalMessage = true;
 
 let trigger_emoji = '🦆';
+let prefix = 'format!';
 const delayed_react = '⌚';
 
 client.on('messageCreate', (message) => {
@@ -47,21 +50,15 @@ client.on('messageCreate', (message) => {
   ) {
     StatusCommand.execute(message);
   }
-
+  if (!message.content.startsWith(prefix)) return;
   // User is bot operator
   // Get message args
-  const args = message.content.split(' ');
-  if (args[0] === '++settrigger' && args[1]) {
-    trigger_emoji = args[1];
-    message.reply(`Set new trigger to ${trigger_emoji}`);
-    return;
-  }
-  if (args[0] === '++deleteoriginal') {
-    deleteOriginalMessage = !deleteOriginalMessage;
-    deleteOriginalMessage
-      ? message.reply(`<@${client.user.id}> will now delete messages.`)
-      : message.reply(`<@${client.user.id}> will not delete messages.`);
-    return;
+  const args = message.content.slice(prefix.length).trim().split(/ +/);
+  const [command, ...commandArgs] = args;
+  console.log(command, commandArgs);
+  console.log(COMMANDS);
+  if (COMMANDS.has(command)) {
+    COMMANDS.get(command).execute(message, commandArgs);
   }
 });
 
