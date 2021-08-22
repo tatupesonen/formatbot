@@ -2,7 +2,7 @@ import { MessageEmbed } from 'discord.js';
 import { client } from '../bot';
 import { ICommand, COMMAND_TYPE } from '../common/ICommand';
 
-export const StatusCommand: ICommand<COMMAND_TYPE.MESSAGE> = {
+const StatusCommand: ICommand<COMMAND_TYPE.MESSAGE> = {
   name: 'status',
   type: COMMAND_TYPE.MESSAGE,
   async execute(interaction) {
@@ -51,3 +51,5 @@ export const StatusCommand: ICommand<COMMAND_TYPE.MESSAGE> = {
     interaction.reply({ embeds: [embed] });
   },
 };
+
+export default StatusCommand;
