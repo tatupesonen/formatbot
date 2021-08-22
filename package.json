@@ -5,7 +5,7 @@
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/tatupesonen/djs-prettier-format-bot",
+  "repository": "https://github.com/tatupesonen/formatbot",
   "license": "MIT",
   "keywords": [],
   "scripts": {
