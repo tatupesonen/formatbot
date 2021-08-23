@@ -1,10 +1,10 @@
-import { Client, Util } from 'discord.js';
+import { Client } from 'discord.js';
 import { reformat } from './util/reformatter';
 import {
   languageMappings,
   languageNameMappings,
 } from './formatters/FormatterMappings';
-import { UploadToPastecord } from './infra/pastecordintegration';
+import { UploadToPastecord } from './infra/external/pastecordintegration';
 import { asyncStringReplacer, commentify } from './util/utils';
 import { readdirSync } from 'fs';
 import { COMMAND_TYPE, ICommand } from './common/ICommand';
@@ -55,8 +55,7 @@ client.on('messageCreate', (message) => {
   // Get message args
   const args = message.content.slice(prefix.length).trim().split(/ +/);
   const [command, ...commandArgs] = args;
-  console.log(command, commandArgs);
-  console.log(COMMANDS);
+  // Find command from args and run execute
   if (COMMANDS.has(command)) {
     COMMANDS.get(command).execute(message, commandArgs);
   }

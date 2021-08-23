@@ -21,11 +21,6 @@ const StatusCommand: ICommand<COMMAND_TYPE.MESSAGE> = {
       console.log("Couldn't execute using child process");
     }
 
-    // Get the bot's ping to the guild
-    const ping = client.guilds.cache.find(
-      (guild) => guild.id === interaction.guildId
-    ).shard.ping;
-
     const embed: Partial<MessageEmbed> = {
       url: pjson.repository,
       author: {
@@ -41,7 +36,7 @@ const StatusCommand: ICommand<COMMAND_TYPE.MESSAGE> = {
           name: 'Info',
           value: `Git branch revision: ${revision ?? 'unavailable'}
       Repository: ${pjson.repository ?? 'unavailable'}
-      Ping: ${ping ?? 'unavailable'}`,
+      WebSocket latency: ${client.ws.ping + 'ms' ?? 'unavailable'}`,
           inline: false,
         },
         {
