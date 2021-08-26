@@ -7,3 +7,6 @@
 # djs-prettier-format-bot
 
 Formats a reacted message using Prettier & Unibeautify
+
+# Credits
+Thank you to [Dajeki](https://github.com/Dajeki) for improving the logo.
