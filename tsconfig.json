@@ -3,7 +3,6 @@
     "incremental": true,
     "target": "es2016",
     "outDir": "build/main",
-    "rootDir": "src",
     "moduleResolution": "node",
     "module": "commonjs",
     "declaration": false,
@@ -41,7 +40,7 @@
     "types": ["node"],
     "typeRoots": ["node_modules/@types", "src/types"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "./package.json"],
   "exclude": ["node_modules/**"],
   "compileOnSave": false
 }

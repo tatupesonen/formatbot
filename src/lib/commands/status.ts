@@ -3,12 +3,12 @@ import { client } from '../bot';
 import { ICommand, COMMAND_TYPE } from '../common/ICommand';
 
 const StatusCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
-  name: 'status',
+  name: 'test',
   description: "Shows FormatBot's status",
   type: COMMAND_TYPE.CHANNEL,
   async execute(interaction) {
     // Parse package.json first
-    const pjson = require('../../../package.json');
+    const pjson = require(`${__dirname}/../../../package.json`);
     const versions = Object.entries(pjson.dependencies);
 
     // Get the git HEAD.
