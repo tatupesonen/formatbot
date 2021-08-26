@@ -3,7 +3,7 @@ import { client } from '../bot';
 import { ICommand, COMMAND_TYPE } from '../common/ICommand';
 
 const StatusCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
-  name: 'test',
+  name: 'status',
   description: "Shows FormatBot's status",
   type: COMMAND_TYPE.CHANNEL,
   async execute(interaction) {
