@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Console } from 'console';
 import { BaseFormatter, IFormatter } from '../BaseFormatter';
 import { CouldNotFormatError } from '../errors/errors';
 

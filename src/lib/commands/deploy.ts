@@ -1,4 +1,4 @@
-import { ApplicationCommandData, Message } from 'discord.js';
+import { ApplicationCommandData } from 'discord.js';
 import { client, COMMANDS } from '../bot';
 import { ICommand, COMMAND_TYPE } from '../common/ICommand';
 
