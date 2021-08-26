@@ -6,9 +6,9 @@ import StatusCommand from './commands/status';
 export const COMMANDS: Record<string, ICommand<COMMAND_TYPE>> = {};
 
 // Let's load all the commands.
-const commandFiles = readdirSync('./src/lib/commands');
+const commandFiles = readdirSync(`${__dirname}/commands`);
 commandFiles.forEach(async (item) => {
-  const command = await import(`./commands/${item}`);
+  const command = await require(`./commands/${item}`);
   COMMANDS[command.default.name] = command.default;
   console.log('Imported command ' + command.default.name);
 });
