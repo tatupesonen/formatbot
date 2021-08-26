@@ -13,8 +13,6 @@ commandFiles.forEach(async (item) => {
   console.log('Imported command ' + command.default.name);
 });
 
-const guildId = '871059702027542568';
-
 //? The required intents for "messageCreate" and "messageReactionAdd". Events currently listened to
 const client = new Client({
   intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS],
