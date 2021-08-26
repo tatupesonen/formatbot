@@ -19,7 +19,8 @@ const client = new Client({
   allowedMentions: { repliedUser: true },
 });
 client.on('ready', async () => {
-  // Register Context Menu commands
+  // Set presence
+
   console.log('Bot ready');
 });
 
@@ -27,7 +28,11 @@ const allowed_channels = ['871067756794097724', '871059702027542571'];
 let prefix = 'format!';
 
 client.on('guildCreate', async (guild) => {
-  console.log('Joined a new guild! ' + guild.id);
+  console.log(`Joined a new guild! ${guild.name}, ${guild.id}`);
+});
+
+client.on('guildDelete', async (guild) => {
+  console.warn(`Removed from guild! ${guild.name}, ${guild.id}`);
 });
 
 client.on('messageCreate', (message) => {
