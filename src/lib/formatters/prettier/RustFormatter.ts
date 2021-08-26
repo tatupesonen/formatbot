@@ -12,12 +12,13 @@ export class RustFormatter extends BaseFormatter implements IFormatter {
     let formatted;
     try {
       console.log('Called');
-      const {
-        data,
-      } = await axios.post('https://godbolt.org/api/format/rustfmt', {
-        base: '',
-        source: code,
-      });
+      const { data } = await axios.post(
+        'https://godbolt.org/api/format/rustfmt',
+        {
+          base: '',
+          source: code,
+        }
+      );
       console.log('Data: ', data);
       formatted = data.answer;
       return formatted;
