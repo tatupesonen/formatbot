@@ -1,9 +1,4 @@
-import {
-  Message,
-  MessageReaction,
-  PartialMessageReaction,
-  User,
-} from 'discord.js';
+import { Message } from 'discord.js';
 import {
   languageMappings,
   languageNameMappings,

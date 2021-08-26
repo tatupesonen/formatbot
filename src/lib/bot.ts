@@ -29,7 +29,7 @@ const allowed_channels = ['871067756794097724', '871059702027542571'];
 let prefix = 'format!';
 
 client.on('guildCreate', async (guild) => {
-  console.log('Joined a new guild! ' + guildId);
+  console.log('Joined a new guild! ' + guild.id);
 });
 
 client.on('messageCreate', (message) => {
