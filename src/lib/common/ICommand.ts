@@ -1,17 +1,17 @@
 import { CommandInteraction, Message } from 'discord.js';
-export interface ICommand<T extends keyof typeof COMMAND_TYPE> {
+export interface ICommand<
+  T extends typeof COMMAND_TYPE[keyof typeof COMMAND_TYPE]
+> {
   name: string;
-  // Later used for filtering based on the command type
+  description: string;
   type: T;
   execute(
-    interaction: T extends COMMAND_TYPE.MESSAGE ? Message : CommandInteraction,
+    interaction: T extends COMMAND_TYPE.CHANNEL ? Message : CommandInteraction,
     args?: string[]
   ): void;
 }
 
 export enum COMMAND_TYPE {
-  DEFERRED = 'DEFERRED',
-  SLASH = 'SLASH',
-  MESSAGE = 'MESSAGE',
-  CONTEXTMENU = 'CONTEXTMENU',
+  SLASH = 'MESSAGE',
+  CHANNEL = 'CHAT',
 }
