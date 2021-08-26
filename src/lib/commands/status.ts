@@ -6,7 +6,6 @@ const StatusCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
   name: 'status',
   description: "Shows FormatBot's status",
   type: COMMAND_TYPE.CHANNEL,
-  global: true,
   async execute(interaction) {
     // Parse package.json first
     const pjson = require('../../../package.json');
