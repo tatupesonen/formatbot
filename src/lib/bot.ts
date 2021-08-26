@@ -1,4 +1,4 @@
-import { ApplicationCommandData, Client, Intents } from 'discord.js';
+import { Client, Intents } from 'discord.js';
 import { readdirSync } from 'fs';
 import { COMMAND_TYPE, ICommand } from './common/ICommand';
 import StatusCommand from './commands/status';
@@ -28,6 +28,10 @@ client.on('ready', async () => {
 const allowed_channels = ['871067756794097724', '871059702027542571'];
 let prefix = 'format!';
 
+client.on('guildCreate', async (guild) => {
+  console.log('Joined a new guild! ' + guildId);
+});
+
 client.on('messageCreate', (message) => {
   if (!allowed_channels.includes(message.channel.id) || message.author.bot)
     return;
@@ -56,6 +60,7 @@ client.on('interactionCreate', async (interaction) => {
   if (interaction.isContextMenu()) {
     if (COMMANDS[interaction.commandName]) {
       COMMANDS[interaction.commandName].execute(interaction);
+      console.log(`User ran command ${interaction.commandName}`);
     }
   }
 });
