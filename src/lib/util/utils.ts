@@ -6,7 +6,7 @@
  * @param capturedGroups An object of named capturing groups whose keys are the names and values are the capturing groups or undefined if no named capturing groups were defined. See [Groups and Ranges](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges) for more information.
  * @returns {string|Promise<string>}
  */
- type asyncStringReplacerFn = (
+type asyncStringReplacerFn = (
   match: string,
   offset: number | undefined,
   string: string,
@@ -30,11 +30,11 @@ export async function asyncStringReplacer(
   // If it's a global regex
   if (regex.global) {
     const matches = matched.map((val) => {
-      // Create a non-global regex from the provided regex  
+      // Create a non-global regex from the provided regex
       const singleMatched = val.match(new RegExp(regex.source));
       // Not possible since it only loops through the matches but for typesript
       if (!singleMatched) return val;
-      // The first element is the matched substring, the others are the capture groups 
+      // The first element is the matched substring, the others are the capture groups
       const [match, ...capturedGroup] = singleMatched;
       return callback(
         match,
@@ -72,7 +72,7 @@ export async function asyncStringReplacer(
  * @param language The language identifier for the specific style of comments
  * @returns The line as a comment, if the language key isn't provided or isn't supported it just returns the original string
  */
- export function commentify(str: string, language?: string): string {
+export function commentify(str: string, language?: string): string {
   switch (language) {
     case 'js':
     case 'javascript':

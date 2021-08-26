@@ -10,10 +10,12 @@ export class CppFormatter extends BaseFormatter implements IFormatter {
   public async format(code: string): Promise<string> {
     let formatted;
     try {
-      const { data } = await axios.post(
-        'https://godbolt.org/api/format/clangformat',
-        { base: 'Google', source: code }
-      );
+      const {
+        data,
+      } = await axios.post('https://godbolt.org/api/format/clangformat', {
+        base: 'Google',
+        source: code,
+      });
       formatted = data.answer;
       return formatted;
     } catch {
