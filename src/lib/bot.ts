@@ -24,7 +24,6 @@ client.on('ready', async () => {
   console.log('Bot ready');
 });
 
-const allowed_channels = ['871067756794097724', '871059702027542571'];
 let prefix = 'format!';
 
 client.on('guildCreate', async (guild) => {
@@ -36,8 +35,7 @@ client.on('guildDelete', async (guild) => {
 });
 
 client.on('messageCreate', (message) => {
-  if (!allowed_channels.includes(message.channel.id) || message.author.bot)
-    return;
+  if (message.author.bot) return;
   // Special case for bot mentions
   if (
     message.mentions.has(client.user, {
