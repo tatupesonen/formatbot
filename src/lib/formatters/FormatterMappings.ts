@@ -3,6 +3,8 @@ import { PrettierFormatter } from './prettier/PrettierFormatter';
 import { CppFormatter } from './prettier/CppFormatter';
 import { PythonFormatter } from './prettier/PythonFormatter';
 import { RustFormatter } from './prettier/RustFormatter';
+import { CSharpFormatter } from './prettier/CSharpFormatter';
+import { JavaFormatter } from './prettier/JavaFormatter';
 
 const formatters: Map<string, IFormatter> = new Map([
   ['prettier', new PrettierFormatter({ semi: true, parser: 'babel' })],
@@ -12,6 +14,8 @@ const formatters: Map<string, IFormatter> = new Map([
   ['python', new PythonFormatter()],
   ['cpp', new CppFormatter()],
   ['rust', new RustFormatter()],
+  ['csharp', new CSharpFormatter()],
+  ['java', new JavaFormatter()],
 ]);
 
 export const languageMappings: Record<string, IFormatter> = {
@@ -27,6 +31,9 @@ export const languageMappings: Record<string, IFormatter> = {
   py: formatters.get('python'),
   cpp: formatters.get('cpp'),
   rust: formatters.get('rust'),
+  cs: formatters.get('csharp'),
+  csharp: formatters.get('csharp'),
+  java: formatters.get('java'),
 };
 
 export const languageNameMappings: Record<string, string> = {
@@ -42,4 +49,7 @@ export const languageNameMappings: Record<string, string> = {
   py: 'Python',
   cpp: 'C++',
   rust: 'Rust',
+  cs: 'C#',
+  csharp: 'C#',
+  java: 'Java',
 };
