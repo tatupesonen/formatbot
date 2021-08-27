@@ -13,6 +13,7 @@ const formatters: Map<string, IFormatter> = new Map([
   ['html', new PrettierFormatter({ semi: true, parser: 'html' })],
   ['python', new PythonFormatter()],
   ['cpp', new CppFormatter()],
+  ['c', new CppFormatter()], // Use clang-format for C aswell
   ['rust', new RustFormatter()],
   ['csharp', new CSharpFormatter()],
   ['java', new JavaFormatter()],
@@ -29,6 +30,7 @@ export const languageMappings: Record<string, IFormatter> = {
   html: formatters.get('html'),
   python: formatters.get('python'),
   py: formatters.get('python'),
+  c: formatters.get('c'),
   cpp: formatters.get('cpp'),
   rust: formatters.get('rust'),
   cs: formatters.get('csharp'),
@@ -52,4 +54,5 @@ export const languageNameMappings: Record<string, string> = {
   cs: 'C#',
   csharp: 'C#',
   java: 'Java',
+  c: 'C',
 };
