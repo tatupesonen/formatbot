@@ -13,3 +13,4 @@ If you wish to invite the bot to your server, you can do it using this [invite](
 
 # Credits
 Thank you to [Dajeki](https://github.com/Dajeki) for improving the logo.
+[BenJamming](https://github.com/BenjammingKirby) for helping with the code blocks parsing.
