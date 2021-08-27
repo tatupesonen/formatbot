@@ -48,6 +48,12 @@ const StatusCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
           }, '')}\`\`\``,
           inline: false,
         },
+        {
+          name: 'Feedback',
+          value:
+            'Got suggestions / feedback? Contact narigon#0001 or file an issue on the GitHub repository.',
+          inline: false,
+        },
       ],
     };
     interaction.reply({ embeds: [embed] });
