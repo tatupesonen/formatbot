@@ -1,5 +1,9 @@
 FROM node:16-alpine
 
+# Add Git
+RUN apk update
+RUN apk add git
+
 RUN mkdir /app
 COPY package.json /app
 COPY yarn.lock /app
