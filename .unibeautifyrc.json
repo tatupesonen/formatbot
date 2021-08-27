@@ -1,4 +1,7 @@
 {
+  "C#": {
+    "beautifiers": ["Pretty Diff"]
+  },
   "Python": {
     "beautifiers": ["Black"]
   }
