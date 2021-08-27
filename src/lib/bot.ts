@@ -61,7 +61,9 @@ client.on('interactionCreate', async (interaction) => {
   if (interaction.isContextMenu()) {
     if (COMMANDS[interaction.commandName]) {
       COMMANDS[interaction.commandName].execute(interaction);
-      console.log(`User ran command ${interaction.commandName}`);
+      console.log(
+        `${interaction.user.username}: ${interaction.user.id} ran command ${interaction.commandName}`
+      );
     }
   }
 });
