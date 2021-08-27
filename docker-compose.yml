@@ -2,7 +2,7 @@ version: '3.7'
 services:
   bot:
     container_name: formatbot
-    image: formatbot:latest
+    image: nnari/formatbot:latest
     restart: always
     env_file:
       - .env
