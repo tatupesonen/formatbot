@@ -7,7 +7,7 @@ const FormatCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
   description: "Deploys the bot's slash commands and context menus",
   type: COMMAND_TYPE.CHANNEL,
   async execute(interaction) {
-    if (interaction.author.id !== '121777389012385796') return;
+    if (interaction.author.id !== process.env.OWNER) return;
     const slashCommands: ApplicationCommandData[] = Object.entries(COMMANDS)
       .filter(([_, value]) => value.type === COMMAND_TYPE.SLASH)
       .reduce((acc, cur) => {
