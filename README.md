@@ -12,5 +12,5 @@ Formats the code blocks of a message using Discord context menus.
 If you wish to invite the bot to your server, you can do it using this [invite](https://discord.com/api/oauth2/authorize?client_id=871058245404475423&permissions=68608&scope=applications.commands%20bot)
 
 # Credits
-Thank you to [Dajeki](https://github.com/Dajeki) for improving the logo.
+Thank you to [Dajeki](https://github.com/Dajeki) for improving the logo.  
 [BenJamming](https://github.com/BenjammingKirby) for helping with the code blocks parsing.
