@@ -16,10 +16,10 @@ const FormatCommand: ICommand<COMMAND_TYPE.SLASH> = {
     try {
       const reply = await formatMessage(message);
       interaction.editReply({ ...baseReply, content: reply });
-    } catch {
+    } catch (err) {
       interaction.editReply({
         ...baseReply,
-        content: "Couldn't find any code snippets in the message.",
+        content: err.message,
       });
     }
   },
