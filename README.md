@@ -3,9 +3,6 @@
   <h1>FormatBot</hi>
 
 </div>
-
-# FormatBot
-
 Formats the code blocks of a message using Discord context menus.
 
 # Invite
