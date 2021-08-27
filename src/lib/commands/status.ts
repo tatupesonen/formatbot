@@ -1,3 +1,4 @@
+import { intervalToDuration } from 'date-fns';
 import { MessageEmbed } from 'discord.js';
 import { client } from '../bot';
 import { ICommand, COMMAND_TYPE } from '../common/ICommand';
@@ -10,6 +11,12 @@ const StatusCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
     // Parse package.json first
     const pjson = require(`${__dirname}/../../../package.json`);
     const versions = Object.entries(pjson.dependencies);
+
+    // Get uptime
+    const uptimeUnits = intervalToDuration({
+      start: new Date().getTime() - client.uptime,
+      end: new Date().getTime(),
+    });
 
     // Get the git HEAD.
     let revision;
@@ -46,6 +53,11 @@ const StatusCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
             acc += `${key}: ${value}\n`;
             return acc;
           }, '')}\`\`\``,
+          inline: false,
+        },
+        {
+          name: 'Uptime',
+          value: `${uptimeUnits.months} months, ${uptimeUnits.days} days, ${uptimeUnits.hours} hours, ${uptimeUnits.minutes} minutes, ${uptimeUnits.seconds} seconds`,
           inline: false,
         },
         {
