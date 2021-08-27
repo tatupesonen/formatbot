@@ -2,9 +2,12 @@
   "C#": {
     "beautifiers": ["Pretty Diff"]
   },
+<<<<<<< HEAD
   "Java": {
     "beautifiers": ["Pretty Diff"]
   },
+=======
+>>>>>>> Add C# formatter
   "Python": {
     "beautifiers": ["Black"]
   }
