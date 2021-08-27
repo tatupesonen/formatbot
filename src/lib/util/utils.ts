@@ -80,6 +80,7 @@ export function commentify(str: string, language?: string): string {
     case 'cpp':
     case 'csharp':
     case 'cs':
+    case 'java':
     case 'rust':
     case 'ts':
       return '// ' + str;
