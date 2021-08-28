@@ -92,6 +92,8 @@ export function commentify(str: string, language?: string): string {
     case 'html':
       return '<!-- ' + str + ' -->';
     case 'python':
+    case 'yml':
+    case 'yaml':
     case 'py':
       return '# ' + str;
     default:
