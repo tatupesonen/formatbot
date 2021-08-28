@@ -1,4 +1,4 @@
-import { CommandInteraction, Message } from 'discord.js';
+import { ContextMenuInteraction, Message } from 'discord.js';
 export interface ICommand<
   T extends typeof COMMAND_TYPE[keyof typeof COMMAND_TYPE]
 > {
@@ -6,12 +6,15 @@ export interface ICommand<
   description: string;
   type: T;
   execute(
-    interaction: T extends COMMAND_TYPE.CHANNEL ? Message : CommandInteraction,
+    interaction: T extends COMMAND_TYPE.CHANNEL
+      ? Message
+      : ContextMenuInteraction,
     args?: string[]
   ): void;
 }
 
 export enum COMMAND_TYPE {
+  NORMAL = 'NORMAL',
   SLASH = 'MESSAGE',
-  CHANNEL = 'CHAT',
+  CHANNEL = 'CHAT_INPUT',
 }
