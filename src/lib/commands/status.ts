@@ -9,7 +9,7 @@ const StatusCommand: ICommand<COMMAND_TYPE.LEGACY> = {
   type: COMMAND_TYPE.LEGACY,
   async execute(interaction) {
     // Parse package.json first
-    const pjson = require(`${__dirname}/../../../package.json`);
+    const pjson = await import(`${__dirname}/../../../package.json`);
     const versions = Object.entries(pjson.dependencies);
 
     // Get uptime
