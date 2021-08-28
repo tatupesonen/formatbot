@@ -80,4 +80,4 @@ Give a ⭐️ if this project helped you!
 ## License 📝
 
 Copyright © 2021 [Tatu Pesonen](https://github.com/tatupesonen) <br>
-This project is [MIT](LICENSE) licensed.
+This project is [GPLv3](LICENSE) licensed.
