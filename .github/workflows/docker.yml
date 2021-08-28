@@ -3,6 +3,8 @@ name: Docker
 on:
   push:
     branches: [main]
+    paths:
+      - 'src'
 
 env:
   REGISTRY: ghcr.io
