@@ -7,11 +7,14 @@ const FormatCommand: ICommand<COMMAND_TYPE.SLASH> = {
   description: '',
   type: COMMAND_TYPE.SLASH,
   async execute(interaction) {
+    // Fix crash in DM
+    if (!interaction.inGuild())
+      (interaction as ContextMenuInteraction).reply(
+        "Sorry, you can't use FormatBot in a DM yet."
+      );
     const baseReply: InteractionReplyOptions = { ephemeral: true };
     await interaction.deferReply(baseReply);
     // Parse package.json first
-    // Fix crash in DM
-    if (!interaction.inGuild()) return;
     const message = await interaction.channel.messages.fetch(
       (interaction as ContextMenuInteraction).targetId
     );
