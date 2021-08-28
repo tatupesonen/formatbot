@@ -11,7 +11,7 @@ export const formatMessage = async (
 ) => {
   const content = message.content;
   // The first language key found, it'll be used for the pastecord file and all the comments on the file
-  let firstLanguageKey: string | undefined = content.match(
+  const firstLanguageKey: string | undefined = content.match(
     new RegExp(`\`\`\`(${Object.keys(languageMappings).join('|')})\n`, 'm')
   )?.[1];
   // The message's content with the code blocks and their contents removed
@@ -35,7 +35,7 @@ export const formatMessage = async (
           unformattableCodeBlockCounter++;
           const commented = commentify(match, firstLanguageKey);
           contentWithoutCode = contentWithoutCode.replace(match, '\n');
-          // Replace this line with it's commented version 
+          // Replace this line with it's commented version
           prettiedPastecordCode = prettiedPastecordCode.replace(
             match,
             commented

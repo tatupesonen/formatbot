@@ -12,9 +12,9 @@
     "build": "tsc -p tsconfig.json",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "postinstall": "node ./node_modules/husky/lib/bin install",
-    "fix": "run-s fix:*",
-    "fix:prettier": "prettier --write",
-    "fix:lint": "eslint src --ext .ts --fix",
+    "lint": "run-s fix:*",
+    "fix:prettier": "prettier --write src/.",
+    "fix:lint": "eslint . --ext .ts",
     "test": "run-s build test:*",
     "test:lint": "eslint src --ext .ts",
     "test:unit": "nyc --silent ava",
@@ -111,8 +111,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "yarn lint",
-      "yarn fix:prettier"
+      "yarn lint"
     ]
   }
 }
