@@ -3,6 +3,8 @@ name: docs
 on:
   push:
     branches: [main, dev]
+    paths:
+      - 'src'
 
 jobs:
   docs:
