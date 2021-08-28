@@ -3,10 +3,10 @@ import { MessageEmbed } from 'discord.js';
 import { client } from '../bot';
 import { ICommand, COMMAND_TYPE } from '../common/ICommand';
 
-const StatusCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
+const StatusCommand: ICommand<COMMAND_TYPE.LEGACY> = {
   name: 'status',
   description: "Shows FormatBot's status",
-  type: COMMAND_TYPE.CHANNEL,
+  type: COMMAND_TYPE.LEGACY,
   async execute(interaction) {
     // Parse package.json first
     const pjson = require(`${__dirname}/../../../package.json`);
