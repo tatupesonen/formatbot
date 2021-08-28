@@ -77,6 +77,7 @@ export function commentify(str: string, language?: string): string {
     case 'js':
     case 'javascript':
     case 'typescript':
+    case 'c':
     case 'cpp':
     case 'csharp':
     case 'cs':
