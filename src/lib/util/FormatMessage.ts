@@ -6,6 +6,7 @@ import { asyncStringReplacer, commentify } from './utils';
 
 export const formatMessage = async (
   message: Message,
+  //TODO add onlyCodeBlocks feature
   _onlyCodeBlocks?: boolean
 ) => {
   const content = message.content;
