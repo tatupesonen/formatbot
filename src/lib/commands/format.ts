@@ -10,6 +10,8 @@ const FormatCommand: ICommand<COMMAND_TYPE.SLASH> = {
     const baseReply: InteractionReplyOptions = { ephemeral: true };
     await interaction.deferReply(baseReply);
     // Parse package.json first
+    // Fix crash in DM
+    if (!interaction.inGuild()) return;
     const message = await interaction.channel.messages.fetch(
       (interaction as ContextMenuInteraction).targetId
     );
