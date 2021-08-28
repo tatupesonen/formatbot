@@ -4,17 +4,17 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>RequireExtensions | djs-prettier-format-bot</title>
-	<meta name="description" content="Documentation for djs-prettier-format-bot">
+	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../assets/css/main.css">
-	<script async src="../assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -41,6 +41,8 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -52,7 +54,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../modules.html">djs-prettier-format-bot</a>
+					<a href="../modules.html">Globals</a>
 				</li>
 				<li>
 					<a href="../modules/types_types.html">types/types</a>
@@ -64,18 +66,92 @@
 					<a href="types_types.NodeJS.RequireExtensions.html">RequireExtensions</a>
 				</li>
 			</ul>
-			<h1>Interface RequireExtensions</h1>
 		</div>
 	</div>
 </header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
+<div class="container">
+	<div class="row container container-main">
+		<div class="col-3 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul>
+					<ul class="before-current">
+					</ul>
+					<ul class="current">
+						<li class="current tsd-kind-interface tsd-parent-kind-namespace tsd-is-external">
+							<a href="types_types.NodeJS.RequireExtensions.html" class="tsd-kind-icon">Require<wbr>Extensions</a>
+							<ul>
+								<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+									<a href="types_types.NodeJS.RequireExtensions.html#_js" class="tsd-kind-icon">.js</a>
+								</li>
+								<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+									<a href="types_types.NodeJS.RequireExtensions.html#_json" class="tsd-kind-icon">.json</a>
+								</li>
+								<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+									<a href="types_types.NodeJS.RequireExtensions.html#_node" class="tsd-kind-icon">.node</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="after-current">
+					</ul>
+				</ul>
+				<ul>
+					<li>📑 Index</li>
+					<li><br></li>
+					<li class=" ">
+						<a href="../modules.html">Modules</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_bot.html">lib/bot</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_commands_deploy.html">lib/commands/deploy</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_commands_format.html">lib/commands/format</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_commands_status.html">lib/commands/status</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_common_ICommand.html">lib/common/ICommand</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_formatters_BaseFormatter.html">lib/formatters/<wbr>Base<wbr>Formatter</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_formatters_FormatterMappings.html">lib/formatters/<wbr>Formatter<wbr>Mappings</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_formatters_errors_errors.html">lib/formatters/errors/errors</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_formatters_prettier_CSharpFormatter.html">lib/formatters/prettier/CSharp<wbr>Formatter</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_formatters_prettier_CppFormatter.html">lib/formatters/prettier/<wbr>Cpp<wbr>Formatter</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_formatters_prettier_JavaFormatter.html">lib/formatters/prettier/<wbr>Java<wbr>Formatter</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_formatters_prettier_PrettierFormatter.html">lib/formatters/prettier/<wbr>Prettier<wbr>Formatter</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_formatters_prettier_PythonFormatter.html">lib/formatters/prettier/<wbr>Python<wbr>Formatter</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_formatters_prettier_RustFormatter.html">lib/formatters/prettier/<wbr>Rust<wbr>Formatter</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_infra_external_pastecordintegration.html">lib/infra/external/pastecordintegration</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_util_FormatMessage.html">lib/util/<wbr>Format<wbr>Message</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_util_reformatter.html">lib/util/reformatter</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_util_utils.html">lib/util/utils</a>
+						</li>                        <li class="current tsd-kind-module">
+						<a href="../modules/types_types.html">types/types</a>
+						<ul>
+							<li class="current tsd-kind-namespace tsd-parent-kind-module tsd-is-external">
+								<a href="../modules/types_types.NodeJS.html">NodeJS</a>
+							</li>
+						</ul>
+				</li>                </ul>
+			</nav>
+		</div>
+		<div class="col-9 col-content">
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="types_types.NodeJS.Dict.html" class="tsd-signature-type" data-tsd-kind="Interface">Dict</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">(</span>m<span class="tsd-signature-symbol">: </span><a href="types_types.NodeJS.Module.html" class="tsd-signature-type" data-tsd-kind="Interface">Module</a>, filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>
+						<a href="types_types.NodeJS.Dict.html" class="tsd-signature-type">Dict</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">&gt;</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">RequireExtensions</span>
@@ -85,222 +161,143 @@
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
-				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="types_types.NodeJS.RequireExtensions.html#_js" class="tsd-kind-icon">.js</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="types_types.NodeJS.RequireExtensions.html#_json" class="tsd-kind-icon">.json</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="types_types.NodeJS.RequireExtensions.html#_node" class="tsd-kind-icon">.node</a></li>
-							</ul>
+							<div class="tsd-navigation secondary">
+								<ul>
+									<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+										<a href="types_types.NodeJS.RequireExtensions.html#_js" class="tsd-kind-icon">.js</a>
+									</li>
+								</ul>
+							</div>
+							<div class="tsd-navigation secondary">
+								<ul>
+									<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+										<a href="types_types.NodeJS.RequireExtensions.html#_json" class="tsd-kind-icon">.json</a>
+									</li>
+								</ul>
+							</div>
+							<div class="tsd-navigation secondary">
+								<ul>
+									<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+										<a href="types_types.NodeJS.RequireExtensions.html#_node" class="tsd-kind-icon">.node</a>
+									</li>
+								</ul>
+							</div>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-descriptions">
 					<a name="_js" class="tsd-anchor"></a>
 					<h3>.js</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">.js<span class="tsd-signature-symbol">(</span>m<span class="tsd-signature-symbol">: </span><a href="types_types.NodeJS.Module.html" class="tsd-signature-type" data-tsd-kind="Interface">Module</a>, filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">.js<span class="tsd-signature-symbol">(</span>m<span class="tsd-signature-symbol">: </span><a href="types_types.NodeJS.Module.html" class="tsd-signature-type">Module</a>, filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in node_modules/@types/node/globals.d.ts:252</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>m: <a href="types_types.NodeJS.Module.html" class="tsd-signature-type" data-tsd-kind="Interface">Module</a></h5>
-								</li>
-								<li>
-									<h5>filename: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+					<h4 class="tsd-parameters-title">Parameters</h4>
+					<ul class="tsd-parameters">
+						<li>
+							<span class="name">m</span>: <a href="types_types.NodeJS.Module.html" class="tsd-signature-type">Module</a>
+						</li>
+						<li>
+							<span class="name">filename</span>: <span class="tsd-signature-type">string</span>
 						</li>
 					</ul>
+					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span>    </h4>
+					</ul>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in node_modules/@types/node/globals.d.ts:252</li>
+						</ul>
+					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-descriptions">
 					<a name="_json" class="tsd-anchor"></a>
 					<h3>.json</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">.json<span class="tsd-signature-symbol">(</span>m<span class="tsd-signature-symbol">: </span><a href="types_types.NodeJS.Module.html" class="tsd-signature-type" data-tsd-kind="Interface">Module</a>, filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">.json<span class="tsd-signature-symbol">(</span>m<span class="tsd-signature-symbol">: </span><a href="types_types.NodeJS.Module.html" class="tsd-signature-type">Module</a>, filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in node_modules/@types/node/globals.d.ts:253</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>m: <a href="types_types.NodeJS.Module.html" class="tsd-signature-type" data-tsd-kind="Interface">Module</a></h5>
-								</li>
-								<li>
-									<h5>filename: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+					<h4 class="tsd-parameters-title">Parameters</h4>
+					<ul class="tsd-parameters">
+						<li>
+							<span class="name">m</span>: <a href="types_types.NodeJS.Module.html" class="tsd-signature-type">Module</a>
+						</li>
+						<li>
+							<span class="name">filename</span>: <span class="tsd-signature-type">string</span>
 						</li>
 					</ul>
+					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span>    </h4>
+					</ul>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in node_modules/@types/node/globals.d.ts:253</li>
+						</ul>
+					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external tsd-descriptions">
 					<a name="_node" class="tsd-anchor"></a>
 					<h3>.node</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">.node<span class="tsd-signature-symbol">(</span>m<span class="tsd-signature-symbol">: </span><a href="types_types.NodeJS.Module.html" class="tsd-signature-type" data-tsd-kind="Interface">Module</a>, filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">.node<span class="tsd-signature-symbol">(</span>m<span class="tsd-signature-symbol">: </span><a href="types_types.NodeJS.Module.html" class="tsd-signature-type">Module</a>, filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in node_modules/@types/node/globals.d.ts:254</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>m: <a href="types_types.NodeJS.Module.html" class="tsd-signature-type" data-tsd-kind="Interface">Module</a></h5>
-								</li>
-								<li>
-									<h5>filename: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+					<h4 class="tsd-parameters-title">Parameters</h4>
+					<ul class="tsd-parameters">
+						<li>
+							<span class="name">m</span>: <a href="types_types.NodeJS.Module.html" class="tsd-signature-type">Module</a>
+						</li>
+						<li>
+							<span class="name">filename</span>: <span class="tsd-signature-type">string</span>
 						</li>
 					</ul>
+					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span>    </h4>
+					</ul>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in node_modules/@types/node/globals.d.ts:254</li>
+						</ul>
+					</aside>
 				</section>
 			</section>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="../modules.html">Modules</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_bot.html">lib/bot</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_commands_deploy.html">lib/commands/deploy</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_commands_format.html">lib/commands/format</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_commands_status.html">lib/commands/status</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_common_ICommand.html">lib/common/ICommand</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_formatters_BaseFormatter.html">lib/formatters/<wbr>Base<wbr>Formatter</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_formatters_FormatterMappings.html">lib/formatters/<wbr>Formatter<wbr>Mappings</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_formatters_errors_errors.html">lib/formatters/errors/errors</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_formatters_prettier_CSharpFormatter.html">lib/formatters/prettier/CSharp<wbr>Formatter</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_formatters_prettier_CppFormatter.html">lib/formatters/prettier/<wbr>Cpp<wbr>Formatter</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_formatters_prettier_JavaFormatter.html">lib/formatters/prettier/<wbr>Java<wbr>Formatter</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_formatters_prettier_PrettierFormatter.html">lib/formatters/prettier/<wbr>Prettier<wbr>Formatter</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_formatters_prettier_PythonFormatter.html">lib/formatters/prettier/<wbr>Python<wbr>Formatter</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_formatters_prettier_RustFormatter.html">lib/formatters/prettier/<wbr>Rust<wbr>Formatter</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_infra_external_pastecordintegration.html">lib/infra/external/pastecordintegration</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_util_FormatMessage.html">lib/util/<wbr>Format<wbr>Message</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_util_reformatter.html">lib/util/reformatter</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/lib_util_utils.html">lib/util/utils</a>
-					</li>
-					<li class="current tsd-kind-module">
-						<a href="../modules/types_types.html">types/types</a>
-						<ul>
-							<li class="current tsd-kind-namespace tsd-parent-kind-module tsd-is-external">
-								<a href="../modules/types_types.NodeJS.html">NodeJS</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-namespace tsd-is-external">
-						<a href="types_types.NodeJS.RequireExtensions.html" class="tsd-kind-icon">Require<wbr>Extensions</a>
-						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-								<a href="types_types.NodeJS.RequireExtensions.html#_js" class="tsd-kind-icon">.js</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-								<a href="types_types.NodeJS.RequireExtensions.html#_json" class="tsd-kind-icon">.json</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-								<a href="types_types.NodeJS.RequireExtensions.html#_node" class="tsd-kind-icon">.node</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="after-current">
-				</ul>
-			</nav>
+			<footer class="with-border-bottom">
+				<div class="tsd-legend-group">
+					<ul class="tsd-legend">
+						<li class="tsd-is-inherited"><span class="tsd-kind-icon">Inherited</span></li>
+						<li class="tsd-is-protected"><span class="tsd-kind-icon">Protected</span></li>
+						<li class="tsd-is-private"><span class="tsd-kind-icon">Private</span></li>
+						<li class="tsd-is-static"><span class="tsd-kind-icon">Static</span></li>
+					</ul>
+					<ul class="tsd-legend">
+						<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+						<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object</span></li>
+						<li class="tsd-kind-property"><span class="tsd-kind-icon">Property</span></li>
+					</ul>
+					<ul class="tsd-legend">
+						<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+						<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+						<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index</span></li>
+					</ul>
+					<ul class="tsd-legend">
+						<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type</span></li>
+						<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+						<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+					</ul>
+					<ul class="tsd-legend">
+						<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enum</span></li>
+						<li class="tsd-kind-constructor"><span class="tsd-kind-icon">Constructor</span></li>
+						<li class="tsd-kind-accessor"><span class="tsd-kind-icon">Getter/Setter</span></li>
+					</ul>
+				</div>
+			</footer>
+			<div>Made with ❤️ by <a href="https://github.com/pirix-gh/eledoc" target="_blank">pirix-gh</a>. Documentation generated by <a href="http://typedoc.org/" target="_blank">TypeDoc.</a></div>
 		</div>
 	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
