@@ -17,6 +17,7 @@ commandFiles.forEach(async (item) => {
 const client = new Client({
   intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS],
   allowedMentions: { repliedUser: true },
+  partials: ['CHANNEL'],
 });
 client.on('ready', async () => {
   // Set presence
