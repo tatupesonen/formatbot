@@ -1,6 +1,6 @@
 {
   "name": "formatbot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Formats a reacted message using Prettier",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
