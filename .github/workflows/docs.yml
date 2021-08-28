@@ -2,7 +2,7 @@ name: docs
 
 on:
   push:
-    branches: [feature/docs-workflow]
+    branches: [main]
 
 jobs:
   docs:
