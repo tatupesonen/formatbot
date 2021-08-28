@@ -25,7 +25,7 @@ client.on('ready', async () => {
   console.log('Bot ready');
 });
 
-let prefix = 'format!';
+const prefix = 'format!';
 
 client.on('guildCreate', async (guild) => {
   console.log(`Joined a new guild! ${guild.name}, ${guild.id}`);

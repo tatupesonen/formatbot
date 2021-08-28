@@ -1,6 +1,6 @@
 export abstract class BaseFormatter implements IFormatter {
-  private formatterOptions: any;
-  public constructor(options: any) {
+  private formatterOptions;
+  public constructor(options) {
     this.formatterOptions = options;
   }
   getFormatterOptions() {
@@ -10,6 +10,6 @@ export abstract class BaseFormatter implements IFormatter {
 }
 
 export interface IFormatter {
-  getFormatterOptions(): any;
+  getFormatterOptions();
   format(code: string): Promise<string>;
 }

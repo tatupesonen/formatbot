@@ -1,0 +1,27 @@
+name: docs
+
+on:
+  push:
+    branches: [main, dev]
+    paths:
+      - 'src'
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.8'
+      - run: yarn install --frozen-lockfile
+      - run: yarn doc:html
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: build/docs
