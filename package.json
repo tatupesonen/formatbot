@@ -6,7 +6,7 @@
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
   "repository": "https://github.com/tatupesonen/formatbot",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "keywords": [],
   "scripts": {
     "build": "tsc -p tsconfig.json",
