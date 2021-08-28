@@ -42,7 +42,7 @@ client.on('messageCreate', (message) => {
       ignoreEveryone: true,
       ignoreRoles: true,
     }) &&
-    message.content.trim().length === client.user.id.length + 4
+    message.content.trim().length <= client.user.id.length + 4
   ) {
     StatusCommand.execute(message);
   }
