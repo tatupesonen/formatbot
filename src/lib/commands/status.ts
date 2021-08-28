@@ -18,23 +18,18 @@ const StatusCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
       end: new Date().getTime(),
     });
 
-    // Get the git HEAD.
-    let revision;
-    try {
-      revision = require('child_process')
-        .execSync('git rev-parse HEAD')
-        .toString()
-        .trim();
-    } catch (err: any) {
-      console.log("Couldn't execute using child process");
-    }
+    // Find dev user
+    const developer = await client.users.fetch('121777389012385796');
 
     const embed: Partial<MessageEmbed> = {
       url: pjson.repository,
       author: {
-        name: 'FormatBot',
-        iconURL: client.user.displayAvatarURL(),
+        name: developer.tag,
+        iconURL: developer.avatarURL(),
         url: pjson.repository,
+      },
+      thumbnail: {
+        url: client.user.displayAvatarURL(),
       },
       title: 'FormatBot',
       color: 0xfc9003,
@@ -42,8 +37,7 @@ const StatusCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
       fields: [
         {
           name: 'Info',
-          value: `Git branch revision: ${revision ?? 'unavailable'}
-      Repository: ${pjson.repository ?? 'unavailable'}
+          value: `Repository: ${pjson.repository ?? 'unavailable'}
       WebSocket latency: ${client.ws.ping + 'ms' ?? 'unavailable'}`,
           inline: false,
         },
@@ -62,8 +56,9 @@ const StatusCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
         },
         {
           name: 'Feedback',
-          value:
-            'Got suggestions / feedback? Contact narigon#0001 or file an issue on the GitHub repository.',
+          value: `Got suggestions / feedback? Contact narigon#0001 or file an [issue](${createIssueLink(
+            pjson.repository
+          )}) on the GitHub repository.`,
           inline: false,
         },
       ],
@@ -71,5 +66,7 @@ const StatusCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
     interaction.reply({ embeds: [embed] });
   },
 };
+
+const createIssueLink = (url: string) => `${url}/issues/new`;
 
 export default StatusCommand;
