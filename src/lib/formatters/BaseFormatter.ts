@@ -1,6 +1,6 @@
-export abstract class BaseFormatter implements IFormatter {
+export abstract class BaseFormatter<T = unknown> implements IFormatter {
   private formatterOptions;
-  public constructor(options) {
+  public constructor(options?: T) {
     this.formatterOptions = options;
   }
   getFormatterOptions() {
