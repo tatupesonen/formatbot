@@ -113,8 +113,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "yarn fix:lint",
-      "yarn fix:prettier"
+      "yarn fix:lint", "yarn fix:prettier"
     ]
   }
 }
