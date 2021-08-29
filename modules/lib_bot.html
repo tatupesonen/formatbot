@@ -72,8 +72,8 @@
 						<li class=" tsd-kind-variable tsd-parent-kind-module">
 							<a href="lib_bot.html#COMMANDS" class="tsd-kind-icon">COMMANDS</a>
 						</li>
-						<li class=" tsd-kind-variable tsd-parent-kind-module">
-							<a href="lib_bot.html#client" class="tsd-kind-icon">client</a>
+						<li class=" tsd-kind-function tsd-parent-kind-module">
+							<a href="lib_bot.html#createBot" class="tsd-kind-icon">create<wbr>Bot</a>
 						</li>
 					</ul>
 				</ul>
@@ -93,6 +93,8 @@
 						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_common_ICommand.html">lib/common/ICommand</a>
 						</li>                        <li class=" tsd-kind-module">
+						<a href="lib_container_container.html">lib/container/container</a>
+						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_formatters_BaseFormatter.html">lib/formatters/<wbr>Base<wbr>Formatter</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_formatters_FormatterMappings.html">lib/formatters/<wbr>Formatter<wbr>Mappings</a>
@@ -111,7 +113,9 @@
 						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_formatters_prettier_RustFormatter.html">lib/formatters/prettier/<wbr>Rust<wbr>Formatter</a>
 						</li>                        <li class=" tsd-kind-module">
-						<a href="lib_infra_external_pastecordintegration.html">lib/infra/external/pastecordintegration</a>
+						<a href="lib_infra_pastecordintegration.html">lib/infra/pastecordintegration</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="lib_interfaces_IUploader.html">lib/interfaces/IUploader</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_util_FormatMessage.html">lib/util/<wbr>Format<wbr>Message</a>
 						</li>                        <li class=" tsd-kind-module">
@@ -136,10 +140,13 @@
 									</li>
 								</ul>
 							</div>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
 							<div class="tsd-navigation secondary">
 								<ul>
-									<li class="tsd-kind-variable tsd-parent-kind-module">
-										<a href="lib_bot.html#client" class="tsd-kind-icon">client</a>
+									<li class="tsd-kind-function tsd-parent-kind-module">
+										<a href="lib_bot.html#createBot" class="tsd-kind-icon">create<wbr>Bot</a>
 									</li>
 								</ul>
 							</div>
@@ -155,17 +162,30 @@
 					<div class="tsd-signature tsd-kind-icon">COMMANDS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/lib_common_ICommand.ICommand.html" class="tsd-signature-type">ICommand</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/lib_common_ICommand.COMMAND_TYPE.html" class="tsd-signature-type">COMMAND_TYPE</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/4fc7c8a/src/lib/bot.ts#L6">src/lib/bot.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/ff0927c/src/lib/bot.ts#L7">src/lib/bot.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-descriptions">
-					<a name="client" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> client</h3>
-					<div class="tsd-signature tsd-kind-icon">client<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-descriptions">
+					<a name="createBot" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Bot</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Bot<span class="tsd-signature-symbol">(</span>container<span class="tsd-signature-symbol">: </span><a href="../classes/lib_container_container.Container.html" class="tsd-signature-type">Container</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<h4 class="tsd-parameters-title">Parameters</h4>
+					<ul class="tsd-parameters">
+						<li>
+							<span class="name">container</span>: <a href="../classes/lib_container_container.Container.html" class="tsd-signature-type">Container</a>
+						</li>
+					</ul>
+					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span>    </h4>
+					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/4fc7c8a/src/lib/bot.ts#L17">src/lib/bot.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/ff0927c/src/lib/bot.ts#L8">src/lib/bot.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
