@@ -6,6 +6,8 @@ test
 src/**.js
 coverage
 *.log
+logs/
+formatbot-logs/
 package-lock.json
 .env
 .DS_Store

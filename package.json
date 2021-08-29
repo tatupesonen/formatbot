@@ -1,6 +1,6 @@
 {
   "name": "formatbot",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Formats a reacted message using Prettier",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
@@ -46,7 +46,8 @@
     "dotenv": "^10.0.0",
     "prettydiff2": "^2.2.8",
     "unibeautify": "^0.17.1",
-    "winston": "^3.3.3"
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",

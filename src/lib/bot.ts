@@ -63,10 +63,18 @@ export const createBot = async (container: Container) => {
 
   client.on('interactionCreate', async (interaction) => {
     if (interaction.isContextMenu()) {
-      if (COMMANDS[interaction.commandName]) {
-        COMMANDS[interaction.commandName].execute(interaction, container);
-        logger.info(
-          `${interaction.user.username}: [${interaction.user.id}] ran command ${interaction.commandName}`
+      try {
+        if (COMMANDS[interaction.commandName]) {
+          COMMANDS[interaction.commandName].execute(interaction, container);
+          logger.info(
+            `${interaction.user.username}: [${interaction.user.id}] ran command ${interaction.commandName}`
+          );
+        }
+      } catch (err) {
+        logger.error(
+          `Failed to run command ${interaction.commandName} - commandID ${
+            interaction.commandId ?? 'no ID'
+          }`
         );
       }
     }

@@ -1,4 +1,7 @@
 import winston from 'winston';
+import DailyRotateFile, {
+  DailyRotateFileTransportOptions,
+} from 'winston-daily-rotate-file';
 
 const formatBotFormat = winston.format.printf(
   ({ level, message, timestamp }) => {
@@ -7,12 +10,18 @@ const formatBotFormat = winston.format.printf(
   }
 );
 
+const dailyRotateTransportOpts: DailyRotateFileTransportOptions = {
+  filename: 'logs/combined-%DATE%.log',
+  datePattern: 'YYYY-MM-DD-HH',
+  zippedArchive: false,
+  maxSize: '20m',
+  maxFiles: '14d',
+};
+
 export const logger = winston.createLogger({
-  level: 'debug',
-  format: winston.format.json(),
-  defaultMeta: { service: 'formatbot' },
   transports: [
     new winston.transports.Console({
+      level: 'debug',
       format: winston.format.combine(
         winston.format.colorize(),
         winston.format.timestamp(),
@@ -20,8 +29,19 @@ export const logger = winston.createLogger({
         formatBotFormat
       ),
     }),
+    // File transport for readable output
+    new DailyRotateFile({
+      ...dailyRotateTransportOpts,
+      level: 'debug',
+      format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.simple(),
+        formatBotFormat
+      ),
+    }),
     new winston.transports.File({
-      filename: 'logs/formatbot.log',
+      filename: 'logs/json.log',
+      level: 'debug',
       format: winston.format.combine(
         winston.format.timestamp(),
         winston.format.json()
