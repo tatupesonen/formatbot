@@ -1,0 +1,19 @@
+name: Post Release to Discord
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  run_main:
+    runs-on: ubuntu-latest
+    name: Discord Webhook
+    steps:
+      - name: Send message
+        uses: tatupesonen/discord-styled-releases@main
+        with:
+          project_name: 'FormatBot'
+          embed_colour: '1315909'
+          webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
+          webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
