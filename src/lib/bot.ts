@@ -3,6 +3,7 @@ import { readdirSync } from 'fs';
 import { COMMAND_TYPE, ICommand } from './common/ICommand';
 import StatusCommand from './commands/status';
 import { Container } from './container/container';
+import { logger } from './util/logger';
 
 export const COMMANDS: Record<string, ICommand<COMMAND_TYPE>> = {};
 export const createBot = async (container: Container) => {
@@ -11,7 +12,7 @@ export const createBot = async (container: Container) => {
   commandFiles.forEach(async (item) => {
     const command = await require(`./commands/${item}`);
     COMMANDS[command.default.name] = command.default;
-    console.log('Imported command ' + command.default.name);
+    logger.verbose('Imported command ' + command.default.name);
   });
 
   //? The required intents for "messageCreate" and "messageReactionAdd". Events currently listened to
@@ -21,19 +22,17 @@ export const createBot = async (container: Container) => {
     partials: ['CHANNEL'],
   });
   client.on('ready', async () => {
-    // Set presence
-
-    console.log('Bot ready');
+    logger.info('Bot ready');
   });
 
   const prefix = 'format!';
 
   client.on('guildCreate', async (guild) => {
-    console.log(`Joined a new guild! ${guild.name}, ${guild.id}`);
+    logger.info(`Joined a new guild! ${guild.name}, ${guild.id}`);
   });
 
   client.on('guildDelete', async (guild) => {
-    console.warn(`Removed from guild! ${guild.name}, ${guild.id}`);
+    logger.warn(`Removed from guild! ${guild.name}, ${guild.id}`);
   });
 
   client.on('messageCreate', (message) => {
@@ -55,16 +54,19 @@ export const createBot = async (container: Container) => {
     const [command, ...commandArgs] = args;
     // Find command from args and run execute
     if (COMMANDS[command]) {
-      COMMANDS[command].execute(message, container, commandArgs);
+      return COMMANDS[command].execute(message, container, commandArgs);
     }
+    logger.warn(
+      `${message.author.username}: [${message.author.id}] tried to run nonexistent command ${prefix}${command}`
+    );
   });
 
   client.on('interactionCreate', async (interaction) => {
     if (interaction.isContextMenu()) {
       if (COMMANDS[interaction.commandName]) {
         COMMANDS[interaction.commandName].execute(interaction, container);
-        console.log(
-          `${interaction.user.username}: ${interaction.user.id} ran command ${interaction.commandName}`
+        logger.info(
+          `${interaction.user.username}: [${interaction.user.id}] ran command ${interaction.commandName}`
         );
       }
     }
