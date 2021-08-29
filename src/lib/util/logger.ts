@@ -1,5 +1,4 @@
 import winston from 'winston';
-const colorizer = winston.format.colorize();
 
 const formatBotFormat = winston.format.printf(
   ({ level, message, timestamp }) => {
