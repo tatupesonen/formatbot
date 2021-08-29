@@ -33,7 +33,7 @@ const StatusCommand: ICommand<COMMAND_TYPE.LEGACY> = {
       thumbnail: {
         url: client.user.displayAvatarURL(),
       },
-      title: 'FormatBot',
+      title: `FormatBot ${pjson.version}`,
       color: 0xfc9003,
       description: `FormatBot is a utility bot designed for formatting code blocks on Discord.`,
       fields: [
