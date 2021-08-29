@@ -4,5 +4,7 @@ services:
     container_name: formatbot
     image: nnari/formatbot:latest
     restart: always
+    volumes:
+      - ./formatbot-logs:/app/logs
     env_file:
       - .env
