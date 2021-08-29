@@ -1,12 +1,15 @@
-import { ApplicationCommandData } from 'discord.js';
-import { client, COMMANDS } from '../bot';
+import { ApplicationCommandData, Client } from 'discord.js';
+import { COMMANDS } from '../bot';
+
 import { ICommand, COMMAND_TYPE } from '../common/ICommand';
 
 const FormatCommand: ICommand<COMMAND_TYPE.LEGACY> = {
   name: 'deploy',
   description: "Deploys the bot's slash commands and context menus",
   type: COMMAND_TYPE.LEGACY,
-  async execute(interaction) {
+  async execute(interaction, container) {
+    // Get dependencies
+    const client = container.getByKey<Client>('client');
     if (interaction.author.id !== process.env.OWNER) return;
     const slashCommands: ApplicationCommandData[] = Object.entries(COMMANDS)
       .filter(([_, value]) => value.type === COMMAND_TYPE.SLASH)

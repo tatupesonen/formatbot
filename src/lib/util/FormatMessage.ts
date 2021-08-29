@@ -1,14 +1,18 @@
 import { Message } from 'discord.js';
+import { Container } from '../container/container';
 import { languageMappings } from '../formatters/FormatterMappings';
-import { UploadToPastecord } from '../infra/external/pastecordintegration';
+import { IUploader } from '../interfaces/IUploader';
 import { reformat } from './reformatter';
 import { asyncStringReplacer, commentify } from './utils';
 
 export const formatMessage = async (
   message: Message,
+  container: Container,
   //TODO add onlyCodeBlocks feature
   _onlyCodeBlocks?: boolean
 ) => {
+  // Get dependencies
+  const uploader = container.getByKey<IUploader>('uploader');
   const content = message.content;
   // The first language key found, it'll be used for the pastecord file and all the comments on the file
   const firstLanguageKey: string | undefined = content.match(
@@ -112,7 +116,7 @@ export const formatMessage = async (
         );
       }, prettiedPastecordCode);
     // The formatted code to be sent to pastecord
-    const prettyPasteCord = await UploadToPastecord(
+    const prettyPasteCord = await uploader.upload(
       prettiedPastecordCode,
       firstLanguageKey
     );
