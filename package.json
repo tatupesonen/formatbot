@@ -14,7 +14,7 @@
     "postinstall": "node ./node_modules/husky/lib/bin install",
     "lint": "run-s fix:*",
     "fix:prettier": "prettier --write src/.",
-    "fix:lint": "eslint . --ext .ts",
+    "fix:lint": "eslint . --ext .ts --max-warnings=0",
     "test": "run-s build test:*",
     "test:lint": "eslint src --ext .ts",
     "test:unit": "nyc --silent ava",
