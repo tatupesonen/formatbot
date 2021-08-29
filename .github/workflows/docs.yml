@@ -3,10 +3,10 @@ name: docs
 on:
   push:
     branches:
-      - main
-      - dev
+      - 'main'
+      - 'dev'
     paths:
-      - 'src'
+      - 'src/**'
 
 jobs:
   docs:
