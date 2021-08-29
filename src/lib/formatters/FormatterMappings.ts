@@ -8,7 +8,7 @@ import { JavaFormatter } from './prettier/JavaFormatter';
 
 const formatters: Map<string, IFormatter> = new Map([
   ['prettier', new PrettierFormatter({ semi: true, parser: 'babel' })],
-  ['prettier_ts', new PrettierFormatter({ semi: true, parser: 'babel' })],
+  ['prettier_ts', new PrettierFormatter({ semi: true, parser: 'babel-ts' })],
   ['json', new PrettierFormatter({ semi: true, parser: 'json' })],
   ['yaml', new PrettierFormatter({ semi: true, parser: 'yaml' })],
   ['css', new PrettierFormatter({ semi: true, parser: 'css' })],
