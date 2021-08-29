@@ -1,13 +1,15 @@
 import { intervalToDuration } from 'date-fns';
-import { MessageEmbed } from 'discord.js';
-import { client } from '../bot';
+import { Client, MessageEmbed } from 'discord.js';
 import { ICommand, COMMAND_TYPE } from '../common/ICommand';
 
 const StatusCommand: ICommand<COMMAND_TYPE.LEGACY> = {
   name: 'status',
   description: "Shows FormatBot's status",
   type: COMMAND_TYPE.LEGACY,
-  async execute(interaction) {
+  async execute(interaction, container) {
+    // Get dependencies
+    const client = container.getByKey<Client>('client');
+
     // Parse package.json first
     const pjson = await import(`${__dirname}/../../../package.json`);
     const versions = Object.entries(pjson.dependencies);
