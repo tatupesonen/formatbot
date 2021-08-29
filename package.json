@@ -45,7 +45,8 @@
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
     "prettydiff2": "^2.2.8",
-    "unibeautify": "^0.17.1"
+    "unibeautify": "^0.17.1",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
@@ -113,7 +114,8 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "yarn fix:lint", "yarn fix:prettier"
+      "yarn fix:lint",
+      "yarn fix:prettier"
     ]
   }
 }

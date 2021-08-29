@@ -1,6 +1,7 @@
 import { intervalToDuration } from 'date-fns';
 import { Client, MessageEmbed } from 'discord.js';
 import { ICommand, COMMAND_TYPE } from '../common/ICommand';
+import { logger } from '../util/logger';
 
 const StatusCommand: ICommand<COMMAND_TYPE.LEGACY> = {
   name: 'status',
@@ -8,7 +9,6 @@ const StatusCommand: ICommand<COMMAND_TYPE.LEGACY> = {
   type: COMMAND_TYPE.LEGACY,
   async execute(interaction, container) {
     // Get dependencies
-    console.log(container);
     const client = container.getByKey<Client>('client');
 
     // Parse package.json first
