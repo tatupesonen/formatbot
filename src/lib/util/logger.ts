@@ -12,7 +12,7 @@ const formatBotFormat = winston.format.printf(
 
 const dailyRotateTransportOpts: DailyRotateFileTransportOptions = {
   filename: 'logs/combined-%DATE%.log',
-  datePattern: 'YYYY-MM-DD-HH',
+  datePattern: 'YYYY-MM-DD',
   zippedArchive: false,
   maxSize: '20m',
   maxFiles: '14d',
