@@ -1,12 +1,11 @@
 import { Client } from 'discord.js';
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
 import { createBot } from './lib/bot';
 import { Container, DITypes } from './lib/container/container';
-dotenv.config();
-
 import { PastecordImplementation } from './lib/infra/pastecordintegration';
 import { IUploader } from './lib/interfaces/IUploader';
 
+config();
 // Forcing CI
 
 const bootstrap = async () => {
