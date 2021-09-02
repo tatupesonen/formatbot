@@ -1,6 +1,7 @@
 export const DITypes = {
   uploader: 'uploader',
   formatter: 'formatter',
+  detector: 'detector',
   client: 'client',
 } as const;
 
