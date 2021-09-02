@@ -1,5 +1,5 @@
 import { InteractionReplyOptions } from 'discord.js';
-import { ICommand, COMMAND_TYPE } from '../common/ICommand';
+import { ICommand, COMMAND_TYPE } from '../interfaces/ICommand';
 import { formatMessage } from '../util/FormatMessage';
 
 const FormatCommand: ICommand<COMMAND_TYPE.SLASH> = {
