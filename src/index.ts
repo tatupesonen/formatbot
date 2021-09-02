@@ -7,6 +7,8 @@ dotenv.config();
 import { PastecordImplementation } from './lib/infra/pastecordintegration';
 import { IUploader } from './lib/interfaces/IUploader';
 
+// Forcing CI
+
 const bootstrap = async () => {
   const container = new Container();
   // Register dependencies
