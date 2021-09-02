@@ -1,6 +1,6 @@
 import { Client, Intents } from 'discord.js';
 import { readdirSync } from 'fs';
-import { COMMAND_TYPE, ICommand } from './common/ICommand';
+import { COMMAND_TYPE, ICommand } from './interfaces/ICommand';
 import StatusCommand from './commands/status';
 import { Container } from './container/container';
 import { logger } from './util/logger';
