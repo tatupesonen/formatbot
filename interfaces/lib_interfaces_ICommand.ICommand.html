@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Timeout | formatbot</title>
+	<title>ICommand | formatbot</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
@@ -57,13 +57,10 @@
 					<a href="../modules.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/types_types.html">types/types</a>
+					<a href="../modules/lib_interfaces_ICommand.html">lib/interfaces/ICommand</a>
 				</li>
 				<li>
-					<a href="../modules/types_types.NodeJS.html">NodeJS</a>
-				</li>
-				<li>
-					<a href="types_types.NodeJS.Timeout.html">Timeout</a>
+					<a href="lib_interfaces_ICommand.ICommand.html">ICommand</a>
 				</li>
 			</ul>
 		</div>
@@ -75,25 +72,25 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul>
 					<ul class="before-current">
+						<li class=" tsd-kind-enum tsd-parent-kind-module">
+							<a href="../enums/lib_interfaces_ICommand.COMMAND_TYPE.html" class="tsd-kind-icon">COMMAND_<wbr>TYPE</a>
+						</li>
 					</ul>
 					<ul class="current">
-						<li class="current tsd-kind-interface tsd-parent-kind-namespace tsd-is-external">
-							<a href="types_types.NodeJS.Timeout.html" class="tsd-kind-icon">Timeout</a>
+						<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+							<a href="lib_interfaces_ICommand.ICommand.html" class="tsd-kind-icon">ICommand</a>
 							<ul>
-								<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external">
-									<a href="types_types.NodeJS.Timeout.html#_toPrimitive_" class="tsd-kind-icon">[to<wbr>Primitive]</a>
+								<li class=" tsd-kind-property tsd-parent-kind-interface">
+									<a href="lib_interfaces_ICommand.ICommand.html#description" class="tsd-kind-icon">description</a>
 								</li>
-								<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external">
-									<a href="types_types.NodeJS.Timeout.html#hasRef" class="tsd-kind-icon">has<wbr>Ref</a>
+								<li class=" tsd-kind-property tsd-parent-kind-interface">
+									<a href="lib_interfaces_ICommand.ICommand.html#name" class="tsd-kind-icon">name</a>
 								</li>
-								<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
-									<a href="types_types.NodeJS.Timeout.html#ref" class="tsd-kind-icon">ref</a>
+								<li class=" tsd-kind-property tsd-parent-kind-interface">
+									<a href="lib_interfaces_ICommand.ICommand.html#type" class="tsd-kind-icon">type</a>
 								</li>
-								<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external">
-									<a href="types_types.NodeJS.Timeout.html#refresh" class="tsd-kind-icon">refresh</a>
-								</li>
-								<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
-									<a href="types_types.NodeJS.Timeout.html#unref" class="tsd-kind-icon">unref</a>
+								<li class=" tsd-kind-method tsd-parent-kind-interface">
+									<a href="lib_interfaces_ICommand.ICommand.html#execute" class="tsd-kind-icon">execute</a>
 								</li>
 							</ul>
 						</li>
@@ -138,7 +135,7 @@
 						<a href="../modules/lib_formatters_prettier_RustFormatter.html">lib/formatters/prettier/<wbr>Rust<wbr>Formatter</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_infra_pastecordintegration.html">lib/infra/pastecordintegration</a>
-						</li>                        <li class=" tsd-kind-module">
+						</li>                        <li class="current tsd-kind-module">
 						<a href="../modules/lib_interfaces_ICommand.html">lib/interfaces/ICommand</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_interfaces_IDetector.html">lib/interfaces/IDetector</a>
@@ -154,67 +151,60 @@
 						<a href="../modules/lib_util_reformatter.html">lib/util/reformatter</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_util_utils.html">lib/util/utils</a>
-						</li>                        <li class="current tsd-kind-module">
+						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/types_types.html">types/types</a>
-						<ul>
-							<li class="current tsd-kind-namespace tsd-parent-kind-module tsd-is-external">
-								<a href="../modules/types_types.NodeJS.html">NodeJS</a>
-							</li>
-						</ul>
 				</li>                </ul>
 			</nav>
 		</div>
 		<div class="col-9 col-content">
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+					<span class="name">T</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">typeof COMMAND_TYPE[keyof typeof COMMAND_TYPE]</span>                    </li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="types_types.NodeJS.Timer.html" class="tsd-signature-type">Timer</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">Timeout</span>
-							</li>
-						</ul>
+						<span class="target">ICommand</span>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-external">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<div class="tsd-navigation secondary">
+								<ul>
+									<li class="tsd-kind-property tsd-parent-kind-interface">
+										<a href="lib_interfaces_ICommand.ICommand.html#description" class="tsd-kind-icon">description</a>
+									</li>
+								</ul>
+							</div>
+							<div class="tsd-navigation secondary">
+								<ul>
+									<li class="tsd-kind-property tsd-parent-kind-interface">
+										<a href="lib_interfaces_ICommand.ICommand.html#name" class="tsd-kind-icon">name</a>
+									</li>
+								</ul>
+							</div>
+							<div class="tsd-navigation secondary">
+								<ul>
+									<li class="tsd-kind-property tsd-parent-kind-interface">
+										<a href="lib_interfaces_ICommand.ICommand.html#type" class="tsd-kind-icon">type</a>
+									</li>
+								</ul>
+							</div>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<div class="tsd-navigation secondary">
 								<ul>
-									<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external">
-										<a href="types_types.NodeJS.Timeout.html#_toPrimitive_" class="tsd-kind-icon">[to<wbr>Primitive]</a>
-									</li>
-								</ul>
-							</div>
-							<div class="tsd-navigation secondary">
-								<ul>
-									<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external">
-										<a href="types_types.NodeJS.Timeout.html#hasRef" class="tsd-kind-icon">has<wbr>Ref</a>
-									</li>
-								</ul>
-							</div>
-							<div class="tsd-navigation secondary">
-								<ul>
-									<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
-										<a href="types_types.NodeJS.Timeout.html#ref" class="tsd-kind-icon">ref</a>
-									</li>
-								</ul>
-							</div>
-							<div class="tsd-navigation secondary">
-								<ul>
-									<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external">
-										<a href="types_types.NodeJS.Timeout.html#refresh" class="tsd-kind-icon">refresh</a>
-									</li>
-								</ul>
-							</div>
-							<div class="tsd-navigation secondary">
-								<ul>
-									<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
-										<a href="types_types.NodeJS.Timeout.html#unref" class="tsd-kind-icon">unref</a>
+									<li class="tsd-kind-method tsd-parent-kind-interface">
+										<a href="lib_interfaces_ICommand.ICommand.html#execute" class="tsd-kind-icon">execute</a>
 									</li>
 								</ul>
 							</div>
@@ -222,82 +212,62 @@
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external">
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-descriptions">
+					<a name="description" class="tsd-anchor"></a>
+					<h3>description</h3>
+					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/f70a2c9/src/lib/interfaces/ICommand.ts#L11">src/lib/interfaces/ICommand.ts:11</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-descriptions">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/f70a2c9/src/lib/interfaces/ICommand.ts#L10">src/lib/interfaces/ICommand.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-descriptions">
+					<a name="type" class="tsd-anchor"></a>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/f70a2c9/src/lib/interfaces/ICommand.ts#L12">src/lib/interfaces/ICommand.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external tsd-descriptions">
-					<a name="_toPrimitive_" class="tsd-anchor"></a>
-					<h3>[to<wbr>Primitive]</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">[to<wbr>Primitive]<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-descriptions">
+					<a name="execute" class="tsd-anchor"></a>
+					<h3>execute</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">execute<span class="tsd-signature-symbol">(</span>interaction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Mapped[T]</span>, container<span class="tsd-signature-symbol">: </span><a href="../classes/lib_container_container.Container.html" class="tsd-signature-type">Container</a>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
-					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span>    </h4>
+					<h4 class="tsd-parameters-title">Parameters</h4>
+					<ul class="tsd-parameters">
+						<li>
+							<span class="name">interaction</span>: <span class="tsd-signature-type">Mapped[T]</span>
+						</li>
+						<li>
+							<span class="name">container</span>: <a href="../classes/lib_container_container.Container.html" class="tsd-signature-type">Container</a>
+						</li>
+						<li>
+							<span class="name">args</span>: <span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span> <span class="tsd-flag ts-flagOptional">Optional</span>
+						</li>
 					</ul>
-					<aside class="tsd-sources">
-						<p>Overrides <a href="types_types.NodeJS.Timer.html">Timer</a>.<a href="types_types.NodeJS.Timer.html#_toPrimitive_">[toPrimitive]</a></p>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external tsd-descriptions">
-					<a name="hasRef" class="tsd-anchor"></a>
-					<h3>has<wbr>Ref</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">has<wbr>Ref<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-					</ul>
-					<div class="tsd-comment">
-						<div class="lead">
-							<p>If true, the <code>Timeout</code> object will keep the Node.js event loop active.</p>
-						</div>
-					</div>
-					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span>    </h4>
+					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span>    </h4>
 					</ul>
 					<aside class="tsd-sources">
-						<p>Overrides <a href="types_types.NodeJS.Timer.html">Timer</a>.<a href="types_types.NodeJS.Timer.html#hasRef">hasRef</a></p>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-descriptions">
-					<a name="ref" class="tsd-anchor"></a>
-					<h3>ref</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">ref<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="types_types.NodeJS.Timeout.html" class="tsd-signature-type">Timeout</a></li>
-					</ul>
-					<h4 class="tsd-returns-title">Returns <a href="types_types.NodeJS.Timeout.html" class="tsd-signature-type">Timeout</a></h4>
-					</ul>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="types_types.NodeJS.Timer.html">Timer</a>.<a href="types_types.NodeJS.Timer.html#ref">ref</a></p>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external tsd-descriptions">
-					<a name="refresh" class="tsd-anchor"></a>
-					<h3>refresh</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">refresh<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="types_types.NodeJS.Timeout.html" class="tsd-signature-type">Timeout</a></li>
-					</ul>
-					<div class="tsd-comment">
-						<div class="lead">
-							<p>Sets the timer&#39;s start time to the current time, and reschedules the timer to
-								call its callback at the previously specified duration adjusted to the current
-								time. This is useful for refreshing a timer without allocating a new
-							JavaScript object.</p>
-						</div>
-						<p>Using this on a timer that has already called its callback will reactivate the
-						timer.</p>
-					</div>
-					<h4 class="tsd-returns-title">Returns <a href="types_types.NodeJS.Timeout.html" class="tsd-signature-type">Timeout</a></h4>
-					<p>a reference to <code>timeout</code></p>
-					</ul>
-					<aside class="tsd-sources">
-						<p>Overrides <a href="types_types.NodeJS.Timer.html">Timer</a>.<a href="types_types.NodeJS.Timer.html#refresh">refresh</a></p>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external tsd-descriptions">
-					<a name="unref" class="tsd-anchor"></a>
-					<h3>unref</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">unref<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="types_types.NodeJS.Timeout.html" class="tsd-signature-type">Timeout</a></li>
-					</ul>
-					<h4 class="tsd-returns-title">Returns <a href="types_types.NodeJS.Timeout.html" class="tsd-signature-type">Timeout</a></h4>
-					</ul>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="types_types.NodeJS.Timer.html">Timer</a>.<a href="types_types.NodeJS.Timer.html#unref">unref</a></p>
 					</aside>
 				</section>
 			</section>

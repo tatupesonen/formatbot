@@ -122,8 +122,6 @@
 						<a href="../modules/lib_commands_help.html">lib/commands/help</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_commands_status.html">lib/commands/status</a>
-						</li>                        <li class=" tsd-kind-module">
-						<a href="../modules/lib_common_ICommand.html">lib/common/ICommand</a>
 						</li>                        <li class="current tsd-kind-module">
 						<a href="../modules/lib_container_container.html">lib/container/container</a>
 						</li>                        <li class=" tsd-kind-module">
@@ -147,9 +145,13 @@
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_infra_pastecordintegration.html">lib/infra/pastecordintegration</a>
 						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_interfaces_ICommand.html">lib/interfaces/ICommand</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_interfaces_IDetector.html">lib/interfaces/IDetector</a>
+						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_interfaces_IUploader.html">lib/interfaces/IUploader</a>
 						</li>                        <li class=" tsd-kind-module">
-						<a href="../modules/lib_util_DetectLanguage.html">lib/util/<wbr>Detect<wbr>Language</a>
+						<a href="../modules/lib_util_Detector.html">lib/util/<wbr>Detector</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_util_FormatMessage.html">lib/util/<wbr>Format<wbr>Message</a>
 						</li>                        <li class=" tsd-kind-module">
@@ -244,7 +246,7 @@
 					<div class="tsd-signature tsd-kind-icon">_deps<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/faf9f4c/src/lib/container/container.ts#L10">src/lib/container/container.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/f70a2c9/src/lib/container/container.ts#L11">src/lib/container/container.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -275,7 +277,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/faf9f4c/src/lib/container/container.ts#L22">src/lib/container/container.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/f70a2c9/src/lib/container/container.ts#L23">src/lib/container/container.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -283,7 +285,7 @@
 					<a name="getByKey" class="tsd-anchor"></a>
 					<h3>get<wbr>ByKey</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>ByKey&lt;T&gt;<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>ByKey&lt;T&gt;<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"detector"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
 					</ul>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
@@ -293,14 +295,14 @@
 					<h4 class="tsd-parameters-title">Parameters</h4>
 					<ul class="tsd-parameters">
 						<li>
-							<span class="name">key</span>: <span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span>
+							<span class="name">key</span>: <span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"detector"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span>
 						</li>
 					</ul>
 					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span>    </h4>
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/faf9f4c/src/lib/container/container.ts#L33">src/lib/container/container.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/f70a2c9/src/lib/container/container.ts#L34">src/lib/container/container.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -328,7 +330,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/faf9f4c/src/lib/container/container.ts#L12">src/lib/container/container.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/f70a2c9/src/lib/container/container.ts#L13">src/lib/container/container.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>

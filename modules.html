@@ -80,8 +80,6 @@
 						</li>                        <li class=" tsd-kind-module">
 						<a href="modules/lib_commands_status.html">lib/commands/status</a>
 						</li>                        <li class=" tsd-kind-module">
-						<a href="modules/lib_common_ICommand.html">lib/common/ICommand</a>
-						</li>                        <li class=" tsd-kind-module">
 						<a href="modules/lib_container_container.html">lib/container/container</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="modules/lib_formatters_BaseFormatter.html">lib/formatters/<wbr>Base<wbr>Formatter</a>
@@ -104,9 +102,13 @@
 						</li>                        <li class=" tsd-kind-module">
 						<a href="modules/lib_infra_pastecordintegration.html">lib/infra/pastecordintegration</a>
 						</li>                        <li class=" tsd-kind-module">
+						<a href="modules/lib_interfaces_ICommand.html">lib/interfaces/ICommand</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="modules/lib_interfaces_IDetector.html">lib/interfaces/IDetector</a>
+						</li>                        <li class=" tsd-kind-module">
 						<a href="modules/lib_interfaces_IUploader.html">lib/interfaces/IUploader</a>
 						</li>                        <li class=" tsd-kind-module">
-						<a href="modules/lib_util_DetectLanguage.html">lib/util/<wbr>Detect<wbr>Language</a>
+						<a href="modules/lib_util_Detector.html">lib/util/<wbr>Detector</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="modules/lib_util_FormatMessage.html">lib/util/<wbr>Format<wbr>Message</a>
 						</li>                        <li class=" tsd-kind-module">
@@ -184,46 +186,6 @@
 										<ul>
 											<li class="tsd-kind-variable tsd-parent-kind-module">
 												<a href="modules/lib_commands_status.html#default" class="tsd-kind-icon">default</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-							<div class="tsd-navigation secondary">
-								<ul>
-									<li class="tsd-kind-module">
-										<a href="modules/lib_common_ICommand.html" class="tsd-kind-icon">lib/common/ICommand</a>
-										<ul>
-											<li class="tsd-kind-enum tsd-parent-kind-module">
-												<a href="enums/lib_common_ICommand.COMMAND_TYPE.html" class="tsd-kind-icon">COMMAND_<wbr>TYPE</a>
-												<ul>
-													<li class="tsd-kind-enum-member tsd-parent-kind-enum">
-														<a href="enums/lib_common_ICommand.COMMAND_TYPE.html#CHANNEL" class="tsd-kind-icon">CHANNEL</a>
-													</li>
-													<li class="tsd-kind-enum-member tsd-parent-kind-enum">
-														<a href="enums/lib_common_ICommand.COMMAND_TYPE.html#LEGACY" class="tsd-kind-icon">LEGACY</a>
-													</li>
-													<li class="tsd-kind-enum-member tsd-parent-kind-enum">
-														<a href="enums/lib_common_ICommand.COMMAND_TYPE.html#SLASH" class="tsd-kind-icon">SLASH</a>
-													</li>
-												</ul>
-											</li>
-											<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-												<a href="interfaces/lib_common_ICommand.ICommand.html" class="tsd-kind-icon">ICommand</a>
-												<ul>
-													<li class="tsd-kind-property tsd-parent-kind-interface">
-														<a href="interfaces/lib_common_ICommand.ICommand.html#description" class="tsd-kind-icon">description</a>
-													</li>
-													<li class="tsd-kind-property tsd-parent-kind-interface">
-														<a href="interfaces/lib_common_ICommand.ICommand.html#name" class="tsd-kind-icon">name</a>
-													</li>
-													<li class="tsd-kind-property tsd-parent-kind-interface">
-														<a href="interfaces/lib_common_ICommand.ICommand.html#type" class="tsd-kind-icon">type</a>
-													</li>
-													<li class="tsd-kind-method tsd-parent-kind-interface">
-														<a href="interfaces/lib_common_ICommand.ICommand.html#execute" class="tsd-kind-icon">execute</a>
-													</li>
-												</ul>
 											</li>
 										</ul>
 									</li>
@@ -515,6 +477,63 @@
 							<div class="tsd-navigation secondary">
 								<ul>
 									<li class="tsd-kind-module">
+										<a href="modules/lib_interfaces_ICommand.html" class="tsd-kind-icon">lib/interfaces/ICommand</a>
+										<ul>
+											<li class="tsd-kind-enum tsd-parent-kind-module">
+												<a href="enums/lib_interfaces_ICommand.COMMAND_TYPE.html" class="tsd-kind-icon">COMMAND_<wbr>TYPE</a>
+												<ul>
+													<li class="tsd-kind-enum-member tsd-parent-kind-enum">
+														<a href="enums/lib_interfaces_ICommand.COMMAND_TYPE.html#CHANNEL" class="tsd-kind-icon">CHANNEL</a>
+													</li>
+													<li class="tsd-kind-enum-member tsd-parent-kind-enum">
+														<a href="enums/lib_interfaces_ICommand.COMMAND_TYPE.html#LEGACY" class="tsd-kind-icon">LEGACY</a>
+													</li>
+													<li class="tsd-kind-enum-member tsd-parent-kind-enum">
+														<a href="enums/lib_interfaces_ICommand.COMMAND_TYPE.html#SLASH" class="tsd-kind-icon">SLASH</a>
+													</li>
+												</ul>
+											</li>
+											<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+												<a href="interfaces/lib_interfaces_ICommand.ICommand.html" class="tsd-kind-icon">ICommand</a>
+												<ul>
+													<li class="tsd-kind-property tsd-parent-kind-interface">
+														<a href="interfaces/lib_interfaces_ICommand.ICommand.html#description" class="tsd-kind-icon">description</a>
+													</li>
+													<li class="tsd-kind-property tsd-parent-kind-interface">
+														<a href="interfaces/lib_interfaces_ICommand.ICommand.html#name" class="tsd-kind-icon">name</a>
+													</li>
+													<li class="tsd-kind-property tsd-parent-kind-interface">
+														<a href="interfaces/lib_interfaces_ICommand.ICommand.html#type" class="tsd-kind-icon">type</a>
+													</li>
+													<li class="tsd-kind-method tsd-parent-kind-interface">
+														<a href="interfaces/lib_interfaces_ICommand.ICommand.html#execute" class="tsd-kind-icon">execute</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="tsd-navigation secondary">
+								<ul>
+									<li class="tsd-kind-module">
+										<a href="modules/lib_interfaces_IDetector.html" class="tsd-kind-icon">lib/interfaces/IDetector</a>
+										<ul>
+											<li class="tsd-kind-interface tsd-parent-kind-module">
+												<a href="interfaces/lib_interfaces_IDetector.IDetector.html" class="tsd-kind-icon">IDetector</a>
+												<ul>
+													<li class="tsd-kind-method tsd-parent-kind-interface">
+														<a href="interfaces/lib_interfaces_IDetector.IDetector.html#detect" class="tsd-kind-icon">detect</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="tsd-navigation secondary">
+								<ul>
+									<li class="tsd-kind-module">
 										<a href="modules/lib_interfaces_IUploader.html" class="tsd-kind-icon">lib/interfaces/IUploader</a>
 										<ul>
 											<li class="tsd-kind-interface tsd-parent-kind-module">
@@ -532,10 +551,18 @@
 							<div class="tsd-navigation secondary">
 								<ul>
 									<li class="tsd-kind-module">
-										<a href="modules/lib_util_DetectLanguage.html" class="tsd-kind-icon">lib/util/<wbr>Detect<wbr>Language</a>
+										<a href="modules/lib_util_Detector.html" class="tsd-kind-icon">lib/util/<wbr>Detector</a>
 										<ul>
-											<li class="tsd-kind-function tsd-parent-kind-module">
-												<a href="modules/lib_util_DetectLanguage.html#detect" class="tsd-kind-icon">detect</a>
+											<li class="tsd-kind-class tsd-parent-kind-module">
+												<a href="classes/lib_util_Detector.GuesslangDetector.html" class="tsd-kind-icon">Guesslang<wbr>Detector</a>
+												<ul>
+													<li class="tsd-kind-constructor tsd-parent-kind-class">
+														<a href="classes/lib_util_Detector.GuesslangDetector.html#constructor" class="tsd-kind-icon">constructor</a>
+													</li>
+													<li class="tsd-kind-method tsd-parent-kind-class">
+														<a href="classes/lib_util_Detector.GuesslangDetector.html#detect" class="tsd-kind-icon">detect</a>
+													</li>
+												</ul>
 											</li>
 										</ul>
 									</li>
