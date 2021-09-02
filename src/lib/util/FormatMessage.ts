@@ -1,7 +1,12 @@
 import { Message } from 'discord.js';
 import { Container } from '../container/container';
-import { languageMappings } from '../formatters/FormatterMappings';
+import {
+  languageMappings,
+  languageNameMappings,
+} from '../formatters/FormatterMappings';
 import { IUploader } from '../interfaces/IUploader';
+import { detect } from './DetectLanguage';
+import { logger } from './logger';
 import { reformat } from './reformatter';
 import { asyncStringReplacer, commentify } from './utils';
 
@@ -56,6 +61,26 @@ export const formatMessage = async (
       const languageFormatter = languageMappings[language];
       // If "language" is undefined or unsupported for formatting, return the original code block with it's content
       if (!languageFormatter) {
+        // If no formatter, try to find a language.
+        logger.info(`Trying to autodetect code:\n${theCode}`);
+        const detected = await detect(theCode);
+        const split = detected.split(':')[1].trim();
+        const lang = Object.entries(languageNameMappings).find(
+          ([_key, value]) => value === split
+        );
+        if (!lang)
+          return (
+            "Couldn't find a compatible formatter. Found language: " + split
+          );
+        logger.info('Found language: ' + lang[0]);
+        const formatterToUse = languageMappings[lang[0]];
+        const formattedCode =
+          (await formatterToUse
+            .format(theCode)
+            .then((code) => code.trim())
+            .catch(() => undefined)) ?? "Couldn't format this snippet.";
+        return reformat(formattedCode, lang[0] ?? '');
+        // Find formatter to use!
         unformattableCodeBlockCounter++;
         // This is for unsupported multi line code blocks, each line gets commented and replaced to be sent on the pastecord
         const commented = match
@@ -63,6 +88,7 @@ export const formatMessage = async (
           .map((val) => commentify(val, firstLanguageKey))
           .join('\n');
         contentWithoutCode = contentWithoutCode.replace(match, '\n');
+
         prettiedPastecordCode = prettiedPastecordCode.replace(match, commented);
         // returning match itself means nothing will be changed
         return match;
