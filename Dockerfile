@@ -12,6 +12,8 @@ RUN apk add --update --no-cache python3 python3-dev && ln -sf python3 /usr/bin/p
 RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip setuptools wheel
 RUN pip3 install black
+# For automatic language detection.
+RUN pip3 install guesslang
 
 RUN mkdir /app
 COPY package.json /app

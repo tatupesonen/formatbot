@@ -41,6 +41,7 @@ export const languageMappings: Record<string, IFormatter> = {
   yaml: formatters.get('yaml'),
   yml: formatters.get('yaml'),
   json: formatters.get('json'),
+  sqf: formatters.get('cpp'),
 };
 
 export const languageNameMappings: Record<string, string> = {
@@ -63,4 +64,5 @@ export const languageNameMappings: Record<string, string> = {
   yml: 'YAML',
   yaml: 'YAML',
   json: 'JSON',
+  sqf: 'SQF',
 };
