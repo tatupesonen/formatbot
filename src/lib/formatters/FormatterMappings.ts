@@ -42,7 +42,7 @@ export const languageMappings: Record<string, IFormatter> = {
   yml: formatters.get('yaml'),
   json: formatters.get('json'),
   sqf: formatters.get('cpp'),
-};
+} as const;
 
 export const languageNameMappings: Record<string, string> = {
   js: 'JavaScript',

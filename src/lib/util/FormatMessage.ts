@@ -1,8 +1,8 @@
 import { Message } from 'discord.js';
 import { Container } from '../container/container';
 import { languageMappings } from '../formatters/FormatterMappings';
+import { IDetector } from '../interfaces/IDetector';
 import { IUploader } from '../interfaces/IUploader';
-import { detect } from './DetectLanguage';
 import { logger } from './logger';
 import { reformat } from './reformatter';
 import { asyncStringReplacer, commentify } from './utils';
@@ -15,6 +15,8 @@ export const formatMessage = async (
 ) => {
   // Get dependencies
   const uploader = container.getByKey<IUploader>('uploader');
+  const detector = container.getByKey<IDetector>('detector');
+
   const content = message.content;
   // The first language key found, it'll be used for the pastecord file and all the comments on the file
   const firstLanguageKey: string | undefined = content.match(
@@ -60,7 +62,7 @@ export const formatMessage = async (
       if (!languageFormatter) {
         // If no formatter, try to find a language.
         logger.info(`Trying to autodetect code:\n${theCode}`);
-        const lang = await detect(theCode);
+        const lang = await detector.detect(theCode);
         if (!lang)
           return (
             "Couldn't find a compatible formatter. Found language: " + lang
