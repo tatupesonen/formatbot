@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/tatupesonen/formatbot/compare/v1.3.0-fix-tensorflow...v1.3.1) (2021-09-02)
+
+
+### Bug Fixes
+
+* Need this to run CI for now... ([16425d8](https://github.com/tatupesonen/formatbot/commit/16425d8b1eea6ae88aa8376a3233f2da14efbfaf))
+
 ## [1.3.0](https://github.com/tatupesonen/formatbot/compare/v1.2.1...v1.3.0) (2021-09-02)
 
 

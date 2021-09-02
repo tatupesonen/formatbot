@@ -1,9 +1,6 @@
 import { Message } from 'discord.js';
 import { Container } from '../container/container';
-import {
-  languageMappings,
-  languageNameMappings,
-} from '../formatters/FormatterMappings';
+import { languageMappings } from '../formatters/FormatterMappings';
 import { IUploader } from '../interfaces/IUploader';
 import { detect } from './DetectLanguage';
 import { logger } from './logger';
@@ -63,23 +60,19 @@ export const formatMessage = async (
       if (!languageFormatter) {
         // If no formatter, try to find a language.
         logger.info(`Trying to autodetect code:\n${theCode}`);
-        const detected = await detect(theCode);
-        const split = detected.split(':')[1].trim();
-        const lang = Object.entries(languageNameMappings).find(
-          ([_key, value]) => value === split
-        );
+        const lang = await detect(theCode);
         if (!lang)
           return (
-            "Couldn't find a compatible formatter. Found language: " + split
+            "Couldn't find a compatible formatter. Found language: " + lang
           );
-        logger.info('Found language: ' + lang[0]);
-        const formatterToUse = languageMappings[lang[0]];
+        logger.info('Found language: ' + lang);
+        const formatterToUse = languageMappings[lang];
         const formattedCode =
           (await formatterToUse
             .format(theCode)
             .then((code) => code.trim())
             .catch(() => undefined)) ?? "Couldn't format this snippet.";
-        return reformat(formattedCode, lang[0] ?? '');
+        return reformat(formattedCode, lang ?? '');
         // Find formatter to use!
         unformattableCodeBlockCounter++;
         // This is for unsupported multi line code blocks, each line gets commented and replaced to be sent on the pastecord
