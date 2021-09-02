@@ -6,10 +6,10 @@ interface PastecordResponse {
 }
 
 export class PastecordImplementation implements IUploader {
-  constructor(private readonly url = 'https://pastecord.com/documents') {}
+  constructor(private readonly url = 'https://pastecord.com') {}
   async upload(content: string, languageKey?: string): Promise<string> {
     const { data }: AxiosResponse<PastecordResponse> = await axios.post(
-      this.url,
+      this.url + '/documents',
       content
     );
     const urlEnd = languageKey ? `.${languageKey}` : '';
