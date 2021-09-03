@@ -10,6 +10,10 @@ export type Dependency<T = unknown> = Constr<T>;
 export class Container {
   private readonly _deps: Record<string, unknown> = {};
 
+  getDependencies() {
+    return this._deps;
+  }
+
   set<T>(dep: T, key?: string) {
     // eslint-disable-next-line @typescript-eslint/ban-types
     key ??= (dep as unknown as Function)?.name;
