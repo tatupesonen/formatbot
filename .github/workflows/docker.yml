@@ -1,6 +1,13 @@
 name: Docker
 
-on: [pull_request, workflow_dispatch, push]
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 env:
   REGISTRY: ghcr.io
