@@ -1,4 +1,4 @@
-FROM python:3.7.5-buster
+FROM python:3.8-buster
 
 # Install node
 ENV NODE_VERSION=16.8.0
@@ -20,14 +20,12 @@ RUN apt install git
 
 
 # Setup Python and Black for the formatters
-# RUN apt install python3 python3-dev && ln -sf python3 /usr/bin/pytho
-RUN python3 -m ensurepip
-RUN pip3 install --upgrade pip
-RUN pip3 install --no-cache --upgrade setuptools wheel
-RUN pip3 install black
+RUN python -m ensurepip
+RUN pip install --upgrade pip
+RUN pip install --no-cache --upgrade setuptools wheel
+RUN pip install black==21.7b0
 # For automatic language detection.
-RUN pip3 install -I guesslang==2.2.1
-
+RUN pip install -I guesslang==2.2.1
 
 RUN mkdir /app
 COPY package.json /app
