@@ -1,4 +1,4 @@
-FROM python:3.8-buster
+FROM python:3.8-buster as base
 
 # Install node
 ENV NODE_VERSION=16.8.0
@@ -18,7 +18,6 @@ RUN npm i -g yarn
 RUN apt update
 RUN apt install git
 
-
 # Setup Python and Black for the formatters
 RUN python -m ensurepip
 RUN pip install --upgrade pip
@@ -29,12 +28,18 @@ RUN pip install -I guesslang==2.2.1
 
 RUN mkdir /app
 COPY package.json /app
+COPY jest.config.js /app
 COPY yarn.lock /app
 COPY tsconfig.json /app
 COPY src/ /app/src
+COPY tests/ /app/tests
 WORKDIR /app
 
 RUN rm -rf node_modules && yarn install --frozen-lockfile
+
+from base as test
+CMD yarn jest
+
+from base as build
 RUN yarn build
-RUN ls -a 
-ENTRYPOINT ["node", "./build/main/src/index.js"]
+CMD ["node", "./build/main/src/index.js"]

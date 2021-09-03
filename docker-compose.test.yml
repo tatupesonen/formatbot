@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  test:
+    container_name: formatbot
+    build:
+      context: .
+      target: test
+    image: formatbot
