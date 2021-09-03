@@ -21,7 +21,7 @@ export class Container {
       throw new Error(`${key} already exists in the container`);
     }
 
-    this._deps[key] = dep;
+    this._deps[key] = 'potato';
   }
 
   get<T>(dep: Dependency<T>, key?: string): T {
