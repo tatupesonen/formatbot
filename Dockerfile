@@ -18,7 +18,7 @@ RUN npm i -g yarn
 RUN python -m ensurepip && pip install --upgrade pip && pip install --no-cache setuptools wheel black==21.7b0 guesslang==2.2.1
 
 RUN mkdir /app
-COPY package.json jest.config.js yarn.lock tsconfig.json /app
+COPY package.json jest.config.js yarn.lock tsconfig.json app/
 
 COPY src/ /app/src
 COPY tests/ /app/tests
