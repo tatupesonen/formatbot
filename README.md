@@ -39,6 +39,10 @@ These instructions will get you a copy of the project up and running on your loc
 - Docker
 - Docker Compose (compatible with docker-compose version 3.8)
 
+## For development
+- Yarn
+- Node.js >= 16.6.0
+
 Get the Docker version you need [here](https://hub.docker.com/search?q=docker&type=edition&offering=community)!
 
 
