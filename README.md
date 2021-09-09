@@ -27,6 +27,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 Get the Docker version you need [here](https://hub.docker.com/search?q=docker&type=edition&offering=community)!
 
+
+### Usage
+![image](https://user-images.githubusercontent.com/7150217/132768378-d2a9a907-6f21-461b-83b1-8beeabc334ee.png)
+
+
 ### Setup
 
 Since this bot has a **docker-compose.yml** file and is hosted on [DockerHub](https://hub.docker.com/r/nnari/formatbot), all you need to start your own version of Formatbot locally is to `clone` this repository and set up the **.env** file.
