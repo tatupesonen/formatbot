@@ -14,11 +14,11 @@ Formats the code blocks of a message using Discord context menus.
 - Rust
 - TypeScript
 - JavaScript
+- Python
 - JSON
 - YAML
 - HTML
 - CSS
-- Python
 
 # Invite
 
