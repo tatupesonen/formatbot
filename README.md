@@ -6,6 +6,20 @@
 </div>
 Formats the code blocks of a message using Discord context menus.
 
+# Currently supported languages
+- C
+- C++
+- C#
+- Java
+- Rust
+- TypeScript
+- JavaScript
+- JSON
+- YAML
+- HTML
+- CSS
+- Python
+
 # Invite
 
 If you wish to invite the bot to your server, you can do it using this [invite](https://discord.com/api/oauth2/authorize?client_id=871058245404475423&permissions=68608&scope=applications.commands%20bot)
@@ -29,7 +43,6 @@ Get the Docker version you need [here](https://hub.docker.com/search?q=docker&ty
 
 
 ### Usage
-Currently supported languages are **C, C++, C#, Java, Rust, TypeScript, JavaScript, JSON/YAML, HTML/CSS and Python.**
 ![image](https://user-images.githubusercontent.com/7150217/132768378-d2a9a907-6f21-461b-83b1-8beeabc334ee.png)
 
 
