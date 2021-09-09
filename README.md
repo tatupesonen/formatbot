@@ -92,7 +92,7 @@ Then run `yarn && yarn dev` to start a development environment.
 ## Authors 👤
 
 - **Tatu Pesonen** - _Original Author_ - [@tatupesonen](https://github.com/tatupesonen)
-- **Donny Roufs** - _Motivational speaker_ - [@donnyroufs](https://github.com/donnyroufs)
+- **Donny Roufs** - _Motivational speaker / setting up testing architecture_ - [@donnyroufs](https://github.com/donnyroufs)
 - **Ben Jamming** - _Improve code blocks parsing a lot_ - [@BenJammingKirby](https://github.com/benjammingkirby)
 - **Dajeki** - _Improving the bot's logo_ - [@Dajeki](https://github.com/dajeki)
   See also the list of [contributors](https://github.com/tatupesonen/formatbot/graphs/contributors) who participated in this project.
