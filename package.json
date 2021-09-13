@@ -115,7 +115,7 @@
     ]
   },
   "lint-staged": {
-    "!(tests|*logs)*/.{js,jsx,ts,tsx}": [
+    "src/**/*.{js,jsx,ts,tsx}": [
       "yarn fix:lint",
       "yarn fix:prettier"
     ]
