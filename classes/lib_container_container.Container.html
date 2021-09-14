@@ -152,11 +152,15 @@
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_interfaces_IDetector.html">lib/interfaces/IDetector</a>
 						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_interfaces_IParser.html">lib/interfaces/IParser</a>
+						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_interfaces_IUploader.html">lib/interfaces/IUploader</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_util_Detector.html">lib/util/<wbr>Detector</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_util_FormatMessage.html">lib/util/<wbr>Format<wbr>Message</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_util_MessageParser.html">lib/util/<wbr>Message<wbr>Parser</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_util_logger.html">lib/util/logger</a>
 						</li>                        <li class=" tsd-kind-module">
@@ -256,7 +260,7 @@
 					<div class="tsd-signature tsd-kind-icon">_deps<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/c2d1ab9/src/lib/container/container.ts#L11">src/lib/container/container.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/eb59c94/src/lib/container/container.ts#L12">src/lib/container/container.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -287,7 +291,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/c2d1ab9/src/lib/container/container.ts#L27">src/lib/container/container.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/eb59c94/src/lib/container/container.ts#L28">src/lib/container/container.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -295,7 +299,7 @@
 					<a name="getByKey" class="tsd-anchor"></a>
 					<h3>get<wbr>ByKey</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>ByKey&lt;T&gt;<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"detector"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>ByKey&lt;T&gt;<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"detector"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"parser"</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
 					</ul>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
@@ -305,14 +309,14 @@
 					<h4 class="tsd-parameters-title">Parameters</h4>
 					<ul class="tsd-parameters">
 						<li>
-							<span class="name">key</span>: <span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"detector"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span>
+							<span class="name">key</span>: <span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"detector"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"parser"</span>
 						</li>
 					</ul>
 					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span>    </h4>
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/c2d1ab9/src/lib/container/container.ts#L38">src/lib/container/container.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/eb59c94/src/lib/container/container.ts#L39">src/lib/container/container.ts:39</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -326,7 +330,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/c2d1ab9/src/lib/container/container.ts#L13">src/lib/container/container.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/eb59c94/src/lib/container/container.ts#L14">src/lib/container/container.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -354,7 +358,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/c2d1ab9/src/lib/container/container.ts#L17">src/lib/container/container.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/eb59c94/src/lib/container/container.ts#L18">src/lib/container/container.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
