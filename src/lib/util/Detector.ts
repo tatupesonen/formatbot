@@ -4,11 +4,11 @@ import { existsSync } from 'fs';
 import fs from 'fs/promises';
 import path from 'path';
 import { languageNameMappings } from '../formatters/FormatterMappings';
-import { IDetector } from '../interfaces/IDetector';
+import { DetectedLanguage, IDetector } from '../interfaces/IDetector';
 import { logger } from './logger';
 
 export class GuesslangDetector implements IDetector {
-  detect(code: string): Promise<string> {
+  detect(code: string): Promise<DetectedLanguage> {
     return new Promise(async (resolve, _) => {
       // Create the file
       const fileName = randomUUID();
@@ -44,7 +44,10 @@ export class GuesslangDetector implements IDetector {
       const lang = Object.entries(languageNameMappings).find(
         ([_key, value]) => value === split
       );
-      return lang ? lang[0] : null;
+      return {
+        langKey: lang ? lang[0] : null,
+        fullLangName: split,
+      } as DetectedLanguage;
     });
   }
 }

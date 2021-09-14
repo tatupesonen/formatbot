@@ -48,7 +48,10 @@ const FormatCommand: ICommand<COMMAND_TYPE.SLASH> = {
             }
           } else {
             // Attempt detecting the language
-            detectedLanguageKey = await detector.detect(block.content);
+            const { langKey, fullLangName } = await detector.detect(
+              block.content
+            );
+            detectedLanguageKey = langKey;
             if (detectedLanguageKey) {
               // One last attempt at formatting
               // Check if the language is supported
@@ -60,16 +63,30 @@ const FormatCommand: ICommand<COMMAND_TYPE.SLASH> = {
                   ].format(block.content);
                 } catch (err) {
                   const comment = commentify(
-                    "Couldn't format this snippet. Perhaps there's a syntax error, or maybe the detector made a mistake?"
+                    `Couldn't format this snippet. Perhaps there's a syntax error, or maybe the detector made a mistake?${
+                      fullLangName
+                        ? ` Detected language: ${
+                            languageNameMappings[detectedLanguageKey]
+                              ? languageNameMappings[detectedLanguageKey]
+                              : fullLangName
+                          }`
+                        : ''
+                    }`
                   );
+                  // Formatting failed, set detectedLanguageKey to null.
+                  detectedLanguageKey = null;
                   formattedBlock = `${comment}\n${block.content}`;
                 }
               }
             } else {
               const comment = commentify(
                 `Couldn't find a compatible formatter for this code block. ${
-                  detectedLanguageKey
-                    ? `detected language: ${detectedLanguageKey}`
+                  fullLangName
+                    ? `detected language: ${
+                        languageNameMappings[detectedLanguageKey]
+                          ? languageNameMappings[detectedLanguageKey]
+                          : fullLangName
+                      }`
                     : "Couldn't detect a language."
                 }`
               );

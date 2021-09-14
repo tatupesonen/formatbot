@@ -62,19 +62,20 @@ export const formatMessage = async (
       if (!languageFormatter) {
         // If no formatter, try to find a language.
         logger.info(`Trying to autodetect code:\n${theCode}`);
-        const lang = await detector.detect(theCode);
-        if (!lang)
+        const { langKey, fullLangName } = await detector.detect(theCode);
+        if (!langKey)
           return (
-            "Couldn't find a compatible formatter. Found language: " + lang
+            "Couldn't find a compatible formatter. Found language: " +
+            fullLangName
           );
-        logger.info('Found language: ' + lang);
-        const formatterToUse = languageMappings[lang];
+        logger.info('Found language: ' + fullLangName);
+        const formatterToUse = languageMappings[langKey];
         const formattedCode =
           (await formatterToUse
             .format(theCode)
             .then((code) => code.trim())
             .catch(() => undefined)) ?? "Couldn't format this snippet.";
-        return reformat(formattedCode, lang ?? '');
+        return reformat(formattedCode, langKey ?? '');
         // Find formatter to use!
         unformattableCodeBlockCounter++;
         // This is for unsupported multi line code blocks, each line gets commented and replaced to be sent on the pastecord
