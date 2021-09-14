@@ -1,3 +1,5 @@
+import { languageMappings } from '../formatters/FormatterMappings';
+
 /**
  * @param match The matched substring.
  * @param offset The offset of the matched substring within the whole string being examined. (For example, if the whole string was 'abcd', and the matched substring was 'bc', then this argument will be 1.)
@@ -66,6 +68,9 @@ export async function asyncStringReplacer(
   }
 }
 
+export const checkIfLanguageSupported = (languageKey: string) =>
+  languageKey ? Object.keys(languageMappings).includes(languageKey) : false;
+
 /**
  *
  * @param str The single line string that'll be added comments to
@@ -97,6 +102,6 @@ export function commentify(str: string, language?: string): string {
     case 'py':
       return '# ' + str;
     default:
-      return str;
+      return '// ' + str;
   }
 }
