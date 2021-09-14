@@ -14,7 +14,7 @@ export type CodeBlock = {
  * @returns
  */
 export class Parser implements IParser {
-  parseMessage = (content: string): CodeBlock[] => {
+  parseMessage = (content: string): CodeBlock[] | [] => {
     const matchCodeBlocksRegex = /(```).*?(```)/gs;
     const langKeyRegex = new RegExp(
       `(${Object.keys(languageMappings).join('|')})`,
@@ -52,6 +52,6 @@ export class Parser implements IParser {
       };
     });
 
-    return messageBlocks;
+    return messageBlocks ?? [];
   };
 }

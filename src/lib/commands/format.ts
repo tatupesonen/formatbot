@@ -26,6 +26,11 @@ const FormatCommand: ICommand<COMMAND_TYPE.SLASH> = {
         interaction.targetId
       );
       const blocks = parser.parseMessage(message.toString());
+      if (blocks.length === 0)
+        return interaction.editReply({
+          ...baseReply,
+          content: "Couldn't find any code blocks in this message.",
+        });
       // Find formatter and try to format
       const formattedBlocks = await Promise.all(
         blocks.map(async (block) => {
