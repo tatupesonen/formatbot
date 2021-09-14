@@ -40,7 +40,8 @@ const StatusCommand: ICommand<COMMAND_TYPE.LEGACY> = {
         {
           name: 'Info',
           value: `Repository: ${pjson.repository ?? 'unavailable'}
-      WebSocket latency: ${client.ws.ping + 'ms' ?? 'unavailable'}`,
+      WebSocket latency: ${client.ws.ping + 'ms' ?? 'unavailable'}
+      Amount of guilds joined: ${client.guilds.cache.size ?? 'unavailable'}`,
           inline: false,
         },
         {
