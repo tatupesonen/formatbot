@@ -3,6 +3,7 @@ export const DITypes = {
   formatter: 'formatter',
   detector: 'detector',
   client: 'client',
+  parser: 'parser',
 } as const;
 
 export type Constr<T> = new (...args: unknown[]) => T;
