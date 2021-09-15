@@ -24,7 +24,6 @@ export class GuesslangDetector implements IDetector {
       });
 
       const command = `guesslang ${filePath}`;
-      console.log(command);
       const shell = exec(command);
 
       shell.stdout.on('data', function (data) {
