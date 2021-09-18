@@ -1,4 +1,4 @@
-import { CodeBlock, Parser } from '@/lib/util/MessageParser';
+import { CodeBlock, Parser } from '../../../src/lib/util/MessageParser';
 import { readFileSync } from 'fs';
 import path from 'path';
 

@@ -1,4 +1,4 @@
-import { Container } from '@/lib/container/container';
+import { Container } from '../../../src/lib/container/container';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface FakeDep {}
