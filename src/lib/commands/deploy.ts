@@ -1,7 +1,7 @@
 import { ApplicationCommandData, Client } from 'discord.js';
 import { COMMANDS } from '../bot';
 
-import { ICommand, COMMAND_TYPE } from '../common/ICommand';
+import { ICommand, COMMAND_TYPE } from '../interfaces/ICommand';
 
 const FormatCommand: ICommand<COMMAND_TYPE.LEGACY> = {
   name: 'deploy',

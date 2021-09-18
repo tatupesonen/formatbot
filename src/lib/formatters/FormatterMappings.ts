@@ -21,7 +21,10 @@ const formatters: Map<string, IFormatter> = new Map([
   ['java', new JavaFormatter()],
 ]);
 
-export const languageMappings: Record<string, IFormatter> = {
+export const languageMappings: Record<
+  keyof typeof languageNameMappings,
+  IFormatter
+> = {
   javascript: formatters.get('prettier'),
   jsx: formatters.get('prettier'),
   js: formatters.get('prettier'),
@@ -44,7 +47,7 @@ export const languageMappings: Record<string, IFormatter> = {
   sqf: formatters.get('cpp'),
 };
 
-export const languageNameMappings: Record<string, string> = {
+export const languageNameMappings = {
   js: 'JavaScript',
   jsx: 'JavaScript',
   javascript: 'JavaScript',
@@ -65,4 +68,4 @@ export const languageNameMappings: Record<string, string> = {
   yaml: 'YAML',
   json: 'JSON',
   sqf: 'SQF',
-};
+} as const;

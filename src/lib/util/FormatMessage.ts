@@ -1,8 +1,8 @@
 import { Message } from 'discord.js';
 import { Container } from '../container/container';
 import { languageMappings } from '../formatters/FormatterMappings';
+import { IDetector } from '../interfaces/IDetector';
 import { IUploader } from '../interfaces/IUploader';
-import { detect } from './DetectLanguage';
 import { logger } from './logger';
 import { reformat } from './reformatter';
 import { asyncStringReplacer, commentify } from './utils';
@@ -15,6 +15,8 @@ export const formatMessage = async (
 ) => {
   // Get dependencies
   const uploader = container.getByKey<IUploader>('uploader');
+  const detector = container.getByKey<IDetector>('detector');
+
   const content = message.content;
   // The first language key found, it'll be used for the pastecord file and all the comments on the file
   const firstLanguageKey: string | undefined = content.match(
@@ -60,19 +62,20 @@ export const formatMessage = async (
       if (!languageFormatter) {
         // If no formatter, try to find a language.
         logger.info(`Trying to autodetect code:\n${theCode}`);
-        const lang = await detect(theCode);
-        if (!lang)
+        const { langKey, fullLangName } = await detector.detect(theCode);
+        if (!langKey)
           return (
-            "Couldn't find a compatible formatter. Found language: " + lang
+            "Couldn't find a compatible formatter. Found language: " +
+            fullLangName
           );
-        logger.info('Found language: ' + lang);
-        const formatterToUse = languageMappings[lang];
+        logger.info('Found language: ' + fullLangName);
+        const formatterToUse = languageMappings[langKey];
         const formattedCode =
           (await formatterToUse
             .format(theCode)
             .then((code) => code.trim())
             .catch(() => undefined)) ?? "Couldn't format this snippet.";
-        return reformat(formattedCode, lang ?? '');
+        return reformat(formattedCode, langKey ?? '');
         // Find formatter to use!
         unformattableCodeBlockCounter++;
         // This is for unsupported multi line code blocks, each line gets commented and replaced to be sent on the pastecord

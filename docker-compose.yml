@@ -1,5 +1,8 @@
 version: '3.7'
 services:
+  test:
+    depends on: bot
+    container_name: formatbot-test
   bot:
     container_name: formatbot
     image: nnari/formatbot:latest

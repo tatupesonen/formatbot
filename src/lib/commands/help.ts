@@ -1,5 +1,5 @@
 import { MessageEmbed } from 'discord.js';
-import { ICommand, COMMAND_TYPE } from '../common/ICommand';
+import { ICommand, COMMAND_TYPE } from '../interfaces/ICommand';
 
 const HelpCommand: ICommand<COMMAND_TYPE.LEGACY> = {
   name: 'help',
