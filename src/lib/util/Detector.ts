@@ -22,23 +22,27 @@ export class GuesslangDetector implements IDetector {
       await fs.writeFile(filePath, code, {
         encoding: 'utf-8',
       });
+      logger.info(`Created ${filePath}`);
 
       const command = `guesslang ${filePath}`;
       const shell = exec(command);
 
       shell.stdout.on('data', function (data) {
-        logger.debug(`Unlinking ${filePath}`);
-        fs.unlink(filePath);
-        resolve(data.toString());
+        resolve({ data: data.toString(), filePath });
       });
 
       shell.stderr.on('data', (data) => {
-        fs.unlink(filePath);
-        logger.debug(`Unlinking ${filePath}`);
-        logger.error("Couldn't parse input: " + code);
-        resolve(data.toString());
+        logger.error(data);
+        resolve({ data: data.toString(), filePath });
       });
-    }).then((data: string | null) => {
+    }).then(({ data, filePath }) => {
+      // Unlink
+      try {
+        logger.debug(`Unlinking ${filePath}`);
+        fs.unlink(filePath);
+      } catch (e) {
+        logger.error(`Couldn't unlink ${filePath}`);
+      }
       const split = data.split(':')[1].trim();
       const lang = Object.entries(languageNameMappings).find(
         ([_key, value]) => value === split
