@@ -37,7 +37,6 @@ const FormatCommand: ICommand<COMMAND_TYPE.SLASH> = {
           let formattedBlock;
           let detectedLanguageKey;
           if (block.languageKey) {
-            console.log(block.languageKey);
             try {
               formattedBlock = await languageMappings[block.languageKey].format(
                 block.content
@@ -102,7 +101,6 @@ const FormatCommand: ICommand<COMMAND_TYPE.SLASH> = {
             ? block.languageKey
             : detectedLanguageKey;
           reformatLangKey ??= '';
-          console.log(block.languageKey, detectedLanguageKey, reformatLangKey);
           return reformat(formattedBlock, reformatLangKey);
         })
       );
