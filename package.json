@@ -13,7 +13,7 @@
     "dev": "ts-node-dev --respawn -r tsconfig-paths/register --transpile-only src/index.ts",
     "postinstall": "node ./node_modules/husky/lib/bin install",
     "lint": "run-s fix:*",
-    "fix:prettier": "prettier --write src/ .",
+    "fix:prettier": "prettier --write src/**",
     "fix:lint": "eslint src/** --ext .ts --max-warnings=0",
     "test": "run-s test:*",
     "test:unit": "yarn jest",

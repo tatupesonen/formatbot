@@ -1,4 +1,4 @@
-import { languageMappings } from '@/lib/formatters/FormatterMappings';
+import { languageMappings } from '../formatters/FormatterMappings';
 import { IParser } from '../interfaces/IParser';
 import { checkIfLanguageSupported } from './utils';
 export type CodeBlock = {
