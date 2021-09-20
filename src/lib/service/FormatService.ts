@@ -5,6 +5,7 @@ import {
 } from '../formatters/FormatterMappings';
 import { IDetector } from '../interfaces/IDetector';
 import { IParser } from '../interfaces/IParser';
+import { logger } from '../util/logger';
 import { reformat } from '../util/reformatter';
 import { checkIfLanguageSupported, commentify } from '../util/utils';
 
@@ -45,6 +46,9 @@ export class FormatService {
           );
           detectedLanguageKey = langKey;
           if (detectedLanguageKey) {
+            logger.info(
+              `Detected ${detectedLanguageKey} for a block with no language key.`
+            );
             // One last attempt at formatting
             // Check if the language is supported
             const isSupported = checkIfLanguageSupported(detectedLanguageKey);

@@ -17,7 +17,7 @@ export class Parser implements IParser {
   parseMessage = (content: string): CodeBlock[] | [] => {
     const matchCodeBlocksRegex = /(```).*?(```)/gs;
     const langKeyRegex = new RegExp(
-      `(${Object.keys(languageMappings).join('|')})`,
+      `\`\`\`(${Object.keys(languageMappings).join('|')})`,
       'm'
     );
     const codeblocks = [...content.matchAll(matchCodeBlocksRegex)].map(
@@ -35,7 +35,7 @@ export class Parser implements IParser {
       const blockWithNoBackticks = block
         // Remove first backticks and language key
         .replace(
-          new RegExp(`\`\`\`(${Object.keys(languageMappings).join('|')})\n`),
+          new RegExp(`\`\`\`(${Object.keys(languageMappings).join('|')})`),
           ''
         )
         // Replace all remaining triple backticks for this block
