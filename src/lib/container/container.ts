@@ -4,6 +4,7 @@ export const DITypes = {
   detector: 'detector',
   client: 'client',
   parser: 'parser',
+  formatService: 'formatService',
 } as const;
 
 export type Constr<T> = new (...args: unknown[]) => T;

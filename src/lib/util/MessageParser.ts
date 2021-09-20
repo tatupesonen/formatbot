@@ -17,7 +17,7 @@ export class Parser implements IParser {
   parseMessage = (content: string): CodeBlock[] | [] => {
     const matchCodeBlocksRegex = /(```).*?(```)/gs;
     const langKeyRegex = new RegExp(
-      `(${Object.keys(languageMappings).join('|')})`,
+      `\`\`\`(${Object.keys(languageMappings).join('|')})`,
       'm'
     );
     const codeblocks = [...content.matchAll(matchCodeBlocksRegex)].map(
@@ -30,12 +30,14 @@ export class Parser implements IParser {
       // Check if the languageKey is something that we support.
       let languageSupported = false;
       if (languageKey) {
+        // TODO: Improve this logic. Perhaps put use capture groups and put it in the match regex.
+        languageKey[0] = languageKey[0].replace('```', '').replace('\n', '');
         languageSupported = checkIfLanguageSupported(languageKey[0]);
       }
       const blockWithNoBackticks = block
         // Remove first backticks and language key
         .replace(
-          new RegExp(`\`\`\`(${Object.keys(languageMappings).join('|')})\n`),
+          new RegExp(`\`\`\`(${Object.keys(languageMappings).join('|')})`),
           ''
         )
         // Replace all remaining triple backticks for this block

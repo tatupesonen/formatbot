@@ -8,6 +8,7 @@ import { PastecordImplementation } from './lib/infra/pastecordintegration';
 import { IDetector } from './lib/interfaces/IDetector';
 import { IParser } from './lib/interfaces/IParser';
 import { IUploader } from './lib/interfaces/IUploader';
+import { FormatService } from './lib/service/FormatService';
 import { GuesslangDetector } from './lib/util/Detector';
 import { Parser } from './lib/util/MessageParser';
 
@@ -19,6 +20,8 @@ const bootstrap = async () => {
   container.set<IUploader>(new PastecordImplementation(), DITypes.uploader);
   container.set<IDetector>(new GuesslangDetector(), DITypes.detector);
   container.set<IParser>(new Parser(), DITypes.parser);
+  const formatService = new FormatService(container);
+  container.set<FormatService>(formatService, DITypes.formatService);
   const { client: bot } = await createBot(container);
   container.set<Client>(bot, DITypes.client);
   bot.login(process.env.DISCORD_TOKEN);

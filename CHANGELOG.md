@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+
+## [1.6.0](https://github.com/tatupesonen/formatbot/compare/v1.5.0-deploy...v1.6.0) (2021-09-20)
+
+### Bug Fixes
+* issue with languageKey containing backticks ([bf7762c](https://github.com/tatupesonen/formatbot/commit/bf7762c085e89804ce78f8bf1fc6e1c74382a0f1))
+* regex issue where the parser would find nonsupported language key ([5a1d1c2](https://github.com/tatupesonen/formatbot/commit/5a1d1c2b7941a34d8367251827c05d2276f0cb5e))
+* remove debug console.logs in format.ts ([35b923f](https://github.com/tatupesonen/formatbot/commit/35b923f6fd592bdd41d9e6690f6c9b9214a07dac))
+
+
 ## [1.5.0](https://github.com/tatupesonen/formatbot/compare/v1.5.0-deploy...v1.5.0) (2021-09-18)
 
 
