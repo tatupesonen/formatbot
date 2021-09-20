@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GuesslangDetector | formatbot</title>
+	<title>FormatService | formatbot</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
@@ -57,10 +57,10 @@
 					<a href="../modules.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/lib_util_Detector.html">lib/util/Detector</a>
+					<a href="../modules/lib_service_FormatService.html">lib/service/FormatService</a>
 				</li>
 				<li>
-					<a href="lib_util_Detector.GuesslangDetector.html">GuesslangDetector</a>
+					<a href="lib_service_FormatService.FormatService.html">FormatService</a>
 				</li>
 			</ul>
 		</div>
@@ -75,13 +75,13 @@
 					</ul>
 					<ul class="current">
 						<li class="current tsd-kind-class tsd-parent-kind-module">
-							<a href="lib_util_Detector.GuesslangDetector.html" class="tsd-kind-icon">Guesslang<wbr>Detector</a>
+							<a href="lib_service_FormatService.FormatService.html" class="tsd-kind-icon">Format<wbr>Service</a>
 							<ul>
 								<li class=" tsd-kind-constructor tsd-parent-kind-class">
-									<a href="lib_util_Detector.GuesslangDetector.html#constructor" class="tsd-kind-icon">constructor</a>
+									<a href="lib_service_FormatService.FormatService.html#constructor" class="tsd-kind-icon">constructor</a>
 								</li>
 								<li class=" tsd-kind-method tsd-parent-kind-class">
-									<a href="lib_util_Detector.GuesslangDetector.html#detect" class="tsd-kind-icon">detect</a>
+									<a href="lib_service_FormatService.FormatService.html#format" class="tsd-kind-icon">format</a>
 								</li>
 							</ul>
 						</li>
@@ -134,9 +134,9 @@
 						<a href="../modules/lib_interfaces_IParser.html">lib/interfaces/IParser</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_interfaces_IUploader.html">lib/interfaces/IUploader</a>
-						</li>                        <li class=" tsd-kind-module">
-						<a href="../modules/lib_service_FormatService.html">lib/service/<wbr>Format<wbr>Service</a>
 						</li>                        <li class="current tsd-kind-module">
+						<a href="../modules/lib_service_FormatService.html">lib/service/<wbr>Format<wbr>Service</a>
+						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_util_Detector.html">lib/util/<wbr>Detector</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_util_FormatMessage.html">lib/util/<wbr>Format<wbr>Message</a>
@@ -158,14 +158,8 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GuesslangDetector</span>
+						<span class="target">FormatService</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implements</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/lib_interfaces_IDetector.IDetector.html" class="tsd-signature-type">IDetector</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -176,7 +170,7 @@
 							<div class="tsd-navigation secondary">
 								<ul>
 									<li class="tsd-kind-constructor tsd-parent-kind-class">
-										<a href="lib_util_Detector.GuesslangDetector.html#constructor" class="tsd-kind-icon">constructor</a>
+										<a href="lib_service_FormatService.FormatService.html#constructor" class="tsd-kind-icon">constructor</a>
 									</li>
 								</ul>
 							</div>
@@ -186,7 +180,7 @@
 							<div class="tsd-navigation secondary">
 								<ul>
 									<li class="tsd-kind-method tsd-parent-kind-class">
-										<a href="lib_util_Detector.GuesslangDetector.html#detect" class="tsd-kind-icon">detect</a>
+										<a href="lib_service_FormatService.FormatService.html#format" class="tsd-kind-icon">format</a>
 									</li>
 								</ul>
 							</div>
@@ -200,34 +194,42 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Guesslang<wbr>Detector<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_util_Detector.GuesslangDetector.html" class="tsd-signature-type">GuesslangDetector</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Format<wbr>Service<span class="tsd-signature-symbol">(</span>container<span class="tsd-signature-symbol">: </span><a href="lib_container_container.Container.html" class="tsd-signature-type">Container</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_service_FormatService.FormatService.html" class="tsd-signature-type">FormatService</a></li>
 					</ul>
-					<h4 class="tsd-returns-title">Returns <a href="lib_util_Detector.GuesslangDetector.html" class="tsd-signature-type">GuesslangDetector</a></h4>
+					<h4 class="tsd-parameters-title">Parameters</h4>
+					<ul class="tsd-parameters">
+						<li>
+							<span class="name">container</span>: <a href="lib_container_container.Container.html" class="tsd-signature-type">Container</a>
+						</li>
+					</ul>
+					<h4 class="tsd-returns-title">Returns <a href="lib_service_FormatService.FormatService.html" class="tsd-signature-type">FormatService</a></h4>
 					</ul>
 					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/e0bd7a5/src/lib/service/FormatService.ts#L12">src/lib/service/FormatService.ts:12</a></li>
+						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-descriptions">
-					<a name="detect" class="tsd-anchor"></a>
-					<h3>detect</h3>
+					<a name="format" class="tsd-anchor"></a>
+					<h3>format</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">detect<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/lib_interfaces_IDetector.DetectedLanguage.html" class="tsd-signature-type">DetectedLanguage</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">format<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<h4 class="tsd-parameters-title">Parameters</h4>
 					<ul class="tsd-parameters">
 						<li>
-							<span class="name">code</span>: <span class="tsd-signature-type">string</span>
+							<span class="name">message</span>: <span class="tsd-signature-type">string</span>
 						</li>
 					</ul>
-					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/lib_interfaces_IDetector.DetectedLanguage.html" class="tsd-signature-type">DetectedLanguage</a><span class="tsd-signature-symbol">&gt;</span>    </h4>
+					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>    </h4>
 					</ul>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/lib_interfaces_IDetector.IDetector.html">IDetector</a>.<a href="../interfaces/lib_interfaces_IDetector.IDetector.html#detect">detect</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/e0bd7a5/src/lib/util/Detector.ts#L11">src/lib/util/Detector.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/e0bd7a5/src/lib/service/FormatService.ts#L14">src/lib/service/FormatService.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
