@@ -94,12 +94,10 @@ export class FormatService {
             formattedBlock = `${comment}\n${block.content}`;
           }
         }
-        let reformatLangKey = languageKey
-          ? languageKey
-            ? languageKey
-            : block.languageKey
-          : detectedLanguageKey;
-        reformatLangKey ??= '';
+        let reformatLangKey = languageKey ? languageKey : block.languageKey;
+        reformatLangKey ??= detectedLanguageKey;
+        reformatLangKey ??= '' as keyof typeof languageMappings;
+        console.log(reformatLangKey);
         return reformat(formattedBlock, reformatLangKey);
       })
     );
