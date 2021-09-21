@@ -34,6 +34,7 @@ const FormatSlashCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
         'programminglanguage'
       );
       if (
+        userInputLanguage &&
         !Object.keys(languageMappings).some(
           (key) => key.toLowerCase() === userInputLanguage.toLowerCase()
         )
