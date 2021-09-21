@@ -1,6 +1,6 @@
 {
   "name": "formatbot",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Formats a reacted message using Prettier",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
@@ -25,7 +25,7 @@
     "doc": "run-s doc:html && open-cli build/docs/index.html",
     "doc:html": "typedoc src/ --out build/docs --theme node_modules/eledoc/bin/default/",
     "doc:publish": "gh-pages -m \"[ci skip] Updates\" -d build/docs",
-    "version": "standard-version -s",
+    "version": "npx standard-version -s",
     "reset-hard": "git clean -dfx && git reset --hard && yarn",
     "prepare-release": "run-s doc:html version doc:publish"
   },
