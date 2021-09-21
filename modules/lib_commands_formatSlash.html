@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>lib/formatters/FormatterMappings | formatbot</title>
+	<title>lib/commands/formatSlash | formatbot</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
 					<a href="../modules.html">Globals</a>
 				</li>
 				<li>
-					<a href="lib_formatters_FormatterMappings.html">lib/formatters/FormatterMappings</a>
+					<a href="lib_commands_formatSlash.html">lib/commands/formatSlash</a>
 				</li>
 			</ul>
 		</div>
@@ -70,10 +70,7 @@
 				<ul>
 					<ul class="before-current">
 						<li class=" tsd-kind-variable tsd-parent-kind-module">
-							<a href="lib_formatters_FormatterMappings.html#languageMappings" class="tsd-kind-icon">language<wbr>Mappings</a>
-						</li>
-						<li class=" tsd-kind-variable tsd-parent-kind-module">
-							<a href="lib_formatters_FormatterMappings.html#languageNameMappings" class="tsd-kind-icon">language<wbr>Name<wbr>Mappings</a>
+							<a href="lib_commands_formatSlash.html#default" class="tsd-kind-icon">default</a>
 						</li>
 					</ul>
 				</ul>
@@ -88,7 +85,7 @@
 						<a href="lib_commands_deploy.html">lib/commands/deploy</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_commands_format.html">lib/commands/format</a>
-						</li>                        <li class=" tsd-kind-module">
+						</li>                        <li class="current tsd-kind-module">
 						<a href="lib_commands_formatSlash.html">lib/commands/format<wbr>Slash</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_commands_help.html">lib/commands/help</a>
@@ -98,7 +95,7 @@
 						<a href="lib_container_container.html">lib/container/container</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_formatters_BaseFormatter.html">lib/formatters/<wbr>Base<wbr>Formatter</a>
-						</li>                        <li class="current tsd-kind-module">
+						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_formatters_FormatterMappings.html">lib/formatters/<wbr>Formatter<wbr>Mappings</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_formatters_errors_errors.html">lib/formatters/errors/errors</a>
@@ -152,14 +149,7 @@
 							<div class="tsd-navigation secondary">
 								<ul>
 									<li class="tsd-kind-variable tsd-parent-kind-module">
-										<a href="lib_formatters_FormatterMappings.html#languageMappings" class="tsd-kind-icon">language<wbr>Mappings</a>
-									</li>
-								</ul>
-							</div>
-							<div class="tsd-navigation secondary">
-								<ul>
-									<li class="tsd-kind-variable tsd-parent-kind-module">
-										<a href="lib_formatters_FormatterMappings.html#languageNameMappings" class="tsd-kind-icon">language<wbr>Name<wbr>Mappings</a>
+										<a href="lib_commands_formatSlash.html#default" class="tsd-kind-icon">default</a>
 									</li>
 								</ul>
 							</div>
@@ -170,22 +160,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-descriptions">
-					<a name="languageMappings" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> language<wbr>Mappings</h3>
-					<div class="tsd-signature tsd-kind-icon">languageMappings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof typeof languageNameMappings</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/lib_formatters_BaseFormatter.IFormatter.html" class="tsd-signature-type">IFormatter</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<a name="default" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> default</h3>
+					<div class="tsd-signature tsd-kind-icon">default<span class="tsd-signature-symbol">:</span> <a href="../interfaces/lib_interfaces_ICommand.ICommand.html" class="tsd-signature-type">ICommand</a><span class="tsd-signature-symbol">&lt;</span><a href="../enums/lib_interfaces_ICommand.COMMAND_TYPE.html#CHANNEL" class="tsd-signature-type">CHANNEL</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/4bc962a/src/lib/formatters/FormatterMappings.ts#L24">src/lib/formatters/FormatterMappings.ts:24</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-descriptions">
-					<a name="languageNameMappings" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> language<wbr>Name<wbr>Mappings</h3>
-					<div class="tsd-signature tsd-kind-icon">languageNameMappings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> = ...</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/4bc962a/src/lib/formatters/FormatterMappings.ts#L50">src/lib/formatters/FormatterMappings.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/4bc962a/src/lib/commands/formatSlash.ts#L7">src/lib/commands/formatSlash.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
