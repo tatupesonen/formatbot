@@ -33,17 +33,23 @@ const FormatSlashCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
       const userInputLanguage = interaction.options.getString(
         'programminglanguage'
       );
-      if (
-        userInputLanguage &&
-        !Object.keys(languageMappings).some(
-          (key) => key.toLowerCase() === userInputLanguage.toLowerCase()
-        )
-      )
+      if (userInputLanguage)
         return interaction.editReply({
           ...baseReply,
           content:
-            "Sorry, I don't support the programming language you gave to me. Yet :)",
+            'Congratulations, you found a currently unused feature! This will be implemented later.\nIn the meanwhile, use the /format command without specifying the programming language.',
         });
+      // if (
+      //   userInputLanguage &&
+      //   !Object.keys(languageMappings).some(
+      //     (key) => key.toLowerCase() === userInputLanguage.toLowerCase()
+      //   )
+      // )
+      //   return interaction.editReply({
+      //     ...baseReply,
+      //     content:
+      //       "Sorry, I don't support the programming language you gave to me. Yet :)",
+      //   });
       // Check that inputlanguage is in
       let message;
       try {
