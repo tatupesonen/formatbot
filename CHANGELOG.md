@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.2](https://github.com/tatupesonen/formatbot/compare/v1.7.1...v1.7.2) (2021-09-21)
+
+
+### Bug Fixes
+
+* **formatter:** fix small formatting issue ([63d74dc](https://github.com/tatupesonen/formatbot/commit/63d74dc7c5fa28fa2b28bcc63fc8e472718b06b3))
+
 ### [1.7.1](https://github.com/tatupesonen/formatbot/compare/v1.7.0...v1.7.1) (2021-09-21)
 
 
