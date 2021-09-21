@@ -14,7 +14,7 @@ export class FormatService {
 
   public async format(
     message: string,
-    languageKey?: keyof typeof languageMappings
+    _languageKey?: keyof typeof languageMappings
   ): Promise<string> {
     const parser = this.container.getByKey<IParser>(DITypes.parser);
     const detector = this.container.getByKey<IDetector>(DITypes.detector);
@@ -28,19 +28,17 @@ export class FormatService {
       blocks.map(async (block) => {
         let formattedBlock;
         let detectedLanguageKey;
-        if (languageKey || block.languageKey) {
+        if (block.languageKey) {
           try {
-            formattedBlock = await languageMappings[
-              languageKey ? languageKey : block.languageKey
-            ].format(block.content);
+            formattedBlock = await languageMappings[block.languageKey].format(
+              block.content
+            );
           } catch (err) {
             const comment = commentify(
               `Couldn't format this ${
-                languageNameMappings[
-                  languageKey ? languageKey : block.languageKey
-                ]
+                languageNameMappings[block.languageKey]
               } snippet. Perhaps there's a syntax error?`,
-              languageKey ? languageKey : block.languageKey
+              block.languageKey
             );
             formattedBlock = `${comment}\n${block.content}`;
           }
@@ -94,10 +92,12 @@ export class FormatService {
             formattedBlock = `${comment}\n${block.content}`;
           }
         }
-        let reformatLangKey = languageKey ? languageKey : block.languageKey;
+        let reformatLangKey;
+        console.log(block.languageKey, detectedLanguageKey);
+        // Order in which to pick the key to use
+        reformatLangKey ??= block.languageKey;
         reformatLangKey ??= detectedLanguageKey;
         reformatLangKey ??= '' as keyof typeof languageMappings;
-        console.log(reformatLangKey);
         return reformat(formattedBlock, reformatLangKey);
       })
     );

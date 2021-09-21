@@ -17,8 +17,8 @@ export class Parser implements IParser {
   parseMessage = (content: string): CodeBlock[] | [] => {
     const matchCodeBlocksRegex = /(```).*?(```)/gs;
     const langKeyRegex = new RegExp(
-      `\`\`\`(${Object.keys(languageMappings).join('|')})`,
-      'm'
+      '```\\b(' + Object.keys(languageMappings).join('|') + ')\\b',
+      'i'
     );
     const codeblocks = [...content.matchAll(matchCodeBlocksRegex)].map(
       ([first]) => first
@@ -27,19 +27,20 @@ export class Parser implements IParser {
       const [firstLine] = block.split('\n');
       //Figure out the language key, if any
       const languageKey = firstLine.match(langKeyRegex);
+      console.log(languageKey, langKeyRegex);
       // Check if the languageKey is something that we support.
       let languageSupported = false;
       if (languageKey) {
         // TODO: Improve this logic. Perhaps put use capture groups and put it in the match regex.
-        languageKey[0] = languageKey[0].replace('```', '').replace('\n', '');
+        languageKey[0] = languageKey[0]
+          .replace('```', '')
+          .replace('\n', '')
+          .toLowerCase();
         languageSupported = checkIfLanguageSupported(languageKey[0]);
       }
       const blockWithNoBackticks = block
         // Remove first backticks and language key
-        .replace(
-          new RegExp(`\`\`\`(${Object.keys(languageMappings).join('|')})`),
-          ''
-        )
+        .replace(langKeyRegex, '')
         // Replace all remaining triple backticks for this block
         .replaceAll(/```/g, '')
         // Remove ending & beginning whitespace

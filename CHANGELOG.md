@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.3](https://github.com/tatupesonen/formatbot/compare/v1.7.2...v1.7.3) (2021-09-21)
+
+
+### Bug Fixes
+
+* **parser:** improve language key detection ([eaa1795](https://github.com/tatupesonen/formatbot/commit/eaa17953e4fedbbf6d2bbf781f4bbe22795b3a49))
+
 ### [1.7.2](https://github.com/tatupesonen/formatbot/compare/v1.7.1...v1.7.2) (2021-09-21)
 
 
