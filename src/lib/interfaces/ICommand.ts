@@ -1,5 +1,6 @@
 import {
   CommandInteraction,
+  CommandInteractionOption,
   ContextMenuInteraction,
   Message,
 } from 'discord.js';
@@ -10,6 +11,7 @@ export interface ICommand<
   name: string;
   description: string;
   type: T;
+  options?: CommandOption[];
   execute(interaction: Mapped[T], container: Container, args?: string[]): void;
 }
 
@@ -17,6 +19,11 @@ export enum COMMAND_TYPE {
   LEGACY = 'LEGACY',
   SLASH = 'MESSAGE',
   CHANNEL = 'CHAT_INPUT',
+}
+
+export interface CommandOption extends CommandInteractionOption {
+  required?: boolean;
+  description: string;
 }
 
 interface Mapped {

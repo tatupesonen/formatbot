@@ -12,7 +12,11 @@ const FormatCommand: ICommand<COMMAND_TYPE.LEGACY> = {
     const client = container.getByKey<Client>('client');
     if (interaction.author.id !== process.env.OWNER) return;
     const slashCommands: ApplicationCommandData[] = Object.entries(COMMANDS)
-      .filter(([_, value]) => value.type === COMMAND_TYPE.SLASH)
+      .filter(
+        ([_, value]) =>
+          value.type === COMMAND_TYPE.CHANNEL ||
+          value.type === COMMAND_TYPE.SLASH
+      )
       .reduce((acc, cur) => {
         acc.push(cur[1]);
         return acc;

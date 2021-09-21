@@ -12,7 +12,10 @@ import { checkIfLanguageSupported, commentify } from '../util/utils';
 export class FormatService {
   constructor(private readonly container: Container) {}
 
-  public async format(message: string): Promise<string> {
+  public async format(
+    message: string,
+    languageKey?: keyof typeof languageMappings
+  ): Promise<string> {
     const parser = this.container.getByKey<IParser>(DITypes.parser);
     const detector = this.container.getByKey<IDetector>(DITypes.detector);
 
@@ -25,17 +28,19 @@ export class FormatService {
       blocks.map(async (block) => {
         let formattedBlock;
         let detectedLanguageKey;
-        if (block.languageKey) {
+        if (languageKey || block.languageKey) {
           try {
-            formattedBlock = await languageMappings[block.languageKey].format(
-              block.content
-            );
+            formattedBlock = await languageMappings[
+              languageKey ? languageKey : block.languageKey
+            ].format(block.content);
           } catch (err) {
             const comment = commentify(
               `Couldn't format this ${
-                languageNameMappings[block.languageKey]
+                languageNameMappings[
+                  languageKey ? languageKey : block.languageKey
+                ]
               } snippet. Perhaps there's a syntax error?`,
-              block.languageKey
+              languageKey ? languageKey : block.languageKey
             );
             formattedBlock = `${comment}\n${block.content}`;
           }
@@ -89,8 +94,10 @@ export class FormatService {
             formattedBlock = `${comment}\n${block.content}`;
           }
         }
-        let reformatLangKey = block.languageKey
-          ? block.languageKey
+        let reformatLangKey = languageKey
+          ? languageKey
+            ? languageKey
+            : block.languageKey
           : detectedLanguageKey;
         reformatLangKey ??= '';
         return reformat(formattedBlock, reformatLangKey);
