@@ -62,7 +62,7 @@ export const createBot = async (container: Container) => {
   });
 
   client.on('interactionCreate', async (interaction) => {
-    if (interaction.isContextMenu()) {
+    if (interaction.isContextMenu() || interaction.isCommand()) {
       try {
         if (COMMANDS[interaction.commandName]) {
           COMMANDS[interaction.commandName].execute(interaction, container);

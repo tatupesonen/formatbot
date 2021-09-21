@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/tatupesonen/formatbot/compare/v1.6.0...v1.7.0) (2021-09-21)
+
+
+### Features
+
+* adds formatting command for mobile users ([4bc962a](https://github.com/tatupesonen/formatbot/commit/4bc962a94aeecb05cefb319a7bbf345bd3720a36))
 
 ## [1.6.0](https://github.com/tatupesonen/formatbot/compare/v1.5.0-deploy...v1.6.0) (2021-09-20)
 
