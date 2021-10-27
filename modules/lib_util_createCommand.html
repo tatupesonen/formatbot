@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>lib/util/MessageParser | formatbot</title>
+	<title>lib/util/createCommand | formatbot</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
 					<a href="../modules.html">Globals</a>
 				</li>
 				<li>
-					<a href="lib_util_MessageParser.html">lib/util/MessageParser</a>
+					<a href="lib_util_createCommand.html">lib/util/createCommand</a>
 				</li>
 			</ul>
 		</div>
@@ -69,11 +69,8 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul>
 					<ul class="before-current">
-						<li class=" tsd-kind-class tsd-parent-kind-module">
-							<a href="../classes/lib_util_MessageParser.Parser.html" class="tsd-kind-icon">Parser</a>
-						</li>
-						<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-							<a href="lib_util_MessageParser.html#CodeBlock" class="tsd-kind-icon">Code<wbr>Block</a>
+						<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+							<a href="lib_util_createCommand.html#createCommand" class="tsd-kind-icon">create<wbr>Command</a>
 						</li>
 					</ul>
 				</ul>
@@ -134,9 +131,9 @@
 						<a href="lib_util_Detector.html">lib/util/<wbr>Detector</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_util_FormatMessage.html">lib/util/<wbr>Format<wbr>Message</a>
-						</li>                        <li class="current tsd-kind-module">
-						<a href="lib_util_MessageParser.html">lib/util/<wbr>Message<wbr>Parser</a>
 						</li>                        <li class=" tsd-kind-module">
+						<a href="lib_util_MessageParser.html">lib/util/<wbr>Message<wbr>Parser</a>
+						</li>                        <li class="current tsd-kind-module">
 						<a href="lib_util_createCommand.html">lib/util/create<wbr>Command</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="lib_util_logger.html">lib/util/logger</a>
@@ -154,29 +151,11 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Classes</h3>
+							<h3>Functions</h3>
 							<div class="tsd-navigation secondary">
 								<ul>
-									<li class="tsd-kind-class tsd-parent-kind-module">
-										<a href="../classes/lib_util_MessageParser.Parser.html" class="tsd-kind-icon">Parser</a>
-										<ul>
-											<li class="tsd-kind-constructor tsd-parent-kind-class">
-												<a href="../classes/lib_util_MessageParser.Parser.html#constructor" class="tsd-kind-icon">constructor</a>
-											</li>
-											<li class="tsd-kind-method tsd-parent-kind-class">
-												<a href="../classes/lib_util_MessageParser.Parser.html#parseMessage" class="tsd-kind-icon">parse<wbr>Message</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Type aliases</h3>
-							<div class="tsd-navigation secondary">
-								<ul>
-									<li class="tsd-kind-type-alias tsd-parent-kind-module">
-										<a href="lib_util_MessageParser.html#CodeBlock" class="tsd-kind-icon">Code<wbr>Block</a>
+									<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+										<a href="lib_util_createCommand.html#createCommand" class="tsd-kind-icon">create<wbr>Command</a>
 									</li>
 								</ul>
 							</div>
@@ -185,14 +164,29 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Type aliases</h2>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-descriptions">
-					<a name="CodeBlock" class="tsd-anchor"></a>
-					<h3>Code<wbr>Block</h3>
-					<div class="tsd-signature tsd-kind-icon">CodeBlock<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-descriptions">
+					<a name="createCommand" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Command</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Command&lt;T&gt;<span class="tsd-signature-symbol">(</span>cmd<span class="tsd-signature-symbol">: </span><a href="../interfaces/lib_interfaces_ICommand.ICommand.html" class="tsd-signature-type">ICommand</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/lib_interfaces_ICommand.ICommand.html" class="tsd-signature-type">ICommand</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+						<span class="name">T</span><span class="tsd-signature-symbol">: </span><a href="../enums/lib_interfaces_ICommand.COMMAND_TYPE.html" class="tsd-signature-type">COMMAND_TYPE</a>                    </li>
+					</ul>
+					<h4 class="tsd-parameters-title">Parameters</h4>
+					<ul class="tsd-parameters">
+						<li>
+							<span class="name">cmd</span>: <a href="../interfaces/lib_interfaces_ICommand.ICommand.html" class="tsd-signature-type">ICommand</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>
+						</li>
+					</ul>
+					<h4 class="tsd-returns-title">Returns <a href="../interfaces/lib_interfaces_ICommand.ICommand.html" class="tsd-signature-type">ICommand</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/afc4322/src/lib/util/MessageParser.ts#L4">src/lib/util/MessageParser.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/afc4322/src/lib/util/createCommand.ts#L3">src/lib/util/createCommand.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>

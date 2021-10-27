@@ -127,6 +127,8 @@
 						<a href="../modules/lib_commands_help.html">lib/commands/help</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_commands_status.html">lib/commands/status</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_commands_tex.html">lib/commands/tex</a>
 						</li>                        <li class="current tsd-kind-module">
 						<a href="../modules/lib_container_container.html">lib/container/container</a>
 						</li>                        <li class=" tsd-kind-module">
@@ -160,11 +162,15 @@
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_service_FormatService.html">lib/service/<wbr>Format<wbr>Service</a>
 						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_service_LaTeXService.html">lib/service/<wbr>LaTeXService</a>
+						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_util_Detector.html">lib/util/<wbr>Detector</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_util_FormatMessage.html">lib/util/<wbr>Format<wbr>Message</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_util_MessageParser.html">lib/util/<wbr>Message<wbr>Parser</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/lib_util_createCommand.html">lib/util/create<wbr>Command</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="../modules/lib_util_logger.html">lib/util/logger</a>
 						</li>                        <li class=" tsd-kind-module">
@@ -264,7 +270,7 @@
 					<div class="tsd-signature tsd-kind-icon">_deps<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/06c94ef/src/lib/container/container.ts#L13">src/lib/container/container.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/afc4322/src/lib/container/container.ts#L14">src/lib/container/container.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -295,7 +301,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/06c94ef/src/lib/container/container.ts#L29">src/lib/container/container.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/afc4322/src/lib/container/container.ts#L30">src/lib/container/container.ts:30</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -303,7 +309,7 @@
 					<a name="getByKey" class="tsd-anchor"></a>
 					<h3>get<wbr>ByKey</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>ByKey&lt;T&gt;<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"detector"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"parser"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatService"</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>ByKey&lt;T&gt;<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"detector"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"parser"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatService"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"latexService"</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
 					</ul>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
@@ -313,14 +319,14 @@
 					<h4 class="tsd-parameters-title">Parameters</h4>
 					<ul class="tsd-parameters">
 						<li>
-							<span class="name">key</span>: <span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"detector"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"parser"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatService"</span>
+							<span class="name">key</span>: <span class="tsd-signature-type">"uploader"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"detector"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"client"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"parser"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"formatService"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"latexService"</span>
 						</li>
 					</ul>
 					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span>    </h4>
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/06c94ef/src/lib/container/container.ts#L40">src/lib/container/container.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/afc4322/src/lib/container/container.ts#L41">src/lib/container/container.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -334,7 +340,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/06c94ef/src/lib/container/container.ts#L15">src/lib/container/container.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/afc4322/src/lib/container/container.ts#L16">src/lib/container/container.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -362,7 +368,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/06c94ef/src/lib/container/container.ts#L19">src/lib/container/container.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/tatupesonen/formatbot/blob/afc4322/src/lib/container/container.ts#L20">src/lib/container/container.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
