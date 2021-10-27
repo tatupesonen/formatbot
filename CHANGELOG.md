@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/tatupesonen/formatbot/compare/v1.7.3...v1.8.0) (2021-10-27)
+
+
+### Features
+
+* **latex:** add latex command ([2005d95](https://github.com/tatupesonen/formatbot/commit/2005d953ccc331bcc0108ce16e669980e436ef45))
+
+
+### Bug Fixes
+
+* **external:** comply to new CE api changes ([e9c44ec](https://github.com/tatupesonen/formatbot/commit/e9c44ec0c128185b6513d364c941fa171f86398f))
+
 ### [1.7.3](https://github.com/tatupesonen/formatbot/compare/v1.7.2...v1.7.3) (2021-09-21)
 
 
