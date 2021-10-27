@@ -3,7 +3,7 @@ FROM python:3.8-buster as base
 ENV NODE_VERSION=16.8.0
 ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 RUN apt update \
-  && apt install -y curl git \
+  && apt install -y curl git libgbm-dev \
   && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash \
   && apt clean
 ENV NVM_DIR=/root/.nvm

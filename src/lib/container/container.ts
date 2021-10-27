@@ -5,6 +5,7 @@ export const DITypes = {
   client: 'client',
   parser: 'parser',
   formatService: 'formatService',
+  latexService: 'latexService',
 } as const;
 
 export type Constr<T> = new (...args: unknown[]) => T;

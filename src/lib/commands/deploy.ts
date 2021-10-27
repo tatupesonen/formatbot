@@ -3,7 +3,7 @@ import { COMMANDS } from '../bot';
 
 import { ICommand, COMMAND_TYPE } from '../interfaces/ICommand';
 
-const FormatCommand: ICommand<COMMAND_TYPE.LEGACY> = {
+const DeployCommand: ICommand<COMMAND_TYPE.LEGACY> = {
   name: 'deploy',
   description: "Deploys the bot's slash commands and context menus",
   type: COMMAND_TYPE.LEGACY,
@@ -26,4 +26,4 @@ const FormatCommand: ICommand<COMMAND_TYPE.LEGACY> = {
   },
 };
 
-export default FormatCommand;
+export default DeployCommand;
