@@ -11,6 +11,8 @@ export class CppFormatter extends BaseFormatter implements IFormatter {
         {
           base: 'Google',
           source: code,
+          tabWidth: 2,
+          useSpaces: true,
         }
       );
       formatted = data.answer;

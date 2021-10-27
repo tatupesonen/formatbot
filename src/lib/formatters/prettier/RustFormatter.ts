@@ -12,6 +12,8 @@ export class RustFormatter extends BaseFormatter implements IFormatter {
         {
           base: '',
           source: code,
+          tabWidth: 2,
+          useSpaces: true,
         }
       );
       formatted = data.answer;
