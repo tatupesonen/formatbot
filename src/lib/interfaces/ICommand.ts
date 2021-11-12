@@ -15,11 +15,13 @@ type ArgsType<T> = T extends Array<infer U>
     : [T]
   : [];
 
-// This type alias is necessary because `unknown | void`
-// will either not satisfy command or event expected return types, `any` can also not be added inline
-// because of conflicting prettier and eslint rules
+// These type alias are necessary because inline declarations
+// clash between prettier and eslint
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type CommandReturnType = any;
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+type EmptyObject = {};
 
 interface ICommandWithArgs<TArgs> {
   resolveArgs(message: Message, args: string[]): Promise<TArgs>;
@@ -34,10 +36,13 @@ export type Command<
   type: TCommandType;
   options?: CommandOption[];
   execute(
-    ...args: [...args: Mapped<TArgs>[TCommandType], container: Container]
+    ...args: [...args: IMapped<TArgs>[TCommandType], container: Container]
   ): Awaited<CommandReturnType>;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-} & (TArgs extends void ? {} : ICommandWithArgs<TArgs>);
+} & (TArgs extends void
+  ? EmptyObject
+  : TCommandType extends COMMAND_TYPE.LEGACY
+  ? ICommandWithArgs<TArgs>
+  : EmptyObject);
 
 export enum COMMAND_TYPE {
   LEGACY = 'LEGACY',
@@ -50,7 +55,7 @@ export interface CommandOption extends CommandInteractionOption {
   description: string;
 }
 
-interface Mapped<TArgs> {
+interface IMapped<TArgs> {
   [COMMAND_TYPE.CHANNEL]: [interaction: CommandInteraction];
   [COMMAND_TYPE.SLASH]: [interaction: ContextMenuInteraction];
   [COMMAND_TYPE.LEGACY]: [message: Message, ...args: ArgsType<TArgs>];
