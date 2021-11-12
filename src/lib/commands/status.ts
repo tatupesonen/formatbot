@@ -1,8 +1,8 @@
 import { intervalToDuration } from 'date-fns';
 import { Client, MessageEmbed } from 'discord.js';
-import { ICommand, COMMAND_TYPE } from '../interfaces/ICommand';
+import { Command, COMMAND_TYPE } from '../interfaces/ICommand';
 
-const StatusCommand: ICommand<COMMAND_TYPE.LEGACY> = {
+const StatusCommand: Command<COMMAND_TYPE.LEGACY> = {
   name: 'status',
   description: "Shows FormatBot's status",
   type: COMMAND_TYPE.LEGACY,

@@ -1,5 +1,5 @@
-import { COMMAND_TYPE, ICommand } from '../interfaces/ICommand';
+import { COMMAND_TYPE, Command } from '../interfaces/ICommand';
 
-export const createCommand = <T extends COMMAND_TYPE>(cmd: ICommand<T>) => {
+export const createCommand = <T extends COMMAND_TYPE>(cmd: Command<T>) => {
   return cmd;
 };

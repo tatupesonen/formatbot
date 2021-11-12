@@ -1,19 +1,43 @@
 import {
+  Awaited,
   CommandInteraction,
   CommandInteractionOption,
   ContextMenuInteraction,
   Message,
 } from 'discord.js';
 import { Container } from '../container/container';
-export interface ICommand<
-  T extends typeof COMMAND_TYPE[keyof typeof COMMAND_TYPE]
-> {
+
+type ArgsType<T> = T extends Array<infer U>
+  ? U extends void
+    ? []
+    : U extends unknown
+    ? [string[]]
+    : [T]
+  : [];
+
+// This type alias is necessary because `unknown | void`
+// will either not satisfy command or event expected return types, `any` can also not be added inline
+// because of conflicting prettier and eslint rules
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type CommandReturnType = any;
+
+interface ICommandWithArgs<TArgs> {
+  resolveArgs(message: Message, args: string[]): Promise<TArgs>;
+}
+
+export type Command<
+  TCommandType extends typeof COMMAND_TYPE[keyof typeof COMMAND_TYPE],
+  TArgs = void
+> = {
   name: string;
   description: string;
-  type: T;
+  type: TCommandType;
   options?: CommandOption[];
-  execute(interaction: Mapped[T], container: Container, args?: string[]): void;
-}
+  execute(
+    ...args: [...args: Mapped<TArgs>[TCommandType], container: Container]
+  ): Awaited<CommandReturnType>;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+} & (TArgs extends void ? {} : ICommandWithArgs<TArgs>);
 
 export enum COMMAND_TYPE {
   LEGACY = 'LEGACY',
@@ -26,8 +50,8 @@ export interface CommandOption extends CommandInteractionOption {
   description: string;
 }
 
-interface Mapped {
-  [COMMAND_TYPE.CHANNEL]: CommandInteraction;
-  [COMMAND_TYPE.SLASH]: ContextMenuInteraction;
-  [COMMAND_TYPE.LEGACY]: Message;
+interface Mapped<TArgs> {
+  [COMMAND_TYPE.CHANNEL]: [interaction: CommandInteraction];
+  [COMMAND_TYPE.SLASH]: [interaction: ContextMenuInteraction];
+  [COMMAND_TYPE.LEGACY]: [message: Message, ...args: ArgsType<TArgs>];
 }

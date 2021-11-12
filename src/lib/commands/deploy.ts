@@ -1,9 +1,9 @@
 import { ApplicationCommandData, Client } from 'discord.js';
 import { COMMANDS } from '../bot';
 
-import { ICommand, COMMAND_TYPE } from '../interfaces/ICommand';
+import { Command, COMMAND_TYPE } from '../interfaces/ICommand';
 
-const DeployCommand: ICommand<COMMAND_TYPE.LEGACY> = {
+const DeployCommand: Command<COMMAND_TYPE.LEGACY> = {
   name: 'deploy',
   description: "Deploys the bot's slash commands and context menus",
   type: COMMAND_TYPE.LEGACY,
