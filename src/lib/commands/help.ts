@@ -5,7 +5,7 @@ const HelpCommand: Command<COMMAND_TYPE.LEGACY> = {
   name: 'help',
   description: 'Shows help information',
   type: COMMAND_TYPE.LEGACY,
-  async execute(interaction) {
+  async execute(message) {
     const embed: Partial<MessageEmbed> = {
       fields: [
         {
@@ -22,7 +22,7 @@ const HelpCommand: Command<COMMAND_TYPE.LEGACY> = {
         },
       ],
     };
-    interaction.reply({ embeds: [embed] });
+    message.reply({ embeds: [embed] });
   },
 };
 
