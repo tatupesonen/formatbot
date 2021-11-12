@@ -1,9 +1,9 @@
 import { InteractionReplyOptions } from 'discord.js';
 import { DITypes } from '../container/container';
-import { ICommand, COMMAND_TYPE } from '../interfaces/ICommand';
+import { Command, COMMAND_TYPE } from '../interfaces/ICommand';
 import { FormatService } from '../service/FormatService';
 
-const FormatCommand: ICommand<COMMAND_TYPE.SLASH> = {
+const FormatCommand: Command<COMMAND_TYPE.SLASH> = {
   name: 'Format',
   description: '',
   type: COMMAND_TYPE.SLASH,

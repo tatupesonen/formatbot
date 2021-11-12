@@ -1,16 +1,16 @@
 import { ApplicationCommandData, Client } from 'discord.js';
 import { COMMANDS } from '../bot';
 
-import { ICommand, COMMAND_TYPE } from '../interfaces/ICommand';
+import { Command, COMMAND_TYPE } from '../interfaces/ICommand';
 
-const DeployCommand: ICommand<COMMAND_TYPE.LEGACY> = {
+const DeployCommand: Command<COMMAND_TYPE.LEGACY> = {
   name: 'deploy',
   description: "Deploys the bot's slash commands and context menus",
   type: COMMAND_TYPE.LEGACY,
-  async execute(interaction, container) {
+  async execute(message, container) {
     // Get dependencies
     const client = container.getByKey<Client>('client');
-    if (interaction.author.id !== process.env.OWNER) return;
+    if (message.author.id !== process.env.OWNER) return;
     const slashCommands: ApplicationCommandData[] = Object.entries(COMMANDS)
       .filter(
         ([_, value]) =>
@@ -22,7 +22,7 @@ const DeployCommand: ICommand<COMMAND_TYPE.LEGACY> = {
         return acc;
       }, []);
     await client.application.commands.set(slashCommands);
-    interaction.reply(`Registered ${slashCommands.length} commands.`);
+    message.reply(`Registered ${slashCommands.length} commands.`);
   },
 };
 
