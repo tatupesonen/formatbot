@@ -1,12 +1,12 @@
 import { InteractionReplyOptions } from 'discord.js';
 import { DITypes } from '../container/container';
-import { Command, COMMAND_TYPE } from '../interfaces/ICommand';
 import { FormatService } from '../service/FormatService';
+import { createCommand } from '../util/createCommand';
 
-const FormatCommand: Command<COMMAND_TYPE.SLASH> = {
+export default createCommand({
   name: 'Format',
   description: '',
-  type: COMMAND_TYPE.SLASH,
+  type: 'CHAT_INPUT',
   async execute(interaction, container) {
     // Get service
     const service = container.getByKey<FormatService>(DITypes.formatService);
@@ -15,7 +15,7 @@ const FormatCommand: Command<COMMAND_TYPE.SLASH> = {
     // Parse package.json first
     try {
       const message = await interaction.channel.messages.fetch(
-        interaction.targetId
+        interaction.user.id
       );
       const formatted = await service.format(message.toString());
       interaction.editReply({ ...baseReply, content: formatted });
@@ -26,6 +26,4 @@ const FormatCommand: Command<COMMAND_TYPE.SLASH> = {
       });
     }
   },
-};
-
-export default FormatCommand;
+});

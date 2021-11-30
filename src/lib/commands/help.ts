@@ -1,10 +1,10 @@
 import { MessageEmbed } from 'discord.js';
-import { Command, COMMAND_TYPE } from '../interfaces/ICommand';
+import { createCommand } from '../util/createCommand';
 
-const HelpCommand: Command<COMMAND_TYPE.LEGACY> = {
+export default createCommand({
   name: 'help',
   description: 'Shows help information',
-  type: COMMAND_TYPE.LEGACY,
+  type: 'LEGACY',
   async execute(message) {
     const embed: Partial<MessageEmbed> = {
       fields: [
@@ -24,6 +24,4 @@ const HelpCommand: Command<COMMAND_TYPE.LEGACY> = {
     };
     message.reply({ embeds: [embed] });
   },
-};
-
-export default HelpCommand;
+});

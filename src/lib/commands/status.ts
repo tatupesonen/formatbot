@@ -1,12 +1,12 @@
 import { intervalToDuration } from 'date-fns';
 import { Client, MessageEmbed } from 'discord.js';
-import { Command, COMMAND_TYPE } from '../interfaces/ICommand';
+import { createCommand } from '../util/createCommand';
 
-const StatusCommand: Command<COMMAND_TYPE.LEGACY> = {
+export default createCommand({
   name: 'status',
   description: "Shows FormatBot's status",
-  type: COMMAND_TYPE.LEGACY,
-  async execute(message, container) {
+  type: 'LEGACY',
+  async execute(message, _args, container) {
     // Get dependencies
     const client = container.getByKey<Client>('client');
 
@@ -68,8 +68,6 @@ const StatusCommand: Command<COMMAND_TYPE.LEGACY> = {
     };
     message.reply({ embeds: [embed] });
   },
-};
+});
 
 const createIssueLink = (url: string) => `${url}/issues/new`;
-
-export default StatusCommand;

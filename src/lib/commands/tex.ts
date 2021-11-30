@@ -1,12 +1,11 @@
 import { InteractionReplyOptions } from 'discord.js';
 import { DITypes } from '../container/container';
-import { COMMAND_TYPE } from '../interfaces/ICommand';
 import { LaTeXService } from '../service/LaTeXService';
 import { createCommand } from '../util/createCommand';
 
 const LaTeXCommand = createCommand({
   name: 'tex',
-  type: COMMAND_TYPE.CHANNEL,
+  type: 'CHAT_INPUT',
   description: 'Formats LaTeX',
   options: [
     {
