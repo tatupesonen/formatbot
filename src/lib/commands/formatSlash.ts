@@ -1,12 +1,12 @@
 import { InteractionReplyOptions, Message } from 'discord.js';
 import { DITypes } from '../container/container';
 import { languageMappings } from '../formatters/FormatterMappings';
-import { COMMAND_TYPE, Command } from '../interfaces/ICommand';
 import { FormatService } from '../service/FormatService';
+import { createCommand } from '../util/createCommand';
 
-const FormatSlashCommand: Command<COMMAND_TYPE.CHANNEL> = {
+export default createCommand({
   name: 'format',
-  type: COMMAND_TYPE.CHANNEL,
+  type: 'CHAT_INPUT',
   description: "Formats a message that's given as an argument",
   options: [
     {
@@ -71,6 +71,4 @@ const FormatSlashCommand: Command<COMMAND_TYPE.CHANNEL> = {
       });
     }
   },
-};
-
-export default FormatSlashCommand;
+});

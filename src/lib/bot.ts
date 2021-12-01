@@ -1,19 +1,11 @@
 import { Client, Intents } from 'discord.js';
 import { readdirSync } from 'fs';
-import { COMMAND_TYPE, Command } from './interfaces/ICommand';
+import { Command, LegacyCommand } from './interfaces/ICommand';
 import StatusCommand from './commands/status';
 import { Container } from './container/container';
 import { logger } from './util/logger';
 
-export const COMMANDS: Record<
-  string,
-  // Using `unknown | any` because the type of args are not known here
-  // when narrowing down, `unknown` would allow for string arguments
-  // and `any` would allow for any other type of arguments.
-  // Technically just `any` would do the job too, but it is not 100% accurate.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Command<COMMAND_TYPE, [unknown | any]>
-> = {};
+export const COMMANDS: Record<string, Command> = {};
 
 export const createBot = async (container: Container) => {
   // Let's load all the commands.
@@ -54,7 +46,7 @@ export const createBot = async (container: Container) => {
       }) &&
       message.content.trim().length <= client.user.id.length + 4
     ) {
-      StatusCommand.execute(message, container);
+      (StatusCommand as LegacyCommand).execute(message, [], container);
     }
     if (!message.content.startsWith(prefix)) return;
     // User is bot operator
@@ -64,37 +56,58 @@ export const createBot = async (container: Container) => {
     // Find command from args and run execute
     const command = COMMANDS[commandName];
 
-    if (command.type !== COMMAND_TYPE.LEGACY) return;
+    if (command.type !== 'LEGACY') return;
 
-    if (typeof command.resolveArgs === 'function') {
-      const resolvedArgs = await command.resolveArgs(message, commandArgs);
+    command.execute(message, commandArgs, container);
 
-      return command.execute(message, resolvedArgs, container);
-    } else if (command) {
-      return command.execute(message, commandArgs, container);
-    }
     logger.warn(
       `${message.author.username}: [${message.author.id}] tried to run nonexistent command ${prefix}${commandName}`
     );
   });
 
   client.on('interactionCreate', async (interaction) => {
-    if (interaction.isContextMenu() || interaction.isCommand()) {
-      try {
-        if (COMMANDS[interaction.commandName]) {
-          COMMANDS[interaction.commandName].execute(interaction, container);
-          logger.info(
-            `${interaction.user.username}: [${interaction.user.id}] ran command ${interaction.commandName}`
-          );
-        }
-      } catch (err) {
-        logger.error(
-          `Failed to run command ${interaction.commandName} - commandID ${
-            interaction.commandId ?? 'no ID'
-          }`
+    if (
+      (!interaction.isCommand() && !interaction.isContextMenu()) ||
+      !interaction.inCachedGuild()
+    ) {
+      return;
+    }
+
+    const command = COMMANDS[interaction.commandName];
+
+    if (!command) {
+      return;
+    }
+
+    const isSlashCommand =
+      interaction.isCommand() && command.type === 'CHAT_INPUT';
+
+    const isContextMenuCommand =
+      interaction.isContextMenu() &&
+      (command.type === 'MESSAGE' || command.type === 'USER');
+
+    try {
+      if (isSlashCommand) {
+        command.execute(interaction, container);
+
+        logger.info(
+          `${interaction.user.username}: [${interaction.user.id}] ran command ${interaction.commandName}`
+        );
+      } else if (isContextMenuCommand) {
+        command.execute(interaction, container);
+
+        logger.info(
+          `${interaction.user.username}: [${interaction.user.id}] ran command ${interaction.commandName}`
         );
       }
+    } catch (err) {
+      logger.error(
+        `Failed to run command ${interaction.commandName} - commandID ${
+          interaction.commandId ?? 'no ID'
+        }`
+      );
     }
   });
+
   return { client };
 };
