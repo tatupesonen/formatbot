@@ -38,7 +38,7 @@
     "date-fns": "^2.23.0",
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
-    "prettier": "^2.3.2",
+    "prettier": "^2.5.0",
     "prettydiff2": "^2.2.8",
     "unibeautify": "^0.17.1",
     "winston": "^3.3.3",
