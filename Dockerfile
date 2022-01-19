@@ -1,4 +1,4 @@
-FROM python:3.9.7-slim-bullseye as base
+FROM python:3.11.0a3-slim-bullseye as base
 # Install node
 ENV NODE_VERSION=16.8.0
 ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
