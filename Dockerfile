@@ -26,9 +26,10 @@ WORKDIR /app
 
 RUN rm -rf node_modules && yarn install --frozen-lockfile
 
-from base as test
+FROM base as test
 CMD yarn jest
 
-from base as build
+FROM base as build
 RUN yarn build
+EXPOSE 3000
 CMD ["node", "./build/main/src/index.js"]
