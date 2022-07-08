@@ -57,12 +57,13 @@ export const createBot = async (container: Container) => {
     const command = COMMANDS[commandName];
 
     if (command.type !== 'LEGACY') return;
+    if (!command) {
+      logger.warn(
+        `${message.author.username}: [${message.author.id}] tried to run nonexistent command ${prefix}${commandName}`
+      );
+    }
 
     command.execute(message, commandArgs, container);
-
-    logger.warn(
-      `${message.author.username}: [${message.author.id}] tried to run nonexistent command ${prefix}${commandName}`
-    );
   });
 
   client.on('interactionCreate', async (interaction) => {
