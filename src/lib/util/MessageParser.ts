@@ -1,6 +1,8 @@
 import { languageMappings } from '../formatters/FormatterMappings';
 import { IParser } from '../interfaces/IParser';
 import { checkIfLanguageSupported } from './utils';
+import { regexConfig } from '../config/regex';
+
 export type CodeBlock = {
   type: 'code';
   content: string;
@@ -15,42 +17,22 @@ export type CodeBlock = {
  */
 export class Parser implements IParser {
   parseMessage = (content: string): CodeBlock[] | [] => {
-    const matchCodeBlocksRegex = /(```).*?(```)/gs;
-    const langKeyRegex = new RegExp(
-      '```\\b(' + Object.keys(languageMappings).join('|') + ')\\b',
-      'i'
-    );
-    const codeblocks = [...content.matchAll(matchCodeBlocksRegex)].map(
-      ([first]) => first
-    );
-    const messageBlocks: CodeBlock[] = codeblocks.map((block, idx) => {
-      const [firstLine] = block.split('\n');
-      //Figure out the language key, if any
-      const languageKey = firstLine.match(langKeyRegex);
-      console.log(languageKey, langKeyRegex);
-      // Check if the languageKey is something that we support.
-      let languageSupported = false;
-      if (languageKey) {
-        // TODO: Improve this logic. Perhaps put use capture groups and put it in the match regex.
-        languageKey[0] = languageKey[0]
-          .replace('```', '')
-          .replace('\n', '')
-          .toLowerCase();
-        languageSupported = checkIfLanguageSupported(languageKey[0]);
-      }
-      const blockWithNoBackticks = block
-        // Remove first backticks and language key
-        .replace(langKeyRegex, '')
-        // Replace all remaining triple backticks for this block
-        .replaceAll(/```/g, '')
-        // Remove ending & beginning whitespace
-        .replace(/^\s+|\s+$/g, '');
+    const codeblocks = [...content.matchAll(regexConfig.codeBlockRegex)];
+
+    const messageBlocks: CodeBlock[] = codeblocks.map((match, idx) => {
+      const { lang, content } = match.groups;
+
+      const languageSupported = lang && checkIfLanguageSupported(lang);
+
       return {
-        content: blockWithNoBackticks,
+        content: content.trim(),
         type: 'code',
         order: idx,
+        // TODO
+        // Alarms are going off in my head due to this line
+        // Find a better way to assert language support later
         ...(languageSupported && {
-          languageKey: languageKey[0] as keyof typeof languageMappings,
+          languageKey: lang as keyof typeof languageMappings,
         }),
       };
     });
