@@ -46,7 +46,7 @@
     "types": ["node", "jest"],
     "typeRoots": ["node_modules/@types", "src/types"]
   },
-  "include": ["src/**/*.ts", "./package.json", "tests/**/*.ts"],
+  "include": ["src/**/*.ts", "./package.json", "tests/**/*.*"],
   "exclude": ["node_modules/**"],
   "compileOnSave": false
 }
