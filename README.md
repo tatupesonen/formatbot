@@ -4,6 +4,9 @@
   
 
 </div>
+
+[![Tests](https://github.com/tatupesonen/formatbot/actions/workflows/test.yml/badge.svg?branch=dev)](https://github.com/tatupesonen/formatbot/actions/workflows/test.yml)
+
 Formats the code blocks of a message using Discord context menus.
 
 # Currently supported languages
