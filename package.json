@@ -23,7 +23,7 @@
     "watch:test": "nyc --silent ava --watch",
     "cov": "yarn jest --coverage && open-cli coverage/index.html",
     "doc": "run-s doc:html && open-cli build/docs/index.html",
-    "doc:html": "typedoc src/ --out build/docs --theme node_modules/eledoc/bin/default/",
+    "doc:html": "typedoc src/ --out build/docs",
     "doc:publish": "gh-pages -m \"[ci skip] Updates\" -d build/docs",
     "release:version": "npx standard-version -s",
     "reset-hard": "git clean -dfx && git reset --hard && yarn"
@@ -56,7 +56,6 @@
     "@typescript-eslint/parser": "^4.29.0",
     "cspell": "^5.6.6",
     "cz-conventional-changelog": "^3.3.0",
-    "eledoc": "^0.2.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-eslint-comments": "^3.2.0",

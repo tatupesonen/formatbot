@@ -2658,11 +2658,6 @@ electron-to-chromium@^1.4.172:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.184.tgz#381d4d111fc82d3376ed690dfb621e675f9078a9"
   integrity sha512-IADi390FRdvxWfVX3hjzfTDNVHiTqVo9ar53/7em/SfhUG9YcjVhyQecY/XwmBHRKden/wFud7RWOUH7+7LFng==
 
-eledoc@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/eledoc/-/eledoc-0.2.1.tgz#2797e402bd572302c5cfe9e22242b89cbd65589e"
-  integrity sha512-i89qTl6D8qUTax2Lfx3IYgZB0phCGv7ws2S//vtoq2H3DKJs8A5AtsVtPd3LUn2jvsL6mGDJaOrsJyrtt2I1AQ==
-
 email-addresses@^3.0.1:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/email-addresses/-/email-addresses-3.1.0.tgz#cabf7e085cbdb63008a70319a74e6136188812fb"
