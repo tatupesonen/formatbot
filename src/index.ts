@@ -15,6 +15,7 @@ import { GuesslangDetector } from './lib/util/Detector';
 import { Parser } from './lib/util/MessageParser';
 import prometheus from 'prom-client';
 import { metrics } from './lib/routes/metrics';
+import { createCallbackMetrics, zeroLanguageMetrics } from './lib/util/metrics';
 
 // Forcing CI
 
@@ -41,6 +42,11 @@ const bootstrap = async () => {
   container.set<LaTeXService>(latexService, DITypes.latexService);
   const { client: bot } = await createBot(container);
   container.set<Client>(bot, DITypes.client);
+
   bot.login(process.env.DISCORD_TOKEN);
+
+  // Create here to ensure cache is populated
+  zeroLanguageMetrics();
+  createCallbackMetrics(container);
 };
 bootstrap();

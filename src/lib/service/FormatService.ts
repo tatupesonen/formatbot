@@ -6,6 +6,7 @@ import {
 import { IDetector } from '../interfaces/IDetector';
 import { IParser } from '../interfaces/IParser';
 import { logger } from '../util/logger';
+import { formats, getMetricFromKey } from '../util/metrics';
 import { reformat } from '../util/reformatter';
 import { checkIfLanguageSupported, commentify } from '../util/utils';
 
@@ -33,6 +34,8 @@ export class FormatService {
             formattedBlock = await languageMappings[block.languageKey].format(
               block.content
             );
+            formattedBlock &&
+              formats.inc({ language: getMetricFromKey(block.languageKey) });
           } catch (err) {
             const comment = commentify(
               `Couldn't format this ${
@@ -60,6 +63,10 @@ export class FormatService {
                 formattedBlock = await languageMappings[
                   detectedLanguageKey
                 ].format(block.content);
+                formattedBlock &&
+                  formats.inc({
+                    language: getMetricFromKey(detectedLanguageKey),
+                  });
               } catch (err) {
                 const comment = commentify(
                   `Couldn't format this snippet. Perhaps there's a syntax error, or maybe the detector made a mistake?${
