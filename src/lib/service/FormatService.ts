@@ -100,7 +100,6 @@ export class FormatService {
           }
         }
         let reformatLangKey;
-        console.log(block.languageKey, detectedLanguageKey);
         // Order in which to pick the key to use
         reformatLangKey ??= block.languageKey;
         reformatLangKey ??= detectedLanguageKey;

@@ -4,3 +4,5 @@ datasources:
   - name: prometheus
     type: prometheus
     url: http://prometheus:9090
+    jsonData:
+      timeInterval: 10s

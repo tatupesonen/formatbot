@@ -1,5 +1,6 @@
 import { Client } from 'discord.js';
 import prometheus from 'prom-client';
+import { COMMANDS } from '../bot';
 import { DITypes, Container } from '../container/container';
 import { languageNameMappings } from '../formatters/FormatterMappings';
 
@@ -11,6 +12,18 @@ const customPromNames = {
 export const formats = new prometheus.Counter({
   name: 'formatbot_formats',
   help: 'Counter of formats for FormatBot',
+  labelNames: ['language'] as const,
+});
+
+export const commandCalls = new prometheus.Counter({
+  name: 'formatbot_commands',
+  help: 'Counter of commands called for FormatBot',
+  labelNames: ['command', 'guild', 'type'] as const,
+});
+
+export const detectedLanguagesMetric = new prometheus.Counter({
+  name: 'formatbot_detected_language',
+  help: 'Counter of detected programming languages for FormatBot',
   labelNames: ['language'] as const,
 });
 
@@ -30,9 +43,16 @@ export const zeroLanguageMetrics = () => {
     formats.inc({ language: lang }, 0);
   });
 };
+
+export const zeroCommandMetrics = () => {
+  const names = Object.keys(COMMANDS);
+  names.forEach((command) => {
+    commandCalls.inc({ command, type: COMMANDS[command].type }, 0);
+  });
+};
 export const createCallbackMetrics = (container: Container) => {
   const client = container.getByKey<Client>(DITypes.client);
-  const guildCountGauge = new prometheus.Gauge({
+  metrics['guildCount'] = new prometheus.Gauge({
     name: 'formatbot_guild_count',
     help: 'Count of the current amount of guilds that FormatBot is in',
     collect() {
@@ -40,7 +60,14 @@ export const createCallbackMetrics = (container: Container) => {
       this.set(count);
     },
   });
-  metrics['guildCount'] = guildCountGauge;
+  metrics['wsLatencyGauge'] = new prometheus.Gauge({
+    name: 'formatbot_websocket_latency',
+    help: 'WebSocket latency to Discord',
+    collect() {
+      const count = client.ws.ping;
+      this.set(count);
+    },
+  });
 };
 
 export const getMetricFromKey = (

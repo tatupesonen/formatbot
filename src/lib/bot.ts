@@ -4,6 +4,7 @@ import { Command, LegacyCommand } from './interfaces/ICommand';
 import StatusCommand from './commands/status';
 import { Container } from './container/container';
 import { logger } from './util/logger';
+import { commandCalls } from './util/metrics';
 
 export const COMMANDS: Record<string, Command> = {};
 
@@ -56,13 +57,22 @@ export const createBot = async (container: Container) => {
     // Find command from args and run execute
     const command = COMMANDS[commandName];
 
-    if (command.type !== 'LEGACY') return;
     if (!command) {
       logger.warn(
         `${message.author.username}: [${message.author.id}] tried to run nonexistent command ${prefix}${commandName}`
       );
+      return;
     }
+    if (command.type !== 'LEGACY') return;
 
+    commandCalls.inc(
+      {
+        command: command.name,
+        type: command.type,
+        guild: message.guildId,
+      },
+      1
+    );
     command.execute(message, commandArgs, container);
   });
 
@@ -101,6 +111,14 @@ export const createBot = async (container: Container) => {
           `${interaction.user.username}: [${interaction.user.id}] ran command ${interaction.commandName}`
         );
       }
+      commandCalls.inc(
+        {
+          command: command.name,
+          type: command.type,
+          guild: interaction.guildId,
+        },
+        1
+      );
     } catch (err) {
       logger.error(
         `Failed to run command ${interaction.commandName} - commandID ${

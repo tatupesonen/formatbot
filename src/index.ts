@@ -15,7 +15,11 @@ import { GuesslangDetector } from './lib/util/Detector';
 import { Parser } from './lib/util/MessageParser';
 import prometheus from 'prom-client';
 import { metrics } from './lib/routes/metrics';
-import { createCallbackMetrics, zeroLanguageMetrics } from './lib/util/metrics';
+import {
+  createCallbackMetrics,
+  zeroCommandMetrics,
+  zeroLanguageMetrics,
+} from './lib/util/metrics';
 
 // Forcing CI
 
@@ -47,6 +51,7 @@ const bootstrap = async () => {
 
   // Create here to ensure cache is populated
   zeroLanguageMetrics();
+  zeroCommandMetrics();
   createCallbackMetrics(container);
 };
 bootstrap();
