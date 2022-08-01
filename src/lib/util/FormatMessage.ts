@@ -4,6 +4,7 @@ import { languageMappings } from '../formatters/FormatterMappings';
 import { IDetector } from '../interfaces/IDetector';
 import { IUploader } from '../interfaces/IUploader';
 import { logger } from './logger';
+import { formats } from './metrics';
 import { reformat } from './reformatter';
 import { asyncStringReplacer, commentify } from './utils';
 
@@ -144,5 +145,6 @@ export const formatMessage = async (
     );
     replyContent = `Formatted code was too large to send through discord\nFormatted Code: ${prettyPasteCord}`;
   }
+  formats.inc(1);
   return replyContent;
 };

@@ -1,9 +1,6 @@
 version: '3.7'
 services:
-  test:
-    depends on: bot
-    container_name: formatbot-test
-  bot:
+  formatbot:
     container_name: formatbot
     image: nnari/formatbot:latest
     restart: always
@@ -11,3 +8,32 @@ services:
       - ./formatbot-logs:/app/logs
     env_file:
       - .env
+    ports:
+      - 3000:3000
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    ports:
+      - 9090:9090
+  grafana:
+    image: grafana/grafana-oss:latest
+    environment:
+      - 'GF_SERVER_HTTP_PORT=5050'
+    volumes:
+      - ./docker/grafana-provisioning:/etc/grafana/provisioning
+    ports:
+      - 5050:5050
+    restart: unless-stopped
+
+volumes:
+  prometheus_data: {}

@@ -4,6 +4,8 @@ export const DITypes = {
   detector: 'detector',
   client: 'client',
   parser: 'parser',
+  metrics: 'metrics',
+  api: 'api',
   formatService: 'formatService',
   latexService: 'latexService',
 } as const;

@@ -6,6 +6,7 @@ import path from 'path';
 import { languageNameMappings } from '../formatters/FormatterMappings';
 import { DetectedLanguage, IDetector } from '../interfaces/IDetector';
 import { logger } from './logger';
+import { detectedLanguagesMetric } from './metrics';
 
 export class GuesslangDetector implements IDetector {
   detect(code: string): Promise<DetectedLanguage> {
@@ -47,6 +48,9 @@ export class GuesslangDetector implements IDetector {
       const lang = Object.entries(languageNameMappings).find(
         ([_key, value]) => value === split
       );
+      if (lang) {
+        detectedLanguagesMetric.inc({ language: lang[0] }, 1);
+      }
       return {
         langKey: lang ? lang[0] : null,
         fullLangName: split,

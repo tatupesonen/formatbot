@@ -1,6 +1,6 @@
-FROM python:3.8-buster as base
+FROM python:3.9.7-slim-bullseye as base
 # Install node
-ENV NODE_VERSION=16.8.0
+ENV NODE_VERSION=16.16.0
 ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 RUN apt update \
   && apt install -y curl git libgbm-dev \
@@ -26,9 +26,10 @@ WORKDIR /app
 
 RUN rm -rf node_modules && yarn install --frozen-lockfile
 
-from base as test
+FROM base as test
 CMD yarn jest
 
-from base as build
+FROM base as build
 RUN yarn build
+EXPOSE 3000
 CMD ["node", "./build/main/src/index.js"]

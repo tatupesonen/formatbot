@@ -1,12 +1,12 @@
-import { InteractionReplyOptions } from 'discord.js';
+import { InteractionReplyOptions, Message } from 'discord.js';
 import { DITypes } from '../container/container';
 import { languageMappings } from '../formatters/FormatterMappings';
-import { COMMAND_TYPE, ICommand } from '../interfaces/ICommand';
 import { FormatService } from '../service/FormatService';
+import { createCommand } from '../util/createCommand';
 
-const FormatSlashCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
+export default createCommand({
   name: 'format',
-  type: COMMAND_TYPE.CHANNEL,
+  type: 'CHAT_INPUT',
   description: "Formats a message that's given as an argument",
   options: [
     {
@@ -51,7 +51,7 @@ const FormatSlashCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
       //       "Sorry, I don't support the programming language you gave to me. Yet :)",
       //   });
       // Check that inputlanguage is in
-      let message;
+      let message: Message;
       try {
         message = await interaction.channel.messages.fetch(targetMessage);
       } catch (err) {
@@ -71,6 +71,4 @@ const FormatSlashCommand: ICommand<COMMAND_TYPE.CHANNEL> = {
       });
     }
   },
-};
-
-export default FormatSlashCommand;
+});

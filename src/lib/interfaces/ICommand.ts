@@ -1,33 +1,39 @@
 import {
+  ApplicationCommandData,
+  BaseCommandInteraction,
+  ChatInputApplicationCommandData,
   CommandInteraction,
-  CommandInteractionOption,
   ContextMenuInteraction,
   Message,
+  MessageApplicationCommandData,
+  UserApplicationCommandData,
 } from 'discord.js';
 import { Container } from '../container/container';
-export interface ICommand<
-  T extends typeof COMMAND_TYPE[keyof typeof COMMAND_TYPE]
-> {
+
+type ApplicationCommandBase<T extends BaseCommandInteraction> =
+  ApplicationCommandData & {
+    execute(interaction: T, container: Container): Promise<unknown>;
+  };
+
+export type ContextMenuCommand = ApplicationCommandBase<
+  ContextMenuInteraction<'cached'>
+> &
+  (UserApplicationCommandData | MessageApplicationCommandData);
+
+export type SlashCommand = ApplicationCommandBase<
+  CommandInteraction<'cached'>
+> &
+  ChatInputApplicationCommandData;
+
+export type LegacyCommand = {
   name: string;
   description: string;
-  type: T;
-  options?: CommandOption[];
-  execute(interaction: Mapped[T], container: Container, args?: string[]): void;
-}
+  type: 'LEGACY';
+  execute(
+    message: Message,
+    args: string[],
+    container: Container
+  ): unknown | Promise<unknown>;
+};
 
-export enum COMMAND_TYPE {
-  LEGACY = 'LEGACY',
-  SLASH = 'MESSAGE',
-  CHANNEL = 'CHAT_INPUT',
-}
-
-export interface CommandOption extends CommandInteractionOption {
-  required?: boolean;
-  description: string;
-}
-
-interface Mapped {
-  [COMMAND_TYPE.CHANNEL]: CommandInteraction;
-  [COMMAND_TYPE.SLASH]: ContextMenuInteraction;
-  [COMMAND_TYPE.LEGACY]: Message;
-}
+export type Command = ContextMenuCommand | SlashCommand | LegacyCommand;
