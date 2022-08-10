@@ -105,6 +105,5 @@ Then run `yarn && yarn dev` to start a development environment.
 Give a ⭐️ if this project helped you!
 
 ## License 📝
-
-Copyright © 2021 [Tatu Pesonen](https://github.com/tatupesonen) <br>
+<br>
 This project is [GPLv3](LICENSE) licensed.
