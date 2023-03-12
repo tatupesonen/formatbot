@@ -4,7 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.11.0](https://github.com/tatupesonen/formatbot/compare/v1.8.0...v1.11.0) (2023-03-12)
 
-
 ### Features
 
 * **core:** change type signature for alternative method to create commands ([ac65334](https://github.com/tatupesonen/formatbot/commit/ac65334f1da653b73acdad1da5b087d50f430822))
