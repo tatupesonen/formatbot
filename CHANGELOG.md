@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/tatupesonen/formatbot/compare/v1.8.0...v1.11.0) (2023-03-12)
+
+
+### Features
+
+* **core:** change type signature for alternative method to create commands ([ac65334](https://github.com/tatupesonen/formatbot/commit/ac65334f1da653b73acdad1da5b087d50f430822))
+* **core:** implement conditional arguments for commands ([#42](https://github.com/tatupesonen/formatbot/issues/42)) ([4eacf7f](https://github.com/tatupesonen/formatbot/commit/4eacf7f6746c9ba69d69f27e39b1418661ff89cb))
+* initial prometheus metrics export and grafana configuration ([c3f0cec](https://github.com/tatupesonen/formatbot/commit/c3f0cecf8df65a8b3d0723b3dc0a6e3d43eb1d29))
+* more work on metrics ([05ea448](https://github.com/tatupesonen/formatbot/commit/05ea448c10acb407fdf411b834a89e9b3fef044f))
+* more work on monitoring ([6e38254](https://github.com/tatupesonen/formatbot/commit/6e38254d452aa0c90f332718165d5f99721a0fb6))
+* **typings:** disallow command arguments in non-legacy commands ([7b65a72](https://github.com/tatupesonen/formatbot/commit/7b65a72bba618bfa432136c5a2aa52706c053034))
+* use native typings for command declaration ([#46](https://github.com/tatupesonen/formatbot/issues/46)) ([9b733ec](https://github.com/tatupesonen/formatbot/commit/9b733ec45c075fba2f4ae4bbabc4a0837130b7ed))
+
+
+### Bug Fixes
+
+* cleaned up message parser ([5b85978](https://github.com/tatupesonen/formatbot/commit/5b859782873a0d15ae58b6bfe8c3a62640c0d9a1))
+* cleaned up message parser ([#64](https://github.com/tatupesonen/formatbot/issues/64)) ([70735f8](https://github.com/tatupesonen/formatbot/commit/70735f8728aaedb97590e006a500f8b87f81e630))
+* Dockerfile to reduce vulnerabilities ([#47](https://github.com/tatupesonen/formatbot/issues/47)) ([e8c470b](https://github.com/tatupesonen/formatbot/commit/e8c470b033c38d0ff222e101d16c38a559396de3))
+* **tex:** disallow tex content with over 200 characters ([d9e148f](https://github.com/tatupesonen/formatbot/commit/d9e148f3d9c4e37dcf695501ef77cb795f54697b))
+* update docs workflow ([4dd55d7](https://github.com/tatupesonen/formatbot/commit/4dd55d7e48ab2b116f772f2909b5f9fdc832452f))
+* upgrade axios from 0.21.1 to 0.24.0 ([#48](https://github.com/tatupesonen/formatbot/issues/48)) ([f77ac17](https://github.com/tatupesonen/formatbot/commit/f77ac174dbc2a17931565f0fcc5fd61659b90e6a))
+* warning about command not found ([bcae8ea](https://github.com/tatupesonen/formatbot/commit/bcae8ea72a785151bbace9e08f101a85c19055d8))
+
 ## [1.9.0](https://github.com/tatupesonen/formatbot/compare/v1.8.0...v1.9.0) (2022-08-01)
 
 
