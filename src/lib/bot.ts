@@ -5,6 +5,7 @@ import StatusCommand from './commands/status';
 import { Container } from './container/container';
 import { logger } from './util/logger';
 import { commandCalls } from './util/metrics';
+import { userMentionRegExp } from './util/regexp';
 
 export const COMMANDS: Record<string, Command> = {};
 
@@ -45,7 +46,7 @@ export const createBot = async (container: Container) => {
         ignoreEveryone: true,
         ignoreRoles: true,
       }) &&
-      message.content.trim().length <= client.user.id.length + 4
+      userMentionRegExp(client.user.id).test(message.content)
     ) {
       (StatusCommand as LegacyCommand).execute(message, [], container);
     }
