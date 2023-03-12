@@ -1,6 +1,6 @@
 {
   "name": "formatbot",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "Formats a reacted message using Prettier",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
@@ -38,7 +38,7 @@
     "date-fns": "^2.23.0",
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
-    "fastify": "^4.2.0",
+    "fastify": "^4.10.2",
     "prettier": "^2.3.2",
     "prettydiff2": "^2.2.8",
     "prom-client": "^14.0.1",

@@ -21,11 +21,14 @@ const LaTeXCommand = createCommand({
     await interaction.deferReply(baseReply);
     try {
       const content = interaction.options.getString('content');
-      if(content.length > 200) {
+      if (content.length > 200) {
         interaction.editReply({
           ...baseReply,
-          content: "Content exceeds 200 characters, unable to convert. Content has " + content.length + " characters."
-        })
+          content:
+            'Content exceeds 200 characters, unable to convert. Content has ' +
+            content.length +
+            ' characters.',
+        });
         return;
       }
       const url = await service.format(content);
