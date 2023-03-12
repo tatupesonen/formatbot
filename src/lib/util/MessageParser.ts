@@ -1,7 +1,7 @@
 import { languageMappings } from '../formatters/FormatterMappings';
 import { IParser } from '../interfaces/IParser';
 import { checkIfLanguageSupported } from './utils';
-import { regexConfig } from '../config/regex';
+import { codeBlockRegExp } from './regexp';
 
 export type CodeBlock = {
   type: 'code';
@@ -17,7 +17,7 @@ export type CodeBlock = {
  */
 export class Parser implements IParser {
   parseMessage = (content: string): CodeBlock[] | [] => {
-    const codeblocks = [...content.matchAll(regexConfig.codeBlockRegex)];
+    const codeblocks = [...content.matchAll(codeBlockRegExp)];
 
     const messageBlocks: CodeBlock[] = codeblocks.map((match, idx) => {
       const { lang, content } = match.groups;
