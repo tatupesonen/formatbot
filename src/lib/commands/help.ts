@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { APIEmbed } from 'discord.js';
 import { createCommand } from '../util/createCommand';
 
 export default createCommand({
@@ -6,7 +6,7 @@ export default createCommand({
   description: 'Shows help information',
   type: 'LEGACY',
   async execute(message) {
-    const embed: Partial<MessageEmbed> = {
+    const embed: APIEmbed = {
       fields: [
         {
           inline: false,

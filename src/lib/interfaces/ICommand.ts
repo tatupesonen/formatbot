@@ -1,27 +1,27 @@
 import {
   ApplicationCommandData,
-  BaseCommandInteraction,
   ChatInputApplicationCommandData,
+  ChatInputCommandInteraction,
   CommandInteraction,
-  ContextMenuInteraction,
+  ContextMenuCommandInteraction,
   Message,
   MessageApplicationCommandData,
   UserApplicationCommandData,
 } from 'discord.js';
 import { Container } from '../container/container';
 
-type ApplicationCommandBase<T extends BaseCommandInteraction> =
+type ApplicationCommandBase<T extends CommandInteraction> =
   ApplicationCommandData & {
     execute(interaction: T, container: Container): Promise<unknown>;
   };
 
 export type ContextMenuCommand = ApplicationCommandBase<
-  ContextMenuInteraction<'cached'>
+  ContextMenuCommandInteraction<'cached'>
 > &
   (UserApplicationCommandData | MessageApplicationCommandData);
 
 export type SlashCommand = ApplicationCommandBase<
-  CommandInteraction<'cached'>
+  ChatInputCommandInteraction<'cached'>
 > &
   ChatInputApplicationCommandData;
 
