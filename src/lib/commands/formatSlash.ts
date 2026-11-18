@@ -1,4 +1,9 @@
-import { InteractionReplyOptions, Message } from 'discord.js';
+import {
+  ApplicationCommandOptionType,
+  ApplicationCommandType,
+  Message,
+  MessageFlags,
+} from 'discord.js';
 import { DITypes } from '../container/container';
 import { languageMappings } from '../formatters/FormatterMappings';
 import { FormatService } from '../service/FormatService';
@@ -6,17 +11,17 @@ import { createCommand } from '../util/createCommand';
 
 export default createCommand({
   name: 'format',
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   description: "Formats a message that's given as an argument",
   options: [
     {
-      type: 'STRING',
+      type: ApplicationCommandOptionType.String,
       name: 'messageid',
       description: 'ID of the message to format.',
       required: true,
     },
     {
-      type: 'STRING',
+      type: ApplicationCommandOptionType.String,
       description:
         'Language to use for formatting (eg. js, python). If not supplied, language will be detected.',
       name: 'programminglanguage',
@@ -25,8 +30,7 @@ export default createCommand({
   async execute(interaction, container) {
     // Get service
     const service = container.getByKey<FormatService>(DITypes.formatService);
-    const baseReply: InteractionReplyOptions = { ephemeral: true };
-    await interaction.deferReply(baseReply);
+    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
     // Parse package.json first
     try {
       const targetMessage = interaction.options.getString('messageid');
@@ -35,7 +39,6 @@ export default createCommand({
       );
       if (userInputLanguage)
         return interaction.editReply({
-          ...baseReply,
           content:
             'Congratulations, you found a currently unused feature! This will be implemented later.\nIn the meanwhile, use the /format command without specifying the programming language.',
         });
@@ -63,10 +66,9 @@ export default createCommand({
         message.toString(),
         userInputLanguage as unknown as keyof typeof languageMappings
       );
-      interaction.editReply({ ...baseReply, content: formatted });
+      interaction.editReply({ content: formatted });
     } catch (err) {
       interaction.editReply({
-        ...baseReply,
         content: err.message,
       });
     }

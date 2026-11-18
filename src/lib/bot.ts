@@ -1,10 +1,16 @@
-import { Client, Intents } from 'discord.js';
+import {
+  ApplicationCommandType,
+  Client,
+  Events,
+  GatewayIntentBits,
+  Partials,
+} from 'discord.js';
 import { readdirSync } from 'fs';
 import { Command, LegacyCommand } from './interfaces/ICommand';
 import StatusCommand from './commands/status';
 import { Container } from './container/container';
 import { logger } from './util/logger';
-import { commandCalls } from './util/metrics';
+import { commandCalls, commandTypeLabel } from './util/metrics';
 import { userMentionRegExp } from './util/regexp';
 
 export const COMMANDS: Record<string, Command> = {};
@@ -20,11 +26,11 @@ export const createBot = async (container: Container) => {
 
   //? The required intents for "messageCreate" and "messageReactionAdd". Events currently listened to
   const client = new Client({
-    intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS],
+    intents: [GatewayIntentBits.GuildMessages, GatewayIntentBits.Guilds],
     allowedMentions: { repliedUser: true },
-    partials: ['CHANNEL'],
+    partials: [Partials.Channel],
   });
-  client.on('ready', async () => {
+  client.on(Events.ClientReady, async () => {
     logger.info('Bot ready');
   });
 
@@ -69,7 +75,7 @@ export const createBot = async (container: Container) => {
     commandCalls.inc(
       {
         command: command.name,
-        type: command.type,
+        type: commandTypeLabel(command.type),
         guild: message.guildId,
       },
       1
@@ -79,7 +85,8 @@ export const createBot = async (container: Container) => {
 
   client.on('interactionCreate', async (interaction) => {
     if (
-      (!interaction.isCommand() && !interaction.isContextMenu()) ||
+      (!interaction.isChatInputCommand() &&
+        !interaction.isContextMenuCommand()) ||
       !interaction.inCachedGuild()
     ) {
       return;
@@ -92,11 +99,13 @@ export const createBot = async (container: Container) => {
     }
 
     const isSlashCommand =
-      interaction.isCommand() && command.type === 'CHAT_INPUT';
+      interaction.isChatInputCommand() &&
+      command.type === ApplicationCommandType.ChatInput;
 
     const isContextMenuCommand =
-      interaction.isContextMenu() &&
-      (command.type === 'MESSAGE' || command.type === 'USER');
+      interaction.isContextMenuCommand() &&
+      (command.type === ApplicationCommandType.Message ||
+        command.type === ApplicationCommandType.User);
 
     try {
       if (isSlashCommand) {
@@ -115,7 +124,7 @@ export const createBot = async (container: Container) => {
       commandCalls.inc(
         {
           command: command.name,
-          type: command.type,
+          type: commandTypeLabel(command.type),
           guild: interaction.guildId,
         },
         1
