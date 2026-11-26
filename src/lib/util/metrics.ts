@@ -1,7 +1,8 @@
-import { Client } from 'discord.js';
+import { ApplicationCommandType, Client } from 'discord.js';
 import prometheus from 'prom-client';
 import { COMMANDS } from '../bot';
 import { DITypes, Container } from '../container/container';
+import { Command } from '../interfaces/ICommand';
 import { languageNameMappings } from '../formatters/FormatterMappings';
 
 const customPromNames = {
@@ -20,6 +21,17 @@ export const commandCalls = new prometheus.Counter({
   help: 'Counter of commands called for FormatBot',
   labelNames: ['command', 'guild', 'type'] as const,
 });
+
+const commandTypeLabels = {
+  [ApplicationCommandType.ChatInput]: 'CHAT_INPUT',
+  [ApplicationCommandType.User]: 'USER',
+  [ApplicationCommandType.Message]: 'MESSAGE',
+  LEGACY: 'LEGACY',
+} as const;
+
+export const commandTypeLabel = (type: Command['type']) =>
+  // Discord treats a command without a type as a slash command.
+  commandTypeLabels[type ?? ApplicationCommandType.ChatInput];
 
 export const detectedLanguagesMetric = new prometheus.Counter({
   name: 'formatbot_detected_language',
@@ -47,7 +59,10 @@ export const zeroLanguageMetrics = () => {
 export const zeroCommandMetrics = () => {
   const names = Object.keys(COMMANDS);
   names.forEach((command) => {
-    commandCalls.inc({ command, type: COMMANDS[command].type }, 0);
+    commandCalls.inc(
+      { command, type: commandTypeLabel(COMMANDS[command].type) },
+      0
+    );
   });
 };
 export const createCallbackMetrics = (container: Container) => {

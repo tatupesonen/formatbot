@@ -1,6 +1,6 @@
-FROM python:3.9.7-slim-bullseye as base
+FROM python:3.9-slim-bookworm as base
 # Install node
-ENV NODE_VERSION=16.16.0
+ENV NODE_VERSION=22.23.5
 ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 RUN apt update \
   && apt install -y curl git libgbm-dev \

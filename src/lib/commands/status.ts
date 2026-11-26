@@ -1,5 +1,5 @@
 import { intervalToDuration } from 'date-fns';
-import { Client, MessageEmbed } from 'discord.js';
+import { APIEmbed, Client } from 'discord.js';
 import { createCommand } from '../util/createCommand';
 
 export default createCommand({
@@ -23,11 +23,11 @@ export default createCommand({
     // Find dev user
     const developer = await client.users.fetch('121777389012385796');
 
-    const embed: Partial<MessageEmbed> = {
+    const embed: APIEmbed = {
       url: pjson.repository,
       author: {
         name: developer.tag,
-        iconURL: developer.avatarURL(),
+        icon_url: developer.avatarURL(),
         url: pjson.repository,
       },
       thumbnail: {
