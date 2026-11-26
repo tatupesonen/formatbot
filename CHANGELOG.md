@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/tatupesonen/formatbot/compare/v1.11.2...v1.12.0) (2026-11-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Node 18 or newer is required. The Docker image now runs Node 22.
+
+### Features
+
+* upgrade to discord.js 14 ([#85](https://github.com/tatupesonen/formatbot/issues/85)) ([d3da64f](https://github.com/tatupesonen/formatbot/commit/d3da64f46be9ae367d9f597ea3de73ac08615d16))
+
+
+### Bug Fixes
+
+* **docker:** build on Debian 12 so apt can fetch packages again ([#86](https://github.com/tatupesonen/formatbot/issues/86)) ([05feefb](https://github.com/tatupesonen/formatbot/commit/05feefb28b6edba062308123865bc7b7a385836e))
+* use `docker compose` in the test workflow ([191e80a](https://github.com/tatupesonen/formatbot/commit/191e80acc5a764d8fbfd9ab7234d5ca780adb36e))
+* bump follow-redirects from 1.15.2 to 1.15.4 ([#78](https://github.com/tatupesonen/formatbot/issues/78)) ([c1493f0](https://github.com/tatupesonen/formatbot/commit/c1493f095ecca3b864a31864159c2eab01ea54be))
+* bump semver from 5.7.1 to 5.7.2 ([#74](https://github.com/tatupesonen/formatbot/issues/74)) ([694cc8f](https://github.com/tatupesonen/formatbot/commit/694cc8f18a673779708c5efa4bb9fbac002aa2c2))
+
 ## [1.11.0](https://github.com/tatupesonen/formatbot/compare/v1.8.0...v1.11.0) (2023-03-12)
 
 ### Features
